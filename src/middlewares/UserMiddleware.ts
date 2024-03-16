@@ -24,11 +24,7 @@ class UserValidator {
 
   public static validateUser(req: Request, res: Response, next: NextFunction): void | Response {
     //
-    const { username, role, email, password, image } = req.body;
-
-    const { error }: Joi.ValidationResult = UserValidator.userSchema.validate(
-      { username, role, email, password, image },
-    );
+    const { error }: Joi.ValidationResult = UserValidator.userSchema.validate(req.body);
 
     if (error) {
       return res.status(400).json({ status: 'INVALID_VALUE', message: error.details[0].message });
