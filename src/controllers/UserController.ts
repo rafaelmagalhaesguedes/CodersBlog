@@ -24,4 +24,16 @@ export default class LoginController {
     const { status, data } = await this.userService.getUserById(Number(req.params.id));
     return res.status(statusCode(status)).json(data);
   }
+
+  public async updateUser(req: Request, res: Response): Promise<Response> {
+    //
+    const { status, data } = await this.userService.updateUser(Number(req.params.id), req.body);
+    return res.status(statusCode(status)).json(data);
+  }
+
+  public async deleteUser(req: Request, res: Response): Promise<Response> {
+    //
+    const { status, data } = await this.userService.deleteUser(Number(req.params.id));
+    return res.status(statusCode(status)).json(data);
+  }
 }

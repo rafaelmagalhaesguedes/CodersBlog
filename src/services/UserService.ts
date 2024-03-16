@@ -46,4 +46,34 @@ export default class LoginService {
 
     return { status: 'SUCCESSFUL', data: user };
   }
+
+  public async updateUser(id: number, data: IUser): Promise<ServiceResponse<ServiceMessage>> {
+    //
+    const user = await this.userModel.getById(id);
+    if (!user) {
+      return { status: 'NOT_FOUND', data: { message: 'User not found!' } };
+    }
+
+    const updated = await this.userModel.update(id, data);
+    if (!updated) {
+      return { status: 'INTERNAL_ERROR', data: { message: 'User not updated!' } };
+    }
+
+    return { status: 'SUCCESSFUL', data: { message: 'User updated!' } };
+  }
+
+  public async deleteUser(id: number): Promise<ServiceResponse<ServiceMessage>> {
+    //
+    const user = await this.userModel.getById(id);
+    if(!user) {
+      return { status: 'NOT_FOUND', data: { message: 'User not found!' } };
+    }
+
+    const deleted = await this.userModel.delete(id);
+    if (!deleted) {
+      return { status: 'INTERNAL_ERROR', data: { message: 'User not deleted!' } };
+    }
+
+    return { status: 'SUCCESSFUL', data: { message: 'User deleted!' } };
+  }
 }

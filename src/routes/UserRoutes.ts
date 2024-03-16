@@ -37,6 +37,20 @@ class LoginRoutes {
       AuthMiddleware,
       (req: Request, res: Response) => this.userController.getUserById(req, res),
     );
+    
+    //
+    this.router.put(
+      '/:id',
+      AuthMiddleware,
+      (req: Request, res: Response) => this.userController.updateUser(req, res),
+    );
+
+    //
+    this.router.delete(
+      '/:id',
+      AuthMiddleware,
+      (req: Request, res: Response) => this.userController.deleteUser(req, res),
+    );
   }
 }
 

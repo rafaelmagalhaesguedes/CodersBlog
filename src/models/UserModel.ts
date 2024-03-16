@@ -29,6 +29,26 @@ class UserModel implements IUserModel {
     return newUser;
   }
 
+  public async update(id: number, user: IUser): Promise<boolean> {
+    //
+    const [afectedrow] = await this.userModel.update(user, { where: { id } });
+    if (afectedrow === 0) {
+      return false;
+    }
+
+    return true;
+  }
+
+  public async delete(id: number): Promise<boolean> {
+    //
+    const afectedrow = await this.userModel.destroy({ where: { id } });
+    if (afectedrow === 0) {
+      return false;
+    }
+
+    return true;
+  }
+
   public async getById(id: number): Promise<IUser | null> {
     //
     const user = await this.userModel.findByPk(id, { attributes: { exclude: ['password'] } });
