@@ -7,17 +7,15 @@ class UserModel implements IUserModel {
   //
   constructor(private userModel = SequelizeUser) { }
 
-  public async getByEmail(email: string): Promise<IUser | null> {
+  public async findAll(): Promise<IUser[] | null> {
     //
-    const user = await this.userModel.findOne({ where: { email } });
-    
-    if (!user) {
+    const users = await this.userModel.findAll({ attributes: { exclude: ['password'] } });
+
+    if (!users) {
       return null;
     }
 
-    const { id, username, password, role, image } = user;
-
-    return { id, username, email, password, role, image };
+    return users;
   }
 
   public async create(user: IUser): Promise<IUser | null> {
@@ -28,9 +26,18 @@ class UserModel implements IUserModel {
       return null;
     }
 
-    const { id, username, email, password, role, image } = newUser;
+    return newUser;
+  }
 
-    return { id, username, email, password, role, image };
+  public async getByEmail(email: string): Promise<IUser | null> {
+    //
+    const user = await this.userModel.findOne({ where: { email } });
+    
+    if (!user) {
+      return null;
+    }
+
+    return user;
   }
 }
 
