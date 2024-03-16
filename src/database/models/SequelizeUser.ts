@@ -6,6 +6,7 @@ import {
   InferCreationAttributes,
   CreationOptional,
 } from 'sequelize';
+import * as bcrypt from 'bcrypt';
 import db from '.';
 
 class SequelizeUser extends Model<InferAttributes<SequelizeUser>,
@@ -19,6 +20,8 @@ InferCreationAttributes<SequelizeUser>> {
   declare email: string;
 
   declare password: string;
+
+  declare image: string;
 }
 
 SequelizeUser.init({
@@ -45,10 +48,25 @@ SequelizeUser.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
+  image: {
+    type: DataTypes.STRING,
+  },
 }, {
   sequelize: db,
   modelName: 'users',
   timestamps: false,
+  hooks: {
+    beforeCreate: async (user) => {
+      const salt = await bcrypt.genSalt();
+      user.password = await bcrypt.hash(user.password, salt);
+    },
+    beforeUpdate: async (user) => {
+      if (user.changed('password')) {
+        const salt = await bcrypt.genSalt();
+        user.password = await bcrypt.hash(user.password, salt);
+      }
+    },
+  },
 });
 
 export default SequelizeUser;

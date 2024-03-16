@@ -10,4 +10,4 @@ Content-Type: application/json
 ###
 GET http://localhost:3001/login/role
 Content-Type: application/json
-Authorization: Bearer: <token>
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3MTA1OTM5NjEsImV4cCI6MTcxMDYwNDc2MX0.t7yOlxmVfTx7kq169mWvyFa2le2FIrnVaHIwpzkHswI

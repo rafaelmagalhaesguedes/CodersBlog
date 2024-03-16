@@ -11,6 +11,7 @@ export interface ILogin {
 export default interface IUser extends Identifiable, ILogin {
   username: string;
   role: string;
+  image: string;
 }
 
 // User role
