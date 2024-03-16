@@ -24,7 +24,7 @@ export default class LoginService {
       return { status: 'INTERNAL_ERROR', data: { message: 'User not created!' } };
     }
 
-    return { status: 'SUCCESSFUL', data: { message: 'User created!' } };
+    return { status: 'CREATED', data: { message: 'User created!' } };
   }
 
   public async findAllUsers(): Promise<ServiceResponse<IUser[]>> {
