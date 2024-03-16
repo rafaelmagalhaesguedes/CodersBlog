@@ -1,7 +1,8 @@
 import { Router } from 'express';
+import UserRoutes from './UserRoutes';
 import LoginRoutes from './LoginRoutes';
 import HealthRoute from './HealthRoute';
-import UserRoutes from './UserRoutes';
+import CategoriesRoutes from './CategoriesRoutes';
 
 export default class MainRoutes {
   public router: Router;
@@ -13,7 +14,8 @@ export default class MainRoutes {
  
   private initializeRoutes() {
     this.router.use('/', HealthRoute);
-    this.router.use('/login', LoginRoutes);
     this.router.use('/user', UserRoutes);
+    this.router.use('/login', LoginRoutes);
+    this.router.use('/categories', CategoriesRoutes);
   }
 }
