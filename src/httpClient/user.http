@@ -10,3 +10,8 @@ Content-Type: application/json
   "image": "http://4.bp.blogspot.com/_YA50adQ-7vQ/S1gfR_6ufpI/AAAAAAAAAAk/1ErJGgRWZDg/S45/brett.png",
   "role": "admin"
 }
+
+
+### `GET /user`
+GET http://localhost:3001/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3MTA2MDIyMjQsImV4cCI6MTcxMDYxMzAyNH0.ukmdzWXi7F3r8AihjQNqoXaw_7cEDSw25pNWEgJxDZQ

@@ -1,6 +1,7 @@
 import { Request, Router, Response } from 'express';
 import UserController from '../controllers/UserController';
 import UserMiddleware from '../middlewares/UserMiddleware';
+import AuthMiddleware from '../middlewares/AuthMiddleware';
 
 class LoginRoutes {
   //
@@ -21,6 +22,13 @@ class LoginRoutes {
       '/',
       UserMiddleware,
       (req: Request, res: Response) => this.userController.createUser(req, res),
+    );
+
+    //
+    this.router.get(
+      '/',
+      AuthMiddleware,
+      (req: Request, res: Response) => this.userController.findAllUsers(req, res),
     );
   }
 }

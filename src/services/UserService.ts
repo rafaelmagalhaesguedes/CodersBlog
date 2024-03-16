@@ -26,4 +26,14 @@ export default class LoginService {
 
     return { status: 'SUCCESSFUL', data: { message: 'User created!' } };
   }
+
+  public async findAllUsers(): Promise<ServiceResponse<IUser[]>> {
+    //
+    const users = await this.userModel.findAll();
+    if (!users) {
+      return { status: 'NOT_FOUND', data: { message: 'Users not found!' } };
+    }
+
+    return { status: 'SUCCESSFUL', data: users };
+  }
 }
