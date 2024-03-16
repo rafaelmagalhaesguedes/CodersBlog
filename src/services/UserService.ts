@@ -36,4 +36,14 @@ export default class LoginService {
 
     return { status: 'SUCCESSFUL', data: users };
   }
+
+  public async getUserById(id: number): Promise<ServiceResponse<IUser>> {
+    //
+    const user = await this.userModel.getById(id);
+    if (!user) {
+      return { status: 'NOT_FOUND', data: { message: 'User not found!' } };
+    }
+
+    return { status: 'SUCCESSFUL', data: user };
+  }
 }

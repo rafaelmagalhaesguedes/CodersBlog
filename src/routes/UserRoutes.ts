@@ -30,6 +30,13 @@ class LoginRoutes {
       AuthMiddleware,
       (req: Request, res: Response) => this.userController.findAllUsers(req, res),
     );
+
+    //
+    this.router.get(
+      '/:id',
+      AuthMiddleware,
+      (req: Request, res: Response) => this.userController.getUserById(req, res),
+    );
   }
 }
 

@@ -18,4 +18,10 @@ export default class LoginController {
     const { status, data } = await this.userService.findAllUsers();
     return res.status(statusCode(status)).json(data);
   }
+
+  public async getUserById(req: Request, res: Response): Promise<Response> {
+    //
+    const { status, data } = await this.userService.getUserById(Number(req.params.id));
+    return res.status(statusCode(status)).json(data);
+  }
 }

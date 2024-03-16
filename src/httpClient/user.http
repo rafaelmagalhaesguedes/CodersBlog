@@ -1,4 +1,3 @@
-
 ###
 POST http://localhost:3001/user
 Content-Type: application/json
@@ -11,7 +10,10 @@ Content-Type: application/json
   "role": "admin"
 }
 
-
 ### `GET /user`
 GET http://localhost:3001/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3MTA2MDIyMjQsImV4cCI6MTcxMDYxMzAyNH0.ukmdzWXi7F3r8AihjQNqoXaw_7cEDSw25pNWEgJxDZQ
+Authorization: Bearer <token>
+
+### `GET /user/:id`
+GET http://localhost:3001/user/1
+Authorization: Bearer <token>

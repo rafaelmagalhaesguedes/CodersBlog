@@ -29,6 +29,17 @@ class UserModel implements IUserModel {
     return newUser;
   }
 
+  public async getById(id: number): Promise<IUser | null> {
+    //
+    const user = await this.userModel.findByPk(id, { attributes: { exclude: ['password'] } });
+
+    if (!user) {
+      return null;
+    }
+
+    return user;
+  }
+
   public async getByEmail(email: string): Promise<IUser | null> {
     //
     const user = await this.userModel.findOne({ where: { email } });
