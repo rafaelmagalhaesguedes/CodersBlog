@@ -19,12 +19,12 @@ const tokenMock = jwt.sign(payload, secret, options);
 chai.use(chaiHttp);
 
 describe('User Tests', function () {
-
-  afterEach(() => {
-    sinon.restore();
-  });
-
   describe('Create user', function () {
+
+    afterEach(() => {
+      sinon.restore();
+    });
+  
     //
     it('should create a new user', async function () {
       // arrange
@@ -51,6 +51,11 @@ describe('User Tests', function () {
   });
 
   describe('Get aLL users', function () {
+
+    afterEach(() => {
+      sinon.restore();
+    });
+  
     //
     it('should return all users', async function () {
       // arrange
@@ -77,6 +82,11 @@ describe('User Tests', function () {
   });
 
   describe('Get user by id', function () {
+
+    afterEach(() => {
+      sinon.restore();
+    });
+  
     //
     it('should return a user by id', async function () {
       // arrange
@@ -101,4 +111,92 @@ describe('User Tests', function () {
       expect(res.status).to.equal(401);
     });
   });
+
+  describe('Update user', function () {
+
+    afterEach(() => {
+      sinon.restore();
+    });
+  
+    //
+    it('should update a user', async function () {
+      // arrange
+      sinon.stub(UserModel.prototype, 'getById').resolves(userMock as any);
+      sinon.stub(UserModel.prototype, 'update').resolves({} as any);
+      sinon.stub(jwt, 'verify').returns(payload as any);
+
+      // act
+      const res = await chai.request(app).put('/user/1').set('Authorization', `Bearer ${tokenMock}`).send(userMock);
+      
+      // assert
+      expect(res.status).to.equal(200);
+    });
+
+    //
+    it('should return an error when trying to update a user that does not exist', async function () {
+      // arrange
+      sinon.stub(UserModel.prototype, 'getById').resolves(null as any);
+      sinon.stub(jwt, 'verify').returns(payload as any);
+
+      // act
+      const res = await chai.request(app).put('/user/1').set('Authorization', `Bearer ${tokenMock}`).send(userMock);
+      
+      // assert
+      expect(res.status).to.equal(404);
+    });
+
+    //
+    it('should return an error when trying to update a user without a token', async function () {
+      // act
+      const res = await chai.request(app).put('/user/1').send(userMock);
+      
+      // assert
+      expect(res.status).to.equal(401);
+    });
+  });
+
+  describe('Delete user', function () {
+      
+      afterEach(() => {
+        sinon.restore();
+      });
+    
+      //
+      it('should delete a user', async function () {
+        // arrange
+        sinon.stub(UserModel.prototype, 'getById').resolves(userMock as any);
+        sinon.stub(UserModel.prototype, 'delete').resolves({} as any);
+        sinon.stub(jwt, 'verify').returns(payload as any);
+  
+        // act
+        const res = await chai.request(app).delete('/user/1').set('Authorization', `Bearer ${tokenMock}`);
+        
+        // assert
+        expect(res.status).to.equal(200);
+        expect(res.body).to.deep.equal({ message: 'User deleted!' });
+      });
+  
+      //
+      it('should return an error when trying to delete a user that does not exist', async function () {
+        // arrange
+        sinon.stub(UserModel.prototype, 'getById').resolves(null as any);
+        sinon.stub(jwt, 'verify').returns(payload as any);
+  
+        // act
+        const res = await chai.request(app).delete('/user/1').set('Authorization', `Bearer ${tokenMock}`);
+        
+        // assert
+        expect(res.status).to.equal(404);
+        expect(res.body).to.deep.equal({ message: 'User not found!' });
+      });
+  
+      //
+      it('should return an error when trying to delete a user without a token', async function () {
+        // act
+        const res = await chai.request(app).delete('/user/1');
+        
+        // assert
+        expect(res.status).to.equal(401);
+      });
+    });
 });
