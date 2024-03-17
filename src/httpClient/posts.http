@@ -13,7 +13,7 @@ Authorization: Bearer <token>
 ### GET /post
 GET http://localhost:3001/post
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1c2VyQHVzZXIuY29tIiwiaWF0IjoxNzEwNzAwNjM3LCJleHAiOjE3MTA3MTE0Mzd9.4b9Rau6uRrjyNc6iKVAyzjDVVPQnruixvVqu8yHclZs
+Authorization: Bearer <token>
 
 
 ### GET /post/:id
@@ -24,11 +24,10 @@ Authorization: Bearer <token>
 ### PUT /post/:id
 PUT http://localhost:3001/post/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3MTA3MDE3MjQsImV4cCI6MTcxMDcxMjUyNH0.Hxe4XCCDkfiSiSxFmiVhvVFREjCcsQGGtLJMh43_2Nc
+Authorization: Bearer <token>
 
 {
-  "title": "TypeScript is the best!",
+  "title": "TypeScript Super Set is the best of world!",
   "content": "The TypeScript is the best thing about TypeScript is that it's a superset of JavaScript.",
-  "image": "https://www.google.com/typescript",
-  "categoryIds": [1, 2]
+  "image": "https://www.google.com/typescript/2"
 }

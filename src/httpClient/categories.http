@@ -2,12 +2,12 @@
 ### GET /categories
 GET http://localhost:3001/categories
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3MTA2MzA1MTMsImV4cCI6MTcxMDY0MTMxM30.7JAEzJpa4VAR7F2QkKYbFAXpLaHTr0YUpEoiYRxvRs0
+Authorization: Bearer <token>
 
 ### POST /categories
 POST http://localhost:3001/categories
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3MTA2MzA1MTMsImV4cCI6MTcxMDY0MTMxM30.7JAEzJpa4VAR7F2QkKYbFAXpLaHTr0YUpEoiYRxvRs0
+Authorization: Bearer <token>
 
 {
   "name": "Jambo e Ruivão"

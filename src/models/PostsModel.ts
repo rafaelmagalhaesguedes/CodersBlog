@@ -3,7 +3,7 @@ import PostsCategoriesModel from './PostsCategoriesModel';
 import SequelizeUser from '../database/models/SequelizeUser';
 import { IPostsModel } from '../interfaces/Posts/IPostsModel';
 import SequelizePosts from '../database/models/SequelizePosts';
-import { IPosts, IPostsCreate } from '../interfaces/Posts/IPosts';
+import { IPosts, IPostsCreate, IPostsUpdate } from '../interfaces/Posts/IPosts';
 import SequelizeCategories from '../database/models/SequelizeCategories';
 
 class PostsModel implements IPostsModel {
@@ -66,7 +66,7 @@ class PostsModel implements IPostsModel {
     return post;
   }
 
-  public async update(id: number, data: IPostsCreate, userId: number): Promise<IPosts | null> {
+  public async update(id: number, data: IPostsUpdate, userId: number): Promise<IPosts | null> {
     //
     const post = await this.postsModel.update({ ...data, updated: new Date() }, { where: { id } });
 

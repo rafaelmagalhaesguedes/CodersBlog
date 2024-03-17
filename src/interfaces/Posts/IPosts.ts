@@ -20,3 +20,9 @@ export interface IPostsCreate extends Omit<IPosts, 'id'>{
   image: string;
   categoryIds: number[];
 }
+
+export interface IPostsUpdate extends Omit<IPosts, 'id'>{
+  title: string;
+  content: string;
+  image: string;
+}

@@ -2,6 +2,7 @@ import { Request, Router, Response } from 'express';
 import Authenticate from '../middlewares/AuthMiddleware';
 import PostsController from '../controllers/PostsController';
 import PostValidator from '../middlewares/PostsMiddleware';
+import PostUpdateValidator from '../middlewares/PostUpdateMiddleware';
 
 class PostsRoutes {
   //
@@ -38,7 +39,7 @@ class PostsRoutes {
 
     this.router.put(
       '/:id',
-      Authenticate,
+      Authenticate, PostUpdateValidator,
       (req: Request, res: Response) => this.postsController.updatePost(req, res),
     );
   }
