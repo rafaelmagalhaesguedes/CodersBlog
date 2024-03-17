@@ -5,6 +5,7 @@ import { IPostsModel } from '../interfaces/Posts/IPostsModel';
 import SequelizePosts from '../database/models/SequelizePosts';
 import { IPosts, IPostsCreate, IPostsUpdate } from '../interfaces/Posts/IPosts';
 import SequelizeCategories from '../database/models/SequelizeCategories';
+import { Op } from 'sequelize';
 
 class PostsModel implements IPostsModel {
   //
@@ -104,6 +105,27 @@ class PostsModel implements IPostsModel {
     const destroyPost = await this.postsModel.destroy({ where: { userId: userId } });
 
     return !!destroyPost;
+  }
+
+  public async search(search: string): Promise<IPosts[] | null> {
+    //
+    const posts = await this.postsModel.findAll({
+      where: {
+        title: { [Op.like]: `%${search}%` },
+      },
+      include: [
+        { 
+          model: SequelizeUser, as: 'user', attributes: { exclude: ['password', 'role'] },
+        },
+        {
+          model: SequelizeCategories, as: 'categories', through: { attributes: [] },
+        },
+      ],
+    });
+
+    if (!posts) return null;
+
+    return posts;
   }
 }
 
