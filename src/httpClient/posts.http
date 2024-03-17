@@ -36,3 +36,7 @@ Authorization: Bearer <token>
 DELETE http://localhost:3001/post/1
 Content-Type: application/json
 Authorization: Bearer <token>
+
+### GET /post/search
+GET http://localhost:3001/post/search?q=TypeScript
+Authorization: Bearer <token>

@@ -26,6 +26,12 @@ class PostsRoutes {
     );
 
     this.router.get(
+      '/search',
+      Authenticate,
+      (req: Request, res: Response) => this.postsController.searchPost(req, res),
+    );
+    
+    this.router.get(
       '/',
       Authenticate,
       (req: Request, res: Response) => this.postsController.getPosts(req, res),
