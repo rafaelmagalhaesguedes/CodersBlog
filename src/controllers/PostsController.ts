@@ -22,16 +22,21 @@ export default class PostsController {
 
   public async getPostById(req: Request, res: Response): Promise<Response> {
     //
-    const { status, data } = await this.postsService.getPostById(Number(req.params.id));
+    const { status, data } = await this.postsService.getPostById(+req.params.id);
     return res.status(statusCode(status)).json(data);
   }
 
   public async updatePost(req: Request, res: Response): Promise<Response> {
     //
     const userId = res.locals.user.id;
-    const { status, data } = await this.postsService.updatePost(
-      Number(req.params.id), req.body, userId,
-    );
+    const { status, data } = await this.postsService.updatePost(+req.params.id, req.body, userId);
+    return res.status(statusCode(status)).json(data);
+  }
+
+  public async deletePost(req: Request, res: Response): Promise<Response> {
+    //
+    const userId = res.locals.user.id;
+    const { status, data } = await this.postsService.deletePost(+req.params.id, userId);
     return res.status(statusCode(status)).json(data);
   }
 }

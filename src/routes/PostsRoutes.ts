@@ -42,6 +42,12 @@ class PostsRoutes {
       Authenticate, PostUpdateValidator,
       (req: Request, res: Response) => this.postsController.updatePost(req, res),
     );
+
+    this.router.delete(
+      '/:id',
+      Authenticate,
+      (req: Request, res: Response) => this.postsController.deletePost(req, res),
+    );
   }
 }
 
