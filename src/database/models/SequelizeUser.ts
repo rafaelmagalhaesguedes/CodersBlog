@@ -6,11 +6,13 @@ import {
   InferCreationAttributes,
   CreationOptional,
 } from 'sequelize';
-import * as bcrypt from 'bcrypt';
 import db from '.';
+import * as bcrypt from 'bcrypt';
+import SequelizePosts from './SequelizePosts';
 
 class SequelizeUser extends Model<InferAttributes<SequelizeUser>,
 InferCreationAttributes<SequelizeUser>> {
+  //
   declare id: CreationOptional<number>;
 
   declare username: string;
@@ -68,5 +70,7 @@ SequelizeUser.init({
     },
   },
 });
+
+SequelizeUser.hasMany(SequelizePosts, { foreignKey: 'userId', as: 'posts' });
 
 export default SequelizeUser;

@@ -10,6 +10,7 @@ import db from '.';
 
 class SequelizeCategories extends Model<InferAttributes<SequelizeCategories>,
 InferCreationAttributes<SequelizeCategories>> {
+  //
   declare id: CreationOptional<number>;
 
   declare name: string;
