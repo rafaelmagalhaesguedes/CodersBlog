@@ -41,6 +41,19 @@ class CategoriesModel implements ICategoriesModel {
     return category;
   }
 
+  public async findCategory(categoryIds: number[]): Promise<boolean> {
+    //
+    const { count } = await this.categoriesModel.findAndCountAll({
+      where: {
+        id: {
+          [Op.in]: categoryIds,
+        },
+      },
+    });
+    
+    return count === categoryIds.length;
+  };
+
   public async create(category: ICategories): Promise<ICategories | null> {
     //
     const newCategory = await this.categoriesModel.create(category);
