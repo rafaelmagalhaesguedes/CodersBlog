@@ -60,10 +60,9 @@ SequelizePosts.init({
   },
 }, {
     sequelize: db,
-    modelName: '',
+    modelName: 'posts',
+    underscored: true,
     timestamps: false,
 });
-
-SequelizePosts.belongsTo(SequelizeUser, { foreignKey: 'userId', as: 'user' });
 
 export default SequelizePosts;
