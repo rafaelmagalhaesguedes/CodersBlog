@@ -6,5 +6,6 @@ Authorization: Bearer <token>
 {
   "title": "Java is hard to easy!",
   "content": "The best thing about TypeScript is that it's a superset of JavaScript.",
+  "image": "https://www.google.com",
   "categoryIds": [4, 5]
 }
