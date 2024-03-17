@@ -70,4 +70,25 @@ export default class LoginService {
 
     return { status: 'SUCCESSFUL', data: updatedPost };
   }
+
+  public async deletePost(id: number, userId: number): Promise<ServiceResponse<boolean>> {
+    //
+    const post = await this.postsModel.findById(id);
+
+    if (post?.userId !== userId) {
+      return { status: 'UNAUTHORIZED', data: { message: 'Unauthorized user' } };
+    }
+
+    if (!post) {
+      return { status: 'NOT_FOUND', data: { message: 'Post not found!' } };
+    }
+
+    const deleted = await this.postsModel.delete(id);
+
+    if (!deleted) {
+      return { status: 'INTERNAL_ERROR', data: { message: 'Post not deleted!' } };
+    }
+
+    return { status: 'SUCCESSFUL', data: true };
+  }
 }
