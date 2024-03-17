@@ -9,4 +9,5 @@ export interface IPostsModel {
   update: (id: number, post: IPostsUpdate, userId: number) => Promise<IPosts | null>;
   delete: (id: number) => Promise<boolean>;
   deleteUserPosts: (userId: number) => Promise<boolean>;
+  search: (search: string) => Promise<IPosts[] | null>;
 }
