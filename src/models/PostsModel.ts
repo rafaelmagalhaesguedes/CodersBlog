@@ -47,6 +47,24 @@ class PostsModel implements IPostsModel {
 
     return posts;
   }
+
+  public async findById(id: number): Promise<IPosts | null> {
+    //
+    const post = await this.postsModel.findByPk(id, {
+      include: [
+        { 
+          model: SequelizeUser, as: 'user', attributes: { exclude: ['password', 'role'] },
+        },
+        {
+          model: SequelizeCategories, as: 'categories', through: { attributes: [] },
+        },
+      ],
+    });
+
+    if (!post) return null;
+
+    return post;
+  }
 }
 
 export default PostsModel;

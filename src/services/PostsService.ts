@@ -35,4 +35,14 @@ export default class LoginService {
 
     return { status: 'SUCCESSFUL', data: posts };
   }
+
+  public async getPostById(id: number): Promise<ServiceResponse<IPosts>> {
+    //
+    const post = await this.postsModel.findById(id);
+    if (!post) {
+      return { status: 'NOT_FOUND', data: { message: 'Post not found!' } };
+    }
+
+    return { status: 'SUCCESSFUL', data: post };
+  }
 }

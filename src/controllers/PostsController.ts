@@ -19,4 +19,10 @@ export default class PostsController {
     const { status, data } = await this.postsService.getPosts();
     return res.status(statusCode(status)).json(data);
   }
+
+  public async getPostById(req: Request, res: Response): Promise<Response> {
+    //
+    const { status, data } = await this.postsService.getPostById(Number(req.params.id));
+    return res.status(statusCode(status)).json(data);
+  }
 }

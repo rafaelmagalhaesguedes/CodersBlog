@@ -29,6 +29,12 @@ class PostsRoutes {
       Authenticate,
       (req: Request, res: Response) => this.postsController.getPosts(req, res),
     );
+
+    this.router.get(
+      '/:id',
+      Authenticate,
+      (req: Request, res: Response) => this.postsController.getPostById(req, res),
+    );
   }
 }
 
