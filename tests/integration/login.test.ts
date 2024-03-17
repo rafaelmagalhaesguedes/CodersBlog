@@ -4,21 +4,12 @@ import * as chai from 'chai';
 import chaiHttp = require('chai-http');
 
 import { app } from '../../src/app';
-import JwtService from '../../src/utils/JwtService';
 import * as jwt from 'jsonwebtoken';
 import LoginService from '../../src/services/LoginService';
 
 chai.use(chaiHttp);
 
 const { expect } = chai;
-
-// Options for the token
-const secret = process.env.JWT_SECRET || 'secretKey';
-const payload = { id: 1, email: 'rafael@dev.com'};
-const options = { expiresIn: '1h' };
-
-// Generate a token
-const tokenMock = jwt.sign(payload, secret, options);
 
 describe('Login tests', () => {
 
@@ -31,16 +22,15 @@ describe('Login tests', () => {
       //
       it('should return token and status 200', async function() {
         // arrange
-        sinon.stub(JwtService, 'createToken').returns(tokenMock);
-          
+        const tokenMock = 'mockedToken';
+        sinon.stub(LoginService.prototype, 'signUp').resolves({ status: 'SUCCESSFUL', data: { token: tokenMock } });
+
         // act
-        const request = { email: 'admin@admin.com', password: 'secret_admin' };
-      
-        const res = await chai.request(app).post('/login').send(request);
-    
+        const res = await chai.request(app).post('/login').send({ email: 'rafael@email.com', password: '123456' });
+
         // assert
         expect(res.status).to.equal(200);
-        expect(res.body).to.deep.equal({ token: tokenMock })
+        expect(res.body).to.deep.equal({ token: tokenMock });
       });
     });
 
@@ -48,18 +38,19 @@ describe('Login tests', () => {
       //
       it('should return role and status 200', async function() {
         // arrange
-        const email = 'test@example.com';
-        const role = 'admin';
-        sinon.stub(JwtService, 'verifyToken').returns({ email, role } as any);
-        sinon.stub(LoginService.prototype, 'getRole').withArgs(email).resolves({ status: 'SUCCESSFUL', data: { role } });
-      
+        const roleMock = 'admin';
+        const payload = { id: 1, email: 'rafael@email.com'};
+        const secret = 'secretKey'; // Use your actual secret here
+        const tokenMock = jwt.sign(payload, secret);
+        sinon.stub(LoginService.prototype, 'getRole').resolves({ status: 'SUCCESSFUL', data: { role: roleMock } });
+    
         // act
         const res = await chai.request(app).get('/login/role').set('Authorization', `Bearer ${tokenMock}`);
-      
+    
         // assert
         expect(res.status).to.equal(200);
-        expect(res.body).to.deep.equal({ role });
-      });
+        expect(res.body).to.deep.equal({ role: roleMock });
+      })
     });
 
     describe('Validation body', () => {
