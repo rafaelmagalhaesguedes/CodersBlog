@@ -91,4 +91,21 @@ export default class LoginService {
 
     return { status: 'SUCCESSFUL', data: true };
   }
+
+  public async searchPosts(search: string): Promise<ServiceResponse<IPosts[]>> {
+    //
+    if (typeof search !== 'string') {
+      return { status: 'INTERNAL_ERROR', data: { message: 'Search query not found!' } };
+    }
+
+    if (search === '') return this.getPosts();
+
+    const posts = await this.postsModel.search(search);
+
+    if (!posts) {
+      return { status: 'NOT_FOUND', data: { message: 'Posts not found!' } };
+    }
+
+    return { status: 'SUCCESSFUL', data: posts };
+  }
 }
