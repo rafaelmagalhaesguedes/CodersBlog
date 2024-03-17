@@ -78,6 +78,17 @@ class PostsModel implements IPostsModel {
 
     return updatedPost;
   }
+
+  public async delete(id: number): Promise<boolean> {
+    //
+    const destroyCategory = await this.postsCategoriesModel.delete(id);
+    
+    if (!destroyCategory) return false;
+
+    const destroyPost = await this.postsModel.destroy({ where: { id: id } });
+
+    return !!destroyPost;
+  }
 }
 
 export default PostsModel;
