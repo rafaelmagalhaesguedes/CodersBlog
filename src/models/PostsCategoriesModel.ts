@@ -6,7 +6,7 @@ class PostsCategoriesModel implements IPostsCategoriesModel {
   //
   constructor(private model = SequelizePostsCategories) { }
 
-  public async create(postId: number, categoryId: number[]): Promise<boolean | null> {
+  public async create(postId: number, categoryId: number[]): Promise<boolean> {
     //
     const postsCategories = categoryId.map((id) => {
       return { postId, categoryId: id };
@@ -14,7 +14,14 @@ class PostsCategoriesModel implements IPostsCategoriesModel {
 
     const created = await this.model.bulkCreate(postsCategories);
 
-    return created ? true : null;
+    return !!created;
+  }
+
+  public async delete(id: number): Promise<boolean> {
+    //
+    const deleted = await this.model.destroy({ where: { postId: id } });
+
+    return !!deleted;
   }
 }
 
