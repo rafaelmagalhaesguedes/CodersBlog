@@ -1,6 +1,7 @@
 import { Request, Router, Response } from 'express';
-import PostsController from '../controllers/PostsController';
 import Authenticate from '../middlewares/AuthMiddleware';
+import PostsController from '../controllers/PostsController';
+import PostValidator from '../middlewares/PostsMiddleware';
 
 class PostsRoutes {
   //
@@ -19,7 +20,7 @@ class PostsRoutes {
     //
     this.router.post(
       '/',
-      Authenticate,
+      Authenticate, PostValidator,
       (req: Request, res: Response) => this.postsController.createPost(req, res),
     );
   }
