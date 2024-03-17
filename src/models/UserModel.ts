@@ -1,11 +1,17 @@
 //
+import PostsModel from './PostsModel';
+import IUser from '../interfaces/User/IUser';
 import { IUserModel } from '../interfaces/User/IUserModel';
 import SequelizeUser from '../database/models/SequelizeUser';
-import IUser from '../interfaces/User/IUser';
+import SequelizePostsCategories from '../database/models/SequelizePostsCategories';
 
 class UserModel implements IUserModel {
   //
-  constructor(private userModel = SequelizeUser) { }
+  constructor(
+    private userModel = SequelizeUser,
+    private categoryModel = SequelizePostsCategories,
+    private postModel = new PostsModel(),
+  ) { }
 
   public async findAll(): Promise<IUser[] | null> {
     //
@@ -29,26 +35,6 @@ class UserModel implements IUserModel {
     return newUser;
   }
 
-  public async update(id: number, user: IUser): Promise<boolean> {
-    //
-    const [afectedrow] = await this.userModel.update(user, { where: { id } });
-    if (afectedrow === 0) {
-      return false;
-    }
-
-    return true;
-  }
-
-  public async delete(id: number): Promise<boolean> {
-    //
-    const afectedrow = await this.userModel.destroy({ where: { id } });
-    if (afectedrow === 0) {
-      return false;
-    }
-
-    return true;
-  }
-
   public async getById(id: number): Promise<IUser | null> {
     //
     const user = await this.userModel.findByPk(id, { attributes: { exclude: ['password'] } });
@@ -69,6 +55,29 @@ class UserModel implements IUserModel {
     }
 
     return user;
+  }
+
+  public async delete(id: number, email: string): Promise<boolean> {
+    //
+    const postsExists = await this.postModel.findPosts(id);
+
+    if (!postsExists) return false;
+
+    try {
+      //
+      await Promise.all(postsExists.map((post) =>
+        this.categoryModel.destroy({ where: { postId: post.id } })));
+      
+      await this.postModel.deleteUserPosts(id);
+      
+      await this.userModel.destroy({ where: { email } });
+
+      return true;
+      
+    } catch (error) {
+      //
+      return false;
+    }
   }
 }
 
