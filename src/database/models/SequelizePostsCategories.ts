@@ -31,6 +31,7 @@ SequelizePostsCategories.init({
 }, {
     sequelize: db,
     modelName: 'posts_categories',
+    underscored: true,
     timestamps: false,
 });
 

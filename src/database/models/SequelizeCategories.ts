@@ -31,6 +31,7 @@ SequelizeCategories.init({
     sequelize: db,
     modelName: 'categories',
     timestamps: false,
+    underscored: true,
 });
 
 export default SequelizeCategories;
