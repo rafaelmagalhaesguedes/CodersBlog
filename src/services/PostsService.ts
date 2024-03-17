@@ -25,4 +25,14 @@ export default class LoginService {
 
     return { status: 'CREATED', data: post };
   }
+
+  public async getPosts(): Promise<ServiceResponse<IPosts[]>> {
+    //
+    const posts = await this.postsModel.findAll();
+    if (!posts) {
+      return { status: 'NOT_FOUND', data: { message: 'Posts not found!' } };
+    }
+
+    return { status: 'SUCCESSFUL', data: posts };
+  }
 }

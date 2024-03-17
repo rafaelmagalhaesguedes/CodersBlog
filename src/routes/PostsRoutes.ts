@@ -23,6 +23,12 @@ class PostsRoutes {
       Authenticate, PostValidator,
       (req: Request, res: Response) => this.postsController.createPost(req, res),
     );
+
+    this.router.get(
+      '/',
+      Authenticate,
+      (req: Request, res: Response) => this.postsController.getPosts(req, res),
+    );
   }
 }
 

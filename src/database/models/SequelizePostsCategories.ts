@@ -35,18 +35,8 @@ SequelizePostsCategories.init({
     timestamps: false,
 });
 
-SequelizeCategories.belongsToMany(SequelizePosts, {
-  as: 'posts',
-  through: SequelizePostsCategories,
-  foreignKey: 'categoryId',
-  otherKey: 'postId',
-});
+SequelizePosts.belongsToMany(SequelizeCategories, { through: SequelizePostsCategories, as: 'categories' });
 
-SequelizePosts.belongsToMany(SequelizeCategories, {
-  as: 'categories',
-  through: SequelizePostsCategories,
-  foreignKey: 'postId',
-  otherKey: 'categoryId',
-});
+SequelizeCategories.belongsToMany(SequelizePosts, { through: SequelizePostsCategories, as: 'posts' });
 
 export default SequelizePostsCategories;

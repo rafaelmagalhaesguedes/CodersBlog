@@ -13,4 +13,10 @@ export default class PostsController {
     const { status, data } = await this.postsService.createPost(req.body, userId);
     return res.status(statusCode(status)).json(data);
   }
+
+  public async getPosts(req: Request, res: Response): Promise<Response> {
+    //
+    const { status, data } = await this.postsService.getPosts();
+    return res.status(statusCode(status)).json(data);
+  }
 }

@@ -8,7 +8,6 @@ import {
 } from 'sequelize';
 import db from '.';
 import * as bcrypt from 'bcrypt';
-import SequelizePosts from './SequelizePosts';
 
 class SequelizeUser extends Model<InferAttributes<SequelizeUser>,
 InferCreationAttributes<SequelizeUser>> {
@@ -71,7 +70,5 @@ SequelizeUser.init({
     },
   },
 });
-
-SequelizeUser.hasMany(SequelizePosts, { foreignKey: 'userId', as: 'posts' });
 
 export default SequelizeUser;

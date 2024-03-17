@@ -1,7 +1,7 @@
 ### POST /post
 POST http://localhost:3001/post
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ1c2VyQHVzZXIuY29tIiwiaWF0IjoxNzEwNjc0NjgwLCJleHAiOjE3MTA2ODU0ODB9.p8xxSzKn-MjO8XxnNnX7ZdDtR8Ll6-EE6MZaIWjnDvI
+Authorization: Bearer <token>
 
 {
   "title": "C++ is hard to easy!",
@@ -9,3 +9,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiO
   "image": "https://www.google.com",
   "categoryIds": [4, 5]
 }
+
+### GET /post
+GET http://localhost:3001/post
+Content-Type: application/json
+Authorization: Bearer <token>
