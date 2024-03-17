@@ -17,5 +17,6 @@ export interface IPosts extends Identifiable {
 export interface IPostsCreate extends Omit<IPosts, 'id'>{
   title: string;
   content: string;
+  image: string;
   categoryIds: number[];
 }

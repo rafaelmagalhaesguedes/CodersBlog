@@ -25,4 +25,13 @@ export default class PostsController {
     const { status, data } = await this.postsService.getPostById(Number(req.params.id));
     return res.status(statusCode(status)).json(data);
   }
+
+  public async updatePost(req: Request, res: Response): Promise<Response> {
+    //
+    const userId = res.locals.user.id;
+    const { status, data } = await this.postsService.updatePost(
+      Number(req.params.id), req.body, userId,
+    );
+    return res.status(statusCode(status)).json(data);
+  }
 }

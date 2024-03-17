@@ -35,6 +35,12 @@ class PostsRoutes {
       Authenticate,
       (req: Request, res: Response) => this.postsController.getPostById(req, res),
     );
+
+    this.router.put(
+      '/:id',
+      Authenticate,
+      (req: Request, res: Response) => this.postsController.updatePost(req, res),
+    );
   }
 }
 

@@ -65,6 +65,19 @@ class PostsModel implements IPostsModel {
 
     return post;
   }
+
+  public async update(id: number, data: IPostsCreate, userId: number): Promise<IPosts | null> {
+    //
+    const post = await this.postsModel.update({ ...data, updated: new Date() }, { where: { id } });
+
+    if (!post) return null;
+
+    const updatedPost = await this.findById(userId);
+
+    if (!updatedPost) return null;
+
+    return updatedPost;
+  }
 }
 
 export default PostsModel;

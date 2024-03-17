@@ -14,11 +14,13 @@ export default class LoginService {
   public async createPost(data: IPostsCreate, userId: number): Promise<ServiceResponse<IPosts>> {
     //
     const category = await this.categoriesModel.findCategory(data.categoryIds);
+
     if (!category) {
       return { status: 'NOT_FOUND', data: { message: 'Category not found!' } };
     }
     
     const post = await this.postsModel.create(data, userId);
+
     if (!post) {
       return { status: 'INTERNAL_ERROR', data: { message: 'Post not created!' } };
     }
@@ -29,6 +31,7 @@ export default class LoginService {
   public async getPosts(): Promise<ServiceResponse<IPosts[]>> {
     //
     const posts = await this.postsModel.findAll();
+
     if (!posts) {
       return { status: 'NOT_FOUND', data: { message: 'Posts not found!' } };
     }
@@ -39,10 +42,32 @@ export default class LoginService {
   public async getPostById(id: number): Promise<ServiceResponse<IPosts>> {
     //
     const post = await this.postsModel.findById(id);
+
     if (!post) {
       return { status: 'NOT_FOUND', data: { message: 'Post not found!' } };
     }
 
     return { status: 'SUCCESSFUL', data: post };
+  }
+
+  public async updatePost(id: number, data: IPostsCreate, userId: number): Promise<ServiceResponse<IPosts>> {
+    //
+    const post = await this.postsModel.findById(id);
+    
+    if (post?.userId !== userId) {
+      return { status: 'UNAUTHORIZED', data: { message: 'Unauthorized user' } };
+    }
+
+    if (!post) {
+      return { status: 'NOT_FOUND', data: { message: 'Post not found!' } };
+    }
+
+    const updatedPost = await this.postsModel.update(id, data, userId);
+
+    if (!updatedPost) {
+      return { status: 'INTERNAL_ERROR', data: { message: 'Post not updated!' } };
+    }
+
+    return { status: 'SUCCESSFUL', data: updatedPost };
   }
 }
