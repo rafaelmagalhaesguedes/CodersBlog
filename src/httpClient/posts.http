@@ -1,0 +1,10 @@
+### POST /post
+POST http://localhost:3001/post
+Content-Type: application/json
+Authorization: Bearer <token>
+
+{
+  "title": "Java is hard to easy!",
+  "content": "The best thing about TypeScript is that it's a superset of JavaScript.",
+  "categoryIds": [4, 5]
+}
