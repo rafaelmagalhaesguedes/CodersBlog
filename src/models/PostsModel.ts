@@ -66,6 +66,15 @@ class PostsModel implements IPostsModel {
     return post;
   }
 
+  public async findPosts(userId: number): Promise<IPosts[] | null> {
+    //
+    const posts = await this.postsModel.findAll({ where: { userId } });
+
+    if (!posts) return null;
+
+    return posts;
+  }
+
   public async update(id: number, data: IPostsUpdate, userId: number): Promise<IPosts | null> {
     //
     const post = await this.postsModel.update({ ...data, updated: new Date() }, { where: { id } });
@@ -86,6 +95,13 @@ class PostsModel implements IPostsModel {
     if (!destroyCategory) return false;
 
     const destroyPost = await this.postsModel.destroy({ where: { id: id } });
+
+    return !!destroyPost;
+  }
+
+  public async deleteUserPosts(userId: number): Promise<boolean> {
+    //
+    const destroyPost = await this.postsModel.destroy({ where: { userId: userId } });
 
     return !!destroyPost;
   }
