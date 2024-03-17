@@ -13,7 +13,7 @@ export default class LoginController {
     return res.status(statusCode(status)).json(data);
   }
 
-  public async findAllUsers(req: Request, res: Response): Promise<Response> {
+  public async findAllUsers(_req: Request, res: Response): Promise<Response> {
     //
     const { status, data } = await this.userService.findAllUsers();
     return res.status(statusCode(status)).json(data);
@@ -21,19 +21,14 @@ export default class LoginController {
 
   public async getUserById(req: Request, res: Response): Promise<Response> {
     //
-    const { status, data } = await this.userService.getUserById(Number(req.params.id));
+    const { status, data } = await this.userService.getUserById(+req.params.id);
     return res.status(statusCode(status)).json(data);
   }
 
-  public async updateUser(req: Request, res: Response): Promise<Response> {
+  public async deleteUser(_req: Request, res: Response): Promise<Response> {
     //
-    const { status, data } = await this.userService.updateUser(Number(req.params.id), req.body);
-    return res.status(statusCode(status)).json(data);
-  }
-
-  public async deleteUser(req: Request, res: Response): Promise<Response> {
-    //
-    const { status, data } = await this.userService.deleteUser(Number(req.params.id));
+    const { id, email } = res.locals.user;
+    const { status, data } = await this.userService.deleteUser(id, email);
     return res.status(statusCode(status)).json(data);
   }
 }
