@@ -7,7 +7,6 @@ import {
   CreationOptional,
 } from 'sequelize';
 import db from '.';
-import SequelizeUser from './SequelizeUser';
 
 class SequelizePosts extends Model<InferAttributes<SequelizePosts>,
 InferCreationAttributes<SequelizePosts>> {
