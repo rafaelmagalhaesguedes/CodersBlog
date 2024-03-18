@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../interfaces/AuthContext';
 import { LoginType } from '../types/LoginType';
@@ -46,8 +47,12 @@ function AuthProvider({ children }: any) {
       localStorage.setItem('@Auth:access_token', res.data.token);
       localStorage.setItem('@Auth:user', JSON.stringify(loggedInUser));
     } catch (err) {
-      console.error(err);
-      console.log('Erro ao fazer login');
+      console.error('Error login: ', err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Invalid email or password!',
+      });
     } finally {
       setLoading(false);
     }

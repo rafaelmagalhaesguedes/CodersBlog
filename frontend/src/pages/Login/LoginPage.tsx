@@ -1,4 +1,3 @@
-import Swal from 'sweetalert2';
 import { useState } from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useAuth } from '../../context/auth';
@@ -11,14 +10,6 @@ function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = (): void => {
-    if (!email || !password) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Fill in all fields',
-      });
-      return;
-    }
     Login({ email, password });
   };
 
