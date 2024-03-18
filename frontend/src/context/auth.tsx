@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../interfaces/AuthContext';
 import { LoginType } from '../types/LoginType';
-import { api } from '../services/api';
+import { api } from '../services/ApiService';
 
 const Auth = createContext<AuthContext>({} as AuthContext);
 
@@ -49,7 +49,6 @@ function AuthProvider({ children }: any) {
       console.error(err);
       console.log('Erro ao fazer login');
     } finally {
-      window.location.reload();
       setLoading(false);
     }
   };
