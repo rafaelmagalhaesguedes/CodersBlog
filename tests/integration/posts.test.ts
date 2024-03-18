@@ -11,36 +11,226 @@ const { expect } = chai;
 
 chai.use(chaiHttp);
 
+// Options for the token
+const secret = process.env.JWT_SECRET || 'secretKey';
+const payload = { id: 1, email: 'rafael@dev.com'};
+const options = { expiresIn: '1h' };
+
+// Generate a token
+const tokenMock = jwt.sign(payload, secret, options);
+
 describe('Posts Tests', function () {
   //
   describe('Create Posts', function () {
     //
     it('should create a post', async function () {
         const post = {
-        title: 'Java is hard to easy!',
-        content: "The best thing about TypeScript is that it's a superset of JavaScript.",
-        image: 'https://www.google.com',
-        categoryIds: [4, 5],
-        userId: 1,
+          title: 'Java is hard to easy!',
+          content: 'The best thing about TypeScript is that its a superset of JavaScript.',
+          image: 'https://www.google.com/java',
+          categoryIds: [4],
         };
 
         const category = {
-        name: 'Category 1',
+          name: 'Category 10',
         };
 
         const categoryModelStub = sinon.stub(CategoriesModel.prototype, 'findCategory').resolves(category as any);
         const postsModelStub = sinon.stub(PostsModel.prototype, 'create').resolves(post as any);
 
-        // Create a token
-        const token = jwt.sign({ id: 1, email: 'rafael@email.com'}, 'secretKey', { expiresIn: '10m' });
-
-        const res = await chai.request(app).post('/post').set('Authorization', `Bearer ${token}`).send(post);
+        const res = await chai.request(app)
+          .post('/post')
+          .set('Authorization', `Bearer ${tokenMock}`)
+          .send(post);
 
         expect(res.status).to.equal(201);
         expect(res.body).to.deep.equal(post);
 
         categoryModelStub.restore();
         postsModelStub.restore();
+    });
+  });
+
+  describe('Get Posts', function () {
+    //
+    it('should return all posts', async function () {
+      const posts = [
+        {
+          title: 'Java is hard to easy!',
+          content: 'The best thing about TypeScript is that its a superset of JavaScript.',
+          image: 'https://www.google.com/java',
+          categoryIds: [4],
+        },
+        {
+          title: 'Java is hard to easy!',
+          content: 'The best thing about TypeScript is that its a superset of JavaScript.',
+          image: 'https://www.google.com/java',
+          categoryIds: [4],
+        },
+      ];
+
+      const postsModelStub = sinon.stub(PostsModel.prototype, 'findAll').resolves(posts as any);
+
+      const res = await chai.request(app)
+        .get('/post')
+        .set('Authorization', `Bearer ${tokenMock}`);
+
+      expect(res.status).to.equal(200);
+      expect(res.body).to.deep.equal(posts);
+
+      postsModelStub.restore();
+    });
+  });
+
+  describe('Get Post by Id', function () {
+    //
+    it('should return a post by id', async function () {
+      const post = {
+        title: 'Java is hard to easy!',
+        content: 'The best thing about TypeScript is that its a superset of JavaScript.',
+        image: 'https://www.google.com/java',
+        categoryIds: [4],
+      };
+
+      const postsModelStub = sinon.stub(PostsModel.prototype, 'findById').resolves(post as any);
+
+      const res = await chai.request(app)
+        .get('/post/1')
+        .set('Authorization', `Bearer ${tokenMock}`);
+
+      expect(res.status).to.equal(200);
+      expect(res.body).to.deep.equal(post);
+
+      postsModelStub.restore();
+    });
+
+    it('should return 404 if post not found', async function () {
+      const postsModelStub = sinon.stub(PostsModel.prototype, 'findById').resolves(null);
+
+      const res = await chai.request(app)
+        .get('/post/1')
+        .set('Authorization', `Bearer ${tokenMock}`);
+
+      expect(res.status).to.equal(404);
+      expect(res.body).to.deep.equal({ message: 'Post not found!' });
+
+      postsModelStub.restore();
+    });
+  });
+
+  describe('Update Post', function () {
+    //
+    it('should update a post', async function () {
+      const post = {
+        title: 'Java is hard to easy!',
+        content: 'The best thing about TypeScript is that its a superset of JavaScript.',
+        image: 'https://www.google.com/java',
+      };
+
+      const postsModelStub = sinon.stub(PostsModel.prototype, 'update').resolves(post as any);
+
+      const res = await chai.request(app)
+        .put('/post/1')
+        .set('Authorization', `Bearer ${tokenMock}`)
+        .send(post);
+
+      expect(res.status).to.equal(200);
+      expect(res.body).to.deep.equal(post);
+
+      postsModelStub.restore();
+    });
+
+    it('should return 404 if post not found', async function () {
+      const post = {
+        title: 'Java is hard to easy!',
+        content: 'The best thing about TypeScript is that its a superset of JavaScript.',
+        image: 'https://www.google.com/java',
+      };
+
+      const postsModelStub = sinon.stub(PostsModel.prototype, 'update').resolves(null);
+
+      const res = await chai.request(app)
+        .put('/post/1')
+        .set('Authorization', `Bearer ${tokenMock}`)
+        .send(post);
+
+      expect(res.status).to.equal(500);
+      expect(res.body).to.deep.equal({ message: 'Post not updated!' });
+
+      postsModelStub.restore();
+    });
+  });
+
+  describe('Delete Post', function () {
+    //
+    it('should delete a post', async function () {
+      const postsModelStub = sinon.stub(PostsModel.prototype, 'delete').resolves(true);
+
+      const res = await chai.request(app)
+        .delete('/post/1')
+        .set('Authorization', `Bearer ${tokenMock}`);
+
+      expect(res.status).to.equal(200);
+      expect(res.body).to.deep.equal(true);
+
+      postsModelStub.restore();
+    });
+
+    it('should return 404 if post not found', async function () {
+      const postsModelStub = sinon.stub(PostsModel.prototype, 'delete').resolves(false);
+
+      const res = await chai.request(app)
+        .delete('/post/1')
+        .set('Authorization', `Bearer ${tokenMock}`);
+
+      expect(res.status).to.equal(500);
+      expect(res.body).to.deep.equal({ message: 'Post not deleted!' });
+
+      postsModelStub.restore();
+    });
+  });
+
+  describe('Search Posts', function () {
+    //
+    it('should return all posts by search', async function () {
+      const posts = [
+        {
+          title: 'Java is hard to easy!',
+          content: 'The best thing about TypeScript is that its a superset of JavaScript.',
+          image: 'https://www.google.com/java',
+          categoryIds: [4],
+        },
+        {
+          title: 'Java is hard to easy!',
+          content: 'The best thing about TypeScript is that its a superset of JavaScript.',
+          image: 'https://www.google.com/java',
+          categoryIds: [4],
+        },
+      ];
+
+      const postsModelStub = sinon.stub(PostsModel.prototype, 'search').resolves(posts as any);
+
+      const res = await chai.request(app)
+        .get('/post/search?q=java')
+        .set('Authorization', `Bearer ${tokenMock}`);
+
+      expect(res.status).to.equal(200);
+      expect(res.body).to.deep.equal(posts);
+
+      postsModelStub.restore();
+    });
+
+    it('should return 500 if query not a string', async function () {
+      const postsModelStub = sinon.stub(PostsModel.prototype, 'search').resolves(null);
+
+      const res = await chai.request(app)
+        .get('/post/search?search=java')
+        .set('Authorization', `Bearer ${tokenMock}`);
+
+      expect(res.status).to.equal(500);
+      expect(res.body).to.deep.equal({ message: 'Search query not found!' });
+
+      postsModelStub.restore();
     });
   });
 });
