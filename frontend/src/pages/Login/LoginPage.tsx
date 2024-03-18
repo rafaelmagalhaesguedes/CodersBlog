@@ -36,7 +36,7 @@ function LoginPage() {
         <h2>Login</h2>
         <form onSubmit={ handleLogin }>
           <input
-            onChange={(e) => {
+            onChange={ (e) => {
               setEmail(e.target.value);
             } }
             placeholder="Email"
@@ -50,9 +50,15 @@ function LoginPage() {
               placeholder="Password"
             />
             {showPassword ? (
-              <FiEyeOff className="icon" onClick={() => setShowPassword(!showPassword)} />
+              <FiEyeOff
+                className="icon"
+                onClick={ () => setShowPassword(!showPassword) }
+              />
             ) : (
-              <FiEye className="icon" onClick={() => setShowPassword(!showPassword)} />
+              <FiEye
+                className="icon"
+                onClick={ () => setShowPassword(!showPassword) }
+              />
             )}
           </div>
           <button type="submit">Login</button>
