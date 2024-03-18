@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { ContainerPosts, Post, PostCard, SearchBar, Title } from './Style';
-import formatDate from '../../utils/formatDate';
+import { formatDate } from '../../utils/formatDate';
 import { useAuth } from '../../context/auth';
 import { UserType } from '../../types/UserType';
-import { findAll, searchPost } from '../../services/post.service';
+import { findAll, searchPost } from '../../services/PostService';
 
 export function Posts() {
   const [posts, setPosts] = useState([]);

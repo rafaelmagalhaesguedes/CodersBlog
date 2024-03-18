@@ -1,8 +1,8 @@
 import { useAuth } from '../context/auth';
-import { SignRoutes } from './SignRoutes';
 import { ProtectRoutes } from './ProtectRoutes';
+import { SignRoutes } from './SignRoutes';
 
-function Routes() {
+export function Routes() {
   const { signed, loading } = useAuth();
 
   if (loading) {
