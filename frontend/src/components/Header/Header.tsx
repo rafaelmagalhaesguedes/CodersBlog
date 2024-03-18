@@ -1,4 +1,4 @@
-//
+/* eslint-disable react/jsx-max-depth */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
@@ -50,10 +50,12 @@ export function Header() {
           </p>
         </UserInfo>
         <MenuHeader>
-          <Navbar onClick={ toggleMenu } className="hamburger">
-            <div className="hamburger-line" />
-            <div className="hamburger-line" />
-            <div className="hamburger-line" />
+          <Navbar onClick={ toggleMenu }>
+            <div className="hamburger">
+              <div className="hamburger-line" />
+              <div className="hamburger-line" />
+              <div className="hamburger-line" />
+            </div>
           </Navbar>
           {isOpen && (
             <DropdownMenu>
