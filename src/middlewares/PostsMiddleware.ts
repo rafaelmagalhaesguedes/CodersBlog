@@ -6,11 +6,11 @@ class PostValidator {
   //
   private static getSchema = Joi.object({
     //
-    title: Joi.string().max(100).required().messages({
+    title: Joi.string().max(150).required().messages({
       'string.base': '"title" must be a string',
       'string.empty': '"title" is required',
       'any.required': '"title" is required',
-      'string.max': '"title" length must be less than or equal to 100 characters long',
+      'string.max': '"title" length must be less than or equal to 150 characters long',
     }),
     content: Joi.string().max(2500).required().messages({
       'string.base': '"content" must be a string',
