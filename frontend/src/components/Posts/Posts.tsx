@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ContainerPosts, Post, PostCard, SearchBar, Title } from './Style';
 import formatDate from '../../utils/formatDate';
 import { useAuth } from '../../context/auth';
-import { UserType } from '../../types/types';
+import { UserType } from '../../types/UserType';
 import { findAll, searchPost } from '../../services/post.service';
 
 export function Posts() {
