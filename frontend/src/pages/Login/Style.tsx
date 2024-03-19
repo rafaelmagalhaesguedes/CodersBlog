@@ -7,12 +7,7 @@ export const LoginContainer = styled.div`
     justify-content: center;
     height: 100vh;
     width: 100%;
-
-    background-image: url("src/assets/bg2.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: #1a1b1c;
 `;
 
 export const Info = styled.div`
@@ -30,6 +25,7 @@ export const Info = styled.div`
         margin-bottom: 20px;
         font-size: 5rem;
         text-align: center;
+        color: #fff;
     }
 
     p {
@@ -38,6 +34,7 @@ export const Info = styled.div`
         font-weight: 300;
         line-height: 2rem;
         letter-spacing: 1px;
+        color: #fff;
     }
 `;
 
@@ -50,6 +47,7 @@ export const LoginBox = styled.div`
     h2 {
         margin-bottom: 20px;
         font-size: 2rem;
+        color: #fff;
     }
 
     input {

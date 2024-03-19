@@ -8,8 +8,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: Open-Sans, Helvetica, Sans-Serif;
-    background: #f2f2f2;
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
   }
 
   table {
