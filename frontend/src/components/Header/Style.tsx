@@ -39,6 +39,11 @@ export const HeaderContainer = styled.header`
   width: 80%;
   height: 80px;
   margin: 0 auto;
+  border-bottom: 1px solid #f1f1f1;
+
+  @media (max-width: 1000px) {
+    justify-content: space-between;
+  }
 `;
 
 export const Navbar = styled.nav`
@@ -61,7 +66,6 @@ export const Navbar = styled.nav`
     height: 2px;
     background-color: #000;
   }
-
 `;
 
 export const DropdownMenu = styled.div`
@@ -89,18 +93,34 @@ export const DropdownItem = styled.div`
 `;
 
 export const Logo = styled.div`
-width: 70%;
-  h1 {
-    margin: 0;
-    padding: 10px;
+  width: 40%;
+  margin-top: 20px;
+
+  img {
+    width: 80px;
   }
 `;
 
 export const UserInfo = styled.div`
+  width: 10%;
   p {
     margin: 0;
-    padding: 10px;
   }
 `;
 
-export const MenuHeader = styled.div``;
+export const Nav = styled.nav`
+  display: flex;
+  gap: 20px;
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
+`;
+
+export const NavMobile = styled.nav`
+  display: flex;
+`;

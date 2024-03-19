@@ -2,19 +2,23 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { UserType } from '../../types/UserType';
 import { useAuth } from '../../context/auth';
+import LogoImage from '../../assets/img/logo.png';
 import {
   HeaderContainer,
   Navbar,
   DropdownMenu,
   DropdownItem,
   Logo, UserInfo,
-  MenuHeader,
   MenuTop,
+  NavMobile,
+  Nav,
 } from './Style';
 
 export function Header() {
-  const { user, Logout } = useAuth() as any;
+  const { user, Logout } = useAuth();
+  const { username } = user as UserType;
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
@@ -33,7 +37,7 @@ export function Header() {
   return (
     <>
       <MenuTop>
-        <span>Turma 34 - Backend - Trybe</span>
+        <span>Coffee and Code</span>
         <div>
           <FaGithub />
           <FaLinkedin />
@@ -41,15 +45,19 @@ export function Header() {
       </MenuTop>
       <HeaderContainer>
         <Logo>
-          <h1>Project Blogs API</h1>
+          <img src={ LogoImage } alt="Coffee and Code" />
         </Logo>
+        <Nav>
+          <a href="/">All Posts</a>
+          <a href="/create-post">New Post</a>
+          <a href="/user-posts">My Posts</a>
+        </Nav>
         <UserInfo>
           <p>
-            Welcome,
-            {user.displayName}
+            {username}
           </p>
         </UserInfo>
-        <MenuHeader>
+        <NavMobile>
           <Navbar onClick={ toggleMenu }>
             <div className="hamburger">
               <div className="hamburger-line" />
@@ -72,7 +80,7 @@ export function Header() {
               </DropdownItem>
             </DropdownMenu>
           )}
-        </MenuHeader>
+        </NavMobile>
       </HeaderContainer>
     </>
   );
