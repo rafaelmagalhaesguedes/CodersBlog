@@ -1,7 +1,9 @@
 import axios, { AxiosRequestHeaders } from 'axios';
 
+export const HOST = 'http://localhost:3001';
+
 export const api = axios.create({
-  baseURL: 'http://localhost:3001/',
+  baseURL: HOST,
   headers: {
     'Content-Type': 'application/json',
   },
