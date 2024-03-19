@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
-import { ContainerPosts, Post, PostCard, SearchBar, Title } from './Style';
 import { formatDate } from '../../utils/formatDate';
 import { useAuth } from '../../context/auth';
 import { UserType } from '../../types/UserType';
 import { findAll, searchPost } from '../../services/PostService';
+import Banner from '../../assets/img/coffeeandcode.jpg';
+import {
+  BannerHome,
+  BannerImage, ContainerPosts, Menu, Post, PostCard, SearchBar, Title } from './Style';
 
 export function Posts() {
   const [posts, setPosts] = useState([]);
@@ -25,7 +28,18 @@ export function Posts() {
 
   return (
     <ContainerPosts>
-      <Title>
+      <BannerHome>
+        <Title>
+          <h1>COFFEE AND CODE</h1>
+          <p>
+            Welcome to Coffee and Code, a place to share your knowledge with the community
+          </p>
+        </Title>
+        <BannerImage>
+          <img src={ Banner } alt="Banner" />
+        </BannerImage>
+      </BannerHome>
+      <Menu>
         <h2>All Posts</h2>
         <SearchBar>
           <input
@@ -36,11 +50,7 @@ export function Posts() {
           />
           <button onClick={ handleSearch }>Search</button>
         </SearchBar>
-        <a href="/create-post">New Post</a>
-        <a href="/create-category">New Category</a>
-        <a href="/user-posts">My Posts</a>
-        <a href="/">All Posts</a>
-      </Title>
+      </Menu>
       <Post>
         {posts.map((post: any) => (
           <PostCard key={ post.id }>
@@ -48,10 +58,12 @@ export function Posts() {
             <div>
               <span>
                 Author:
-                {user.displayName}
+                {' '}
+                {user.username}
               </span>
               <span>
                 Published in:
+                {' '}
                 {formatDate(post.published)}
               </span>
             </div>
