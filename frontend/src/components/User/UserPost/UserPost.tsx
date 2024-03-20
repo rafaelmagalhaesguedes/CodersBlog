@@ -58,7 +58,7 @@ export function UserPosts() {
             <PostFooter>
               <div>
                 Author:
-                {post.user.displayName}
+                {post.user.username}
               </div>
               <div>
                 Published in:

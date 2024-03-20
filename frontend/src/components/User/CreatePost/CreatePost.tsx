@@ -1,22 +1,23 @@
 import { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FaArrowLeft, FaBookOpen } from 'react-icons/fa';
 import { usePost } from '../../../hooks/usePost';
 import { CreatePostButton, CreatePostContainer } from './Style';
 
 export function CreatePost() {
-  const { id } = useParams();
   const {
     title,
     setTitle,
     content,
     setContent,
+    image,
+    setImage,
     categories,
     selectedCategories,
     fetchCategories,
     handleCreatePost,
     handleCheckboxChange,
-  } = usePost(Number(id));
+  } = usePost();
 
   useEffect(() => {
     fetchCategories();
@@ -48,6 +49,16 @@ export function CreatePost() {
         value={ content }
         onChange={ (e) => setContent(e.target.value) }
       />
+      <div>
+        <h3>Image</h3>
+        {' '}
+        <input
+          type="text"
+          value={ image }
+          onChange={ (e) => setImage(e.target.value) }
+          placeholder="Insert an url"
+        />
+      </div>
       <div className="title-categories">
         <h3>Categories</h3>
       </div>

@@ -3,9 +3,10 @@ import { useState } from 'react';
 import { getCategories } from '../services/CategoryService';
 import { createPost } from '../services/PostService';
 
-export function usePost(userId: number) {
+export function usePost() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [image, setImage] = useState('');
   const [categories, setCategories] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState<any>([]);
 
@@ -16,7 +17,7 @@ export function usePost(userId: number) {
 
   const handleCreatePost = async () => {
     try {
-      await createPost(userId, title, content, selectedCategories.map(Number));
+      await createPost(title, content, image, selectedCategories.map(Number));
       Swal.fire({
         icon: 'success',
         title: 'Post created',
@@ -25,12 +26,13 @@ export function usePost(userId: number) {
       });
       setTitle('');
       setContent('');
+      setImage('');
       setSelectedCategories([]);
     } catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Something went wrong!',
+        text: 'Invalid data, try again!',
       });
       console.error(error);
     }
@@ -51,6 +53,8 @@ export function usePost(userId: number) {
     setTitle,
     content,
     setContent,
+    image,
+    setImage,
     categories,
     selectedCategories,
     fetchCategories,
