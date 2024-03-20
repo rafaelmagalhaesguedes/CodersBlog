@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import { getUserPosts, editUserPost, deleteUserPost } from '../services/UserService';
 import { PostType } from '../types/PostType';
 
-export function useUserHook() {
+export function useUser() {
   const [userPosts, setUserPosts] = useState<PostType[]>([]);
 
   const fetchUserPosts = async (userId: any) => {
