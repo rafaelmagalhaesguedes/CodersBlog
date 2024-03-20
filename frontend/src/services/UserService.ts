@@ -44,18 +44,25 @@ export const getUserPosts = async (id: string) => {
   return fetchWithAuth(`${HOST}/post/user/${id}`, { method: 'GET' });
 };
 
-export const editUserPost = async (postId: number, editingPostData: UserType) => {
-  //
-  await fetchWithAuth(`${HOST}/post/${postId}`, {
+export const editUserPost = async (postId: number, data: any) => {
+  const response = await fetchWithAuth(`${HOST}/post/${postId}`, {
     method: 'PUT',
-    body: JSON.stringify(editingPostData),
+    body: JSON.stringify(data),
   });
 
-  return true;
+  if (!response.ok) {
+    throw new Error(`Failed to update post: ${response.status} ${response.statusText}`);
+  }
+
+  return response.json();
 };
 
 export const deleteUserPost = async (postId: number) => {
-  await fetchWithAuth(`${HOST}/post/${postId}`, { method: 'DELETE' });
+  const response = await fetchWithAuth(`${HOST}/post/${postId}`, { method: 'DELETE' });
+
+  if (!response.ok) {
+    throw new Error(`Failed to delete post: ${response.status} ${response.statusText}`);
+  }
 
   return true;
 };
