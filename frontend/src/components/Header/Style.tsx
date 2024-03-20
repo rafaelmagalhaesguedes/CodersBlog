@@ -39,7 +39,6 @@ export const HeaderContainer = styled.header`
   width: 80%;
   height: 80px;
   margin: 0 auto;
-  border-bottom: 1px solid #f1f1f1;
 
   @media (max-width: 1000px) {
     justify-content: space-between;
