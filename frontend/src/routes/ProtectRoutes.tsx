@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Layout } from '../components/Layout/Layout';
 import { Home } from '../pages/Home/Home';
 import { SinglePost } from '../components/Posts/SinglePost/SinglePost';
@@ -10,19 +10,17 @@ import { Profile } from '../pages/Profile/Profile';
 
 export function ProtectRoutes() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={ <Layout /> }>
-          <Route path="/" element={ <Home /> } />
-          <Route path="/single-post/:id" element={ <SinglePost /> } />
-          <Route path="/edit-post/:id" element={ <EditPost /> } />
-          <Route path="/create-post" element={ <CreatePost /> } />
-          <Route path="/categories" element={ <Categories /> } />
-          <Route path="/user-posts" element={ <UserPosts /> } />
-          <Route path="/profile" element={ <Profile /> } />
-          <Route path="*" element={ <h1>Page Not Found</h1> } />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={ <Layout /> }>
+        <Route path="/" element={ <Home /> } />
+        <Route path="/single-post/:id" element={ <SinglePost /> } />
+        <Route path="/edit-post/:id" element={ <EditPost /> } />
+        <Route path="/create-post" element={ <CreatePost /> } />
+        <Route path="/categories" element={ <Categories /> } />
+        <Route path="/user-posts" element={ <UserPosts /> } />
+        <Route path="/profile" element={ <Profile /> } />
+        <Route path="*" element={ <h1>Page Not Found</h1> } />
+      </Route>
+    </Routes>
   );
 }
