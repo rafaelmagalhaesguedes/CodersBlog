@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const UserPostsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
   width: 80%;
   margin: 0 auto;
 
@@ -25,7 +24,7 @@ export const MenuBody = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 5px;
-  margin-bottom: 20px;
+  margin: 30px 0;
   background-color: #f2f2f2;
   padding: 10px;
   border-radius: 5px;
@@ -93,6 +92,10 @@ export const PostContent = styled.p`
   a {
     text-decoration: none;
     color: #000;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 1.5px;
   }
 `;
 
@@ -106,6 +109,17 @@ export const PostFooter = styled.div`
   div {
     display: flex;
     gap: 5px;
+
+    span {
+      font-weight: 500;
+      letter-spacing: 1.2px;
+    }
+
+    p {
+      font-weight: 300;
+      letter-spacing: 1px;
+      color: #222;
+    }
   }
 `;
 
