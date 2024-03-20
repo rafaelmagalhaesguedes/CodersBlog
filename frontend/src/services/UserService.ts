@@ -40,8 +40,8 @@ export const registerUser = async (userData: UserType) => {
   return data;
 };
 
-export const getUserPosts = async (id: string) => {
-  return fetchWithAuth(`${HOST}/post/user/${id}`, { method: 'GET' });
+export const getUserPosts = async () => {
+  return fetchWithAuth(`${HOST}/post/user`, { method: 'GET' });
 };
 
 export const editUserPost = async (postId: number, data: any) => {

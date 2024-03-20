@@ -18,8 +18,6 @@ import {
 } from './Style';
 
 export function UserPosts() {
-  const { user } = useAuth() as { user: UserType };
-  const { id } = user;
   const {
     userPosts,
     fetchUserPosts,
@@ -27,8 +25,8 @@ export function UserPosts() {
   } = useUser();
 
   useEffect(() => {
-    fetchUserPosts(id);
-  }, [id]);
+    fetchUserPosts();
+  }, []);
 
   return (
     <UserPostsContainer>

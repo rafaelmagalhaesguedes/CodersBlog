@@ -6,8 +6,8 @@ import { PostType } from '../types/PostType';
 export function useUser() {
   const [userPosts, setUserPosts] = useState<PostType[]>([]);
 
-  const fetchUserPosts = async (userId: any) => {
-    const data = await getUserPosts(userId);
+  const fetchUserPosts = async () => {
+    const data = await getUserPosts();
     setUserPosts(data);
   };
 
