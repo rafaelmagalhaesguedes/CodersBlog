@@ -16,7 +16,7 @@ export const MenuBody = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 5px;
-  margin-bottom: 20px;
+  margin: 30px 0;
   background-color: #f2f2f2;
   padding: 10px;
   border-radius: 5px;
@@ -49,7 +49,7 @@ export const Title = styled.h2`
 export const Published = styled.div`
   display: flex;
   justify-content: start;
-  margin: 0 0 1rem 0;
+  margin: 0.7rem 0 1rem 0;
   font-size: 0.9rem;
   gap: 3rem;
 `;
@@ -59,12 +59,28 @@ export const Content = styled.div`
   font-size: 1rem;
   line-height: 1.5;
   text-align: justify;
+  display: flex;
+  justify-content: space-between;
+
+  img {
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+    margin: 1rem 0;
+    border-radius: 5px;
+  }
+
+  p {
+    margin-bottom: 2rem;
+  }
+`;
+
+export const Card = styled.div`
+  margin: 1rem 0 0 2rem;
 `;
 
 export const Category = styled.div`
-  display: flex;
-  justify-content: start;
-  margin: 0 0 1rem 0;
+  margin: 1rem 0;
   font-size: 0.9rem;
 
   .category-item {
