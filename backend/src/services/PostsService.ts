@@ -50,6 +50,17 @@ export default class LoginService {
     return { status: 'SUCCESSFUL', data: post };
   }
 
+  public async getPostsByUser(userId: number): Promise<ServiceResponse<IPosts[]>> {
+    //
+    const posts = await this.postsModel.findPostsByUser(userId);
+
+    if (!posts) {
+      return { status: 'NOT_FOUND', data: { message: 'Posts not found!' } };
+    }
+
+    return { status: 'SUCCESSFUL', data: posts };
+  }
+
   public async updatePost(id: number, data: IPostsCreate, userId: number): Promise<ServiceResponse<IPosts>> {
     //
     const post = await this.postsModel.findById(id);

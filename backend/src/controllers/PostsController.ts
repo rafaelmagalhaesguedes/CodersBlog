@@ -26,6 +26,13 @@ export default class PostsController {
     return res.status(statusCode(status)).json(data);
   }
 
+  public async getPostsByUser(_req: Request, res: Response): Promise<Response> {
+    //
+    const userId = res.locals.user.id;
+    const { status, data } = await this.postsService.getPostsByUser(userId);
+    return res.status(statusCode(status)).json(data);
+  }
+
   public async updatePost(req: Request, res: Response): Promise<Response> {
     //
     const userId = res.locals.user.id;

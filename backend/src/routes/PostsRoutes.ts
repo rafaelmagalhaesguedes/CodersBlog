@@ -43,6 +43,12 @@ class PostsRoutes {
       (req: Request, res: Response) => this.postsController.getPostById(req, res),
     );
 
+    this.router.get(
+      '/user',
+      Authenticate,
+      (req: Request, res: Response) => this.postsController.getPostsByUser(req, res),
+    );
+
     this.router.put(
       '/:id',
       Authenticate, PostUpdateValidator,

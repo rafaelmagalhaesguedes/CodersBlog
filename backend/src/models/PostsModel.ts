@@ -76,6 +76,25 @@ class PostsModel implements IPostsModel {
     return posts;
   }
 
+  public async findPostsByUser(userId: number): Promise<IPosts[] | null> {
+    //
+    const posts = await this.postsModel.findAll({
+      where: { userId },
+      include: [
+        { 
+          model: SequelizeUser, as: 'user', attributes: { exclude: ['password', 'role'] },
+        },
+        {
+          model: SequelizeCategories, as: 'categories', through: { attributes: [] },
+        },
+      ],
+    });
+
+    if (!posts) return null;
+
+    return posts;
+  }
+
   public async update(id: number, data: IPostsUpdate, userId: number): Promise<IPosts | null> {
     //
     const post = await this.postsModel.update({ ...data, updated: new Date() }, { where: { id } });
