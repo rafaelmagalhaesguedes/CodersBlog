@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft, FaPlusCircle } from 'react-icons/fa';
-import { useAuth } from '../../../context/auth';
-import { UserType } from '../../../types/UserType';
 import { useUser } from '../../../hooks/useUser';
 import { formatDate } from '../../../utils/formatDate';
 import { trimContent } from '../../../utils/trimContent';
@@ -33,6 +31,7 @@ export function UserPosts() {
       <MenuBody>
         <Link to="/">
           <FaArrowLeft size={ 15 } />
+          {' '}
           Back
         </Link>
         <h3>My Posts</h3>
@@ -55,16 +54,19 @@ export function UserPosts() {
             </PostHeader>
             <PostFooter>
               <div>
-                Author:
-                {post.user.username}
+                <span>Author:</span>
+                {' '}
+                <p>{post.user.username}</p>
               </div>
               <div>
-                Published in:
-                {formatDate(post.published)}
+                <span>Published in:</span>
+                {' '}
+                <p>{formatDate(post.published)}</p>
               </div>
               <div>
-                Updated in:
-                {formatDate(post.updated)}
+                <span>Updated in:</span>
+                {' '}
+                <p>{formatDate(post.updated)}</p>
               </div>
             </PostFooter>
             <PostContent>
