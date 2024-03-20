@@ -10,13 +10,9 @@ export const ContainerPosts = styled.div`
 export const Menu = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
   align-items: center;
   padding: 0 10px;
-
-  h2 {
-    width: 40%;
-    color: #000;
-  }
 `;
 
 export const BannerHome = styled.div`
@@ -64,21 +60,29 @@ export const BannerImage = styled.div`
 
 export const SearchBar = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   padding: 0 10px;
-  width: 30%;
   gap: 10px;
+  width: 40%;
 
   input {
-    width: 70%;
-    padding: 5px;
+    width: 100%;
+    height: 30px;
+    padding: 5px 10px;
     border-radius: 10px;
     border: 1px solid #000;
   }
 
+  input::placeholder {
+    font-size: 0.8rem;
+  }
+
   button {
-    padding: 5px;
+    padding: 5px 20px;
+    background-color: #333;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: bold;
     border-radius: 10px;
     border: 1px solid #000;
     cursor: pointer;
@@ -135,4 +139,50 @@ export const PostCard = styled.div`
       border: 1px solid #ccc;
       background-color: #f5f5f5;
     }
+`;
+
+export const ContentBody = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  gap: 20px;
+  padding: 20px 0;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+  }
+
+  img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #000;
+    line-height: 1.9;
+    letter-spacing: 0.9px;
+    text-align: justify;
+  }
+
+  .read-more {
+    margin-top: 10px;
+
+    a {
+      font-size: 0.9rem;
+      color: #000;
+      text-decoration: none;
+      background-color: #333;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 10px;
+    }
+  }
 `;

@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { formatDate } from '../../../utils/formatDate';
+import { trimContent } from '../../../utils/trimContent';
 import { useAuth } from '../../../context/auth';
 import { UserType } from '../../../types/UserType';
 import { findAllPosts, searchPost } from '../../../services/PostService';
 import Banner from '../../../assets/img/coffeeandcode.jpg';
 import {
   BannerHome,
-  BannerImage, ContainerPosts, Menu, Post, PostCard, SearchBar, Title } from './Style';
+  BannerImage,
+  ContainerPosts, ContentBody, Menu, Post, PostCard, SearchBar, Title } from './Style';
 
 export function Posts() {
   const [posts, setPosts] = useState([]);
@@ -20,11 +23,11 @@ export function Posts() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const allPosts = await findAllPosts();
-      setPosts(allPosts);
+      const post = await findAllPosts();
+      setPosts(post);
     };
     fetchPosts();
-  }, []);
+  }, [user]);
 
   return (
     <ContainerPosts>
@@ -47,6 +50,7 @@ export function Posts() {
             value={ searchQuery }
             onChange={ (e) => setSearchQuery(e.target.value) }
             placeholder="Search for a post..."
+            onKeyDown={ (e) => e.key === 'Enter' && handleSearch() }
           />
           <button onClick={ handleSearch }>Search</button>
         </SearchBar>
@@ -59,7 +63,7 @@ export function Posts() {
               <span>
                 Author:
                 {' '}
-                {user.id === post.userId ? user.username : post.user.username}
+                {post.user.username}
               </span>
               <span>
                 Published in:
@@ -67,7 +71,19 @@ export function Posts() {
                 {formatDate(post.published)}
               </span>
             </div>
-            <p>{post.content}</p>
+            <ContentBody>
+              <img src={ post.image } alt="Post" />
+              <div className="content">
+                <Link to={ `/single-post/${post.id}` }>
+                  <p>
+                    {trimContent(post.content, 30)}
+                  </p>
+                </Link>
+                <span className="read-more">
+                  <Link to={ `/single-post/${post.id}` }>Read more</Link>
+                </span>
+              </div>
+            </ContentBody>
             <span>
               <span className="category">
                 {post.categories.map((category: any) => (
