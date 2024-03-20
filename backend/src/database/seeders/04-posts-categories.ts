@@ -9,7 +9,11 @@ export default {
       },
       {
         post_id: 2,
-        category_id: 2,
+        category_id: 1,
+      },
+      {
+        post_id: 3,
+        category_id: 9,
       },
     ], {});
   },

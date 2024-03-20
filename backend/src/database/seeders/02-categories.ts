@@ -5,7 +5,7 @@ export default {
     await queryInterface.bulkInsert('categories', [
       {
         id: 1,
-        name: 'Programming Language',
+        name: 'Language',
       },
       {
         id: 2,
@@ -37,7 +37,7 @@ export default {
       },
       {
         id: 9,
-        name: 'Other',
+        name: 'Software',
       },
 
     ], {});
