@@ -6,7 +6,7 @@ const headers = {
 };
 
 export const createCategory = async (name: string) => {
-  const res = await fetch(`${HOST}`, {
+  const res = await fetch(`${HOST}/categories`, {
     method: 'POST',
     headers,
     body: JSON.stringify({
@@ -23,7 +23,7 @@ export const createCategory = async (name: string) => {
 };
 
 export const getCategories = async () => {
-  const res = await fetch(`${HOST}`, {
+  const res = await fetch(`${HOST}/categories`, {
     method: 'GET',
     headers,
   });
@@ -32,7 +32,7 @@ export const getCategories = async () => {
 };
 
 export const updateCategory = async (id: number, name: string) => {
-  const res = await fetch(`${HOST}/${id}`, {
+  const res = await fetch(`${HOST}/categories/${id}`, {
     method: 'PUT',
     headers,
     body: JSON.stringify({
@@ -49,7 +49,7 @@ export const updateCategory = async (id: number, name: string) => {
 };
 
 export const deleteCategory = async (id: string) => {
-  const res = await fetch(`${HOST}/${id}`, {
+  const res = await fetch(`${HOST}/categories/${id}`, {
     method: 'DELETE',
     headers,
   });
