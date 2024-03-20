@@ -1,3 +1,4 @@
+/* eslint-disable max-params */
 import { PostType } from '../types/PostType';
 import { HOST } from './ApiService';
 
@@ -7,24 +8,26 @@ const headers = {
 };
 
 export const createPost = async (
-  userId: number,
   title: string,
   content: string,
+  image: string,
   categoryIds: number[],
 ) => {
-  const res = await fetch(`${HOST}`, {
+  const res = await fetch(`${HOST}/post`, {
     method: 'POST',
     headers,
     body: JSON.stringify({
-      id: userId,
       title,
       content,
+      image,
       categoryIds,
     }),
   });
 
   if (res.status !== 201) {
+    console.log(res.status);
     const data = await res.json();
+    console.log(data);
     throw new Error(data.message);
   }
 
