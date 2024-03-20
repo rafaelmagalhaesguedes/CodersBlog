@@ -16,11 +16,10 @@ function LoginPage() {
   return (
     <LoginContainer>
       <Info>
-        <h1>Blog Posts System</h1>
+        <h1>Coffee and Code!</h1>
         <p>
-          The blog post has a JWT login system, adding security and
-          robustness to the application. It also has a blog post system
-          where users can register, search, edit and delete a post.
+          Welcome to Coffee and Code, a place to share your knowledge and
+          experience with other developers.
         </p>
       </Info>
       <LoginBox>
@@ -52,7 +51,7 @@ function LoginPage() {
               />
             )}
           </div>
-          <button type="submit">Login</button>
+          <button type="submit">Access</button>
         </form>
       </LoginBox>
     </LoginContainer>

@@ -23,7 +23,7 @@ export const Info = styled.div`
 
     h1 {
         margin-bottom: 20px;
-        font-size: 5rem;
+        font-size: 6rem;
         text-align: center;
         color: #fff;
     }
@@ -59,20 +59,38 @@ export const LoginBox = styled.div`
         border-radius: 5px;
     }
 
+    input::placeholder {
+        font-size: 0.8rem;
+        font-weight: 300;
+        letter-spacing: 1px;
+    }
+
+    input:focus {
+        outline: 0;
+    }
+
     button {
         width: 300px;
         height: 40px;
-        background-color: #000;
+        background-color: #333;
         color: #fff;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         margin-bottom: 20px;
         font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 3px;
     }
 
     button:hover {
-        background-color: #333;
+        background-color: #444;
+
+        transition: 0.5s;
+
+        font-weight: 900;
+
+        letter-spacing: 4px;
     }
 
     .icon {
