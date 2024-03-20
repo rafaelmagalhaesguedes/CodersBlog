@@ -11,17 +11,17 @@ export function useRegister() {
   const [image, setImage] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
-  const validateEmail = (mail: string) => {
-    const re = /\S+@\S+\.\S+/;
-    return re.test(mail);
-  };
+  const validateUserame = (name: string) => name.length >= 8;
 
   const validatePassword = (pass: string) => pass.length >= 6;
 
-  const validateDisplayName = (name: string) => name.length >= 8;
-
   const validatePasswordConfirmation = (pass: string, passConfirmation: string) => {
     return pass === passConfirmation;
+  };
+
+  const validateEmail = (mail: string) => {
+    const re = /\S+@\S+\.\S+/;
+    return re.test(mail);
   };
 
   const validateInputs = () => {
@@ -34,13 +34,14 @@ export function useRegister() {
     if (!validatePasswordConfirmation(password, passwordConfirmation)) {
       return { isValid: false, message: 'Passwords do not match' };
     }
-    if (!validateDisplayName(username)) {
+    if (!validateUserame(username)) {
       return { isValid: false, message: 'Display name must be at least 8 characters' };
     }
     return { isValid: true };
   };
 
   async function handleRegister() {
+    //
     const validation = validateInputs();
     if (!validation.isValid) {
       Swal.fire({
