@@ -18,7 +18,7 @@ import {
 
 export function Header() {
   const { user, Logout } = useAuth();
-  const { username } = user as UserType;
+  const { username, image } = user as UserType;
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
@@ -39,8 +39,12 @@ export function Header() {
       <MenuTop>
         <span>Coffee and Code</span>
         <div>
-          <FaGithub />
-          <FaLinkedin />
+          <Link to="https://github.com/rafaelmagalhaesguedes" target="_blank">
+            <FaGithub size={ 20 } color="#fff" />
+          </Link>
+          <Link to="https://www.linkedin.com/in/rafael-magalh%C3%A3es-guedes/" target="_blank">
+            <FaLinkedin size={ 20 } color="#fff" />
+          </Link>
         </div>
       </MenuTop>
       <HeaderContainer>
@@ -56,6 +60,7 @@ export function Header() {
           <p>
             {username}
           </p>
+          <img src={ image } alt={ username } />
         </UserInfo>
         <NavMobile>
           <Navbar onClick={ toggleMenu }>

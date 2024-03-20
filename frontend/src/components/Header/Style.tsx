@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const MenuTop = styled.div`
   background-color: #000;
   width: 80%;
+  height: 30px;
   margin: 0 auto;
 
   display: flex;
@@ -24,10 +25,10 @@ export const MenuTop = styled.div`
 
   span {
     color: #fff;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     padding: 0 10px;
     letter-spacing: 1px;
-    font-weight: 300;
+    font-weight: 500;
   }
 `;
 
@@ -102,8 +103,17 @@ export const Logo = styled.div`
 
 export const UserInfo = styled.div`
   width: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
   p {
     margin: 0;
+  }
+
+  img {
+    width: 50px;
+    border-radius: 50%;
   }
 `;
 
