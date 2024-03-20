@@ -1,4 +1,4 @@
-import { Posts } from '../../components/Posts/AllPosts.tsx/Posts';
+import { Posts } from '../../components/Posts/AllPosts/Posts';
 import { Container } from './Style';
 
 export function Home() {
