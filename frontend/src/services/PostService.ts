@@ -32,7 +32,7 @@ export const createPost = async (
 };
 
 export const findAllPosts = async () => {
-  const res = await fetch(`${HOST}`, {
+  const res = await fetch(`${HOST}/post`, {
     method: 'GET',
     headers,
   });
@@ -42,7 +42,7 @@ export const findAllPosts = async () => {
 };
 
 export const findPostById = async (id: number) => {
-  const res = await fetch(`${HOST}/${id}`, {
+  const res = await fetch(`${HOST}/post/${id}`, {
     method: 'GET',
     headers,
   });
@@ -53,7 +53,7 @@ export const findPostById = async (id: number) => {
 export const updatePost = async (postId: number, title: string, content: string) => {
   const data = { title, content };
 
-  const response = await fetch(`${HOST}/${postId}`, {
+  const response = await fetch(`${HOST}/post/${postId}`, {
     method: 'PUT',
     headers,
     body: JSON.stringify(data),
@@ -66,7 +66,7 @@ export const updatePost = async (postId: number, title: string, content: string)
 };
 
 export const searchPost = async (searchQuery: string) => {
-  const res = await fetch(`${HOST}/search?q=${searchQuery}`, {
+  const res = await fetch(`${HOST}/post/search?q=${searchQuery}`, {
     method: 'GET',
     headers,
   });
