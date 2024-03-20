@@ -32,6 +32,12 @@ class PostsRoutes {
     );
     
     this.router.get(
+      '/user',
+      Authenticate,
+      (req: Request, res: Response) => this.postsController.getPostsByUser(req, res),
+    );
+    
+    this.router.get(
       '/',
       Authenticate,
       (req: Request, res: Response) => this.postsController.getPosts(req, res),
@@ -41,12 +47,6 @@ class PostsRoutes {
       '/:id',
       Authenticate,
       (req: Request, res: Response) => this.postsController.getPostById(req, res),
-    );
-
-    this.router.get(
-      '/user',
-      Authenticate,
-      (req: Request, res: Response) => this.postsController.getPostsByUser(req, res),
     );
 
     this.router.put(

@@ -28,8 +28,7 @@ export default class PostsController {
 
   public async getPostsByUser(_req: Request, res: Response): Promise<Response> {
     //
-    const userId = res.locals.user.id;
-    const { status, data } = await this.postsService.getPostsByUser(userId);
+    const { status, data } = await this.postsService.getPostsByUser(res.locals.user.id);
     return res.status(statusCode(status)).json(data);
   }
 
