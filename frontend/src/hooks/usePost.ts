@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 import { useState } from 'react';
-import { getCategories } from '../services/category.service';
+import { getCategories } from '../services/CategoryService';
 import { createPost } from '../services/PostService';
 
 export function usePost(userId: number) {
