@@ -59,7 +59,7 @@ export function Posts() {
               <span>
                 Author:
                 {' '}
-                {user.username}
+                {user.id === post.userId ? user.username : post.user.username}
               </span>
               <span>
                 Published in:
