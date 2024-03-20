@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft, FaBookOpen } from 'react-icons/fa';
 import { usePost } from '../../../hooks/usePost';
-import { CreatePostButton, CreatePostContainer } from './Style';
+import { CreatePostButton, CreatePostContainer, MenuBody } from './Style';
 
 export function CreatePost() {
   const {
@@ -25,9 +25,10 @@ export function CreatePost() {
 
   return (
     <CreatePostContainer>
-      <div>
+      <MenuBody>
         <Link to="/">
           <FaArrowLeft size={ 15 } />
+          {' '}
           Back
         </Link>
         <h3>Create new post</h3>
@@ -37,7 +38,7 @@ export function CreatePost() {
             <FaBookOpen />
           </span>
         </Link>
-      </div>
+      </MenuBody>
       <input
         type="text"
         placeholder="Title"
@@ -50,21 +51,23 @@ export function CreatePost() {
         onChange={ (e) => setContent(e.target.value) }
       />
       <div>
-        <h3>Image</h3>
+        <h3 className="title">Image</h3>
         {' '}
-        <input
-          type="text"
-          value={ image }
-          onChange={ (e) => setImage(e.target.value) }
-          placeholder="Insert an url"
-        />
+        <div className="input">
+          <input
+            type="text"
+            value={ image }
+            onChange={ (e) => setImage(e.target.value) }
+            placeholder="Insert an url"
+          />
+        </div>
       </div>
-      <div className="title-categories">
+      <div className="title">
         <h3>Categories</h3>
       </div>
       <ul>
         {categories.map((category: any) => (
-          <li key={ category.id }>
+          <li className="tags" key={ category.id }>
             <input
               type="checkbox"
               id={ `category-${category.id}` }
