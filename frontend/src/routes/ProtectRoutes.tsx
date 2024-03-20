@@ -6,6 +6,7 @@ import { EditPost } from '../components/User/EditPost/EditPost';
 import { CreatePost } from '../components/User/CreatePost/CreatePost';
 import { Categories } from '../components/Categories/Categories';
 import { UserPosts } from '../components/User/UserPost/UserPost';
+import { Profile } from '../pages/Profile/Profile';
 
 export function ProtectRoutes() {
   return (
@@ -18,6 +19,7 @@ export function ProtectRoutes() {
           <Route path="/create-post" element={ <CreatePost /> } />
           <Route path="/categories" element={ <Categories /> } />
           <Route path="/user-posts" element={ <UserPosts /> } />
+          <Route path="/profile" element={ <Profile /> } />
           <Route path="*" element={ <h1>Page Not Found</h1> } />
         </Route>
       </Routes>
