@@ -12,11 +12,11 @@ export default {
           // senha: secret_admin
       },
       {
-        username: 'User',
+        username: 'Gandalf The Grey',
         role: 'user',
         email: 'user@user.com',
         password: '$2a$08$Y8Abi8jXvsXyqm.rmp0B.uQBA5qUz7T6Ghlg/CvVr/gLxYj5UAZVO',
-        image: 'https://avatars.githubusercontent.com/u/8412507?s=400&u=9ee34dd1671db6517cb52587736ba529c4455d9e&v=4',
+        image: '',
           // senha: secret_user
       },
       // os logins abaixo são intencionalmente inválidos, pois serão usados nos testes
