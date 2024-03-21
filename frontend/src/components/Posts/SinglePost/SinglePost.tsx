@@ -9,9 +9,11 @@ import {
   Card,
   Category,
   ContainerPost, Content, MenuBody, PostCard, Published, Title } from './Style';
+import { useAuth } from '../../../context/auth';
 
 export function SinglePost() {
   const [post, setPost] = useState<any>({});
+  const { signed } = useAuth();
   const { id } = useParams();
 
   useEffect(() => {
@@ -32,12 +34,14 @@ export function SinglePost() {
           Back
         </Link>
         <h3>Single post</h3>
-        <Link to="/create-post">
-          <span>
-            <p>New post</p>
-            <FaPlusCircle size={ 20 } />
-          </span>
-        </Link>
+        {signed && (
+          <Link to="/create-post">
+            <span>
+              <p>New post</p>
+              <FaPlusCircle size={ 20 } />
+            </span>
+          </Link>
+        )}
       </MenuBody>
       <PostCard key={ post.id }>
         <Title>
