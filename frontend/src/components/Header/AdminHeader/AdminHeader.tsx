@@ -2,9 +2,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaUserCircle } from 'react-icons/fa';
-import { UserType } from '../../types/UserType';
-import { useAuth } from '../../context/auth';
-import LogoImage from '../../assets/img/logo.png';
+import { UserType } from '../../../types/UserType';
+import { useAuth } from '../../../context/auth';
+import LogoImage from '../../../assets/img/logo.png';
 import {
   HeaderContainer,
   Navbar,
@@ -16,7 +16,7 @@ import {
   Nav,
 } from './Style';
 
-export function Header() {
+export function AdminHeader() {
   const { user, Logout } = useAuth();
   const { username, image } = user as UserType;
   const [isOpen, setIsOpen] = useState(false);
@@ -50,6 +50,7 @@ export function Header() {
       <HeaderContainer>
         <Logo>
           <img src={ LogoImage } alt="Coffee and Code" />
+          <span>Coffee and Code</span>
         </Logo>
         <Nav>
           <a href="/">All Posts</a>

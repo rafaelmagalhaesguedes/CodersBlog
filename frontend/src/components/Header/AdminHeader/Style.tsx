@@ -93,18 +93,29 @@ export const DropdownItem = styled.div`
 `;
 
 export const Logo = styled.div`
-  width: 40%;
   margin-top: 20px;
+  width: 45%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 
   img {
     width: 80px;
+  }
+
+  span {
+    font-size: 1.9rem;
+    font-weight: 300;
+    font-family: 'Rubik Dirt';
+    letter-spacing: 1px;
   }
 `;
 
 export const UserInfo = styled.div`
   width: 20%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 10px;
   align-items: center;
   
   p {
