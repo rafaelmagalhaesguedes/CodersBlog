@@ -37,6 +37,7 @@ export const Title = styled.div`
 
   h1 {
     font-size: 2.5rem;
+    font-weight: bold;
     color: #000;
     padding: 5px 0;
     text-align: center;
@@ -51,7 +52,7 @@ export const Title = styled.div`
 `;
 
 export const BannerImage = styled.div`
-  width: 50%;
+  width: 60%;
   img {
     width: 100%;
     border-radius: 10px;

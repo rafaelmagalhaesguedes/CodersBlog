@@ -33,9 +33,10 @@ export function Posts() {
     <ContainerPosts>
       <BannerHome>
         <Title>
-          <h1>COFFEE AND CODE</h1>
+          <h1>WELCOME TO THE BLOG!</h1>
           <p>
-            Welcome to Coffee and Code, a place to share your knowledge with the community
+            Coffee and Code is a blog about programming,
+            technology, and coffee. Enjoy reading!
           </p>
         </Title>
         <BannerImage>
