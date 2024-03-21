@@ -12,7 +12,7 @@ class PostValidator {
       'any.required': '"title" is required',
       'string.max': '"title" length must be less than or equal to 150 characters long',
     }),
-    content: Joi.string().max(2500).required().messages({
+    content: Joi.string().max(5000).required().messages({
       'string.base': '"content" must be a string',
       'string.empty': '"content" is required',
       'any.required': '"content" is required',
@@ -20,8 +20,6 @@ class PostValidator {
     }),
     image: Joi.string().uri().required().messages({
       'string.base': '"image" must be a string',
-      'string.empty': '"image" is required',
-      'any.required': '"image" is required',
       'string.uri': '"image" must be a valid uri',
     }),
     categoryIds: Joi.array().items(Joi.number()).required().messages({
