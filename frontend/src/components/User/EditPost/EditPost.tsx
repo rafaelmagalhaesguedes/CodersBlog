@@ -7,40 +7,48 @@ import { Container, Form, Button, MenuBody } from './Style';
 
 export function EditPost() {
   const { id } = useParams() as { id: any };
-  const [post, setPost] = useState<any>([]);
+  const [post, setPost] = useState<any>({});
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [image, setImage] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchPost = async () => {
       const posts = await findPostById(id);
-      if (posts.length > 0) {
-        const p = posts[0];
-        setPost(p);
-        setTitle(post.title);
-        setContent(post.content);
-      }
+      setPost(posts);
+      setTitle(posts.title);
+      setContent(posts.content);
+      setImage(posts.image);
+      setIsLoading(false);
     };
     fetchPost();
   }, [id]);
 
+  if (isLoading) {
+    return (
+      <Container>
+        <h1>Loading...</h1>
+      </Container>
+    );
+  }
+
   const handleEdit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const response = await updatePost(id, title, content);
-
-    if (response) {
+    const response = await updatePost(id, title, content, image);
+    if (!response) {
       Swal.fire({
-        title: 'Post updated successfully',
-        icon: 'success',
+        title: 'Error updating post',
+        icon: 'error',
         timer: 2000,
       });
       return;
     }
 
     Swal.fire({
-      title: 'Failed to update post',
-      icon: 'error',
+      title: 'Post updated successfully',
+      icon: 'success',
       timer: 2000,
     });
   };
@@ -50,12 +58,14 @@ export function EditPost() {
       <MenuBody>
         <Link to="/user-posts">
           <FaArrowLeft size={ 15 } />
+          {' '}
           Back
         </Link>
         <h3>Edit post</h3>
         <Link to="/user-posts">
           <span>
             <p>My posts</p>
+            {' '}
             <FaBookOpen />
           </span>
         </Link>
@@ -67,6 +77,13 @@ export function EditPost() {
           type="text"
           value={ title }
           onChange={ (e) => setTitle(e.target.value) }
+        />
+        <label htmlFor="image">Image</label>
+        <input
+          id="image"
+          type="text"
+          value={ image }
+          onChange={ (e) => setImage(e.target.value) }
         />
         <label htmlFor="content">Content</label>
         <textarea

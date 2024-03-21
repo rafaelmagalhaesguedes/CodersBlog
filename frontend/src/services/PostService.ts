@@ -53,8 +53,13 @@ export const findPostById = async (id: number) => {
   return data;
 };
 
-export const updatePost = async (postId: number, title: string, content: string) => {
-  const data = { title, content };
+export const updatePost = async (
+  postId: number,
+  title: string,
+  content: string,
+  image: string,
+) => {
+  const data = { title, content, image };
 
   const response = await fetch(`${HOST}/post/${postId}`, {
     method: 'PUT',

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
+  margin: 20px;
   width: 80%;
   margin: 0 auto;
   background-color: #fff;
@@ -13,16 +13,16 @@ export const MenuBody = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
   background-color: #f2f2f2;
   padding: 10px;
-  margin: 1rem;
+  width: 100%;
+  margin: 2rem 0;
   border-radius: 5px;
 
   span {
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 10px;
   }
 
   a {
@@ -68,11 +68,15 @@ export const Form = styled.div`
 
 export const Button = styled.button`
   width: 200px;
-  height: 30px;
+  height: 40px;
   background-color: #333;
   color: #fff;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
   font-size: 14px;
+  align-self: flex-end;
 `;
