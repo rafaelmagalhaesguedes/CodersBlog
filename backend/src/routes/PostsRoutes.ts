@@ -27,7 +27,6 @@ class PostsRoutes {
 
     this.router.get(
       '/search',
-      Authenticate,
       (req: Request, res: Response) => this.postsController.searchPost(req, res),
     );
     
@@ -39,13 +38,11 @@ class PostsRoutes {
     
     this.router.get(
       '/',
-      Authenticate,
       (req: Request, res: Response) => this.postsController.getPosts(req, res),
     );
 
     this.router.get(
       '/:id',
-      Authenticate,
       (req: Request, res: Response) => this.postsController.getPostById(req, res),
     );
 
