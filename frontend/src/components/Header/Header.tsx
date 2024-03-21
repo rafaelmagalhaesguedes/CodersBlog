@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-max-depth */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaUserCircle } from 'react-icons/fa';
 import { UserType } from '../../types/UserType';
 import { useAuth } from '../../context/auth';
 import LogoImage from '../../assets/img/logo.png';
@@ -60,7 +60,9 @@ export function Header() {
           <p>
             {username}
           </p>
-          <img src={ image } alt={ username } />
+          {image
+            ? <img src={ image } alt="User" />
+            : <FaUserCircle size={ 30 } color="#000" />}
         </UserInfo>
         <NavMobile>
           <Navbar onClick={ toggleMenu }>

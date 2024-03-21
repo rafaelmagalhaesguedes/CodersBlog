@@ -102,9 +102,9 @@ export const Logo = styled.div`
 `;
 
 export const UserInfo = styled.div`
-  width: 10%;
+  width: 20%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   
   p {
