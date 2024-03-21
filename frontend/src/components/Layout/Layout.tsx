@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
-import { Header } from '../Header/Header';
+import { CustomHeader } from '../Header/CustonHeader';
 
 export function Layout() {
   return (
     <>
-      <Header />
+      <CustomHeader />
       <Outlet />
     </>
   );
