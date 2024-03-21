@@ -18,8 +18,17 @@ function LoginPage() {
       <Info>
         <h1>Coffee and Code!</h1>
         <p>
-          Welcome to Coffee and Code, a place to share your knowledge and
-          experience with other developers.
+          Admin panel for the Coffee and Code blog.
+          <br />
+          For tests, use the following credentials:
+          <br />
+          <strong>Email:</strong>
+          {' '}
+          admin@admin.com
+          <br />
+          <strong>Password:</strong>
+          {' '}
+          secret_admin
         </p>
       </Info>
       <LoginBox>
