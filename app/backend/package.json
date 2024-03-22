@@ -2,9 +2,10 @@
   "name": "authts",
   "version": "1.0.0",
   "description": "",
-  "main": "src/server.js",
+  "main": "build/server.js",
   "scripts": {
-    "start": "ts-node src/server.ts",
+    "build": "npx tsc",
+    "start": "node ./build/server",
     "dev": "tsnd --watch \"./src/**\" ./src/server.ts",
     "predev": "npm run db:reset",
     "test": "mocha -r ts-node/register tests/**/**/*.test.ts --exit -t 60000 --exit",
@@ -14,7 +15,6 @@
     "compose:down": "docker-compose down --remove-orphans",
     "db:reset": "npx -y tsc && npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
-  "keywords": [],
   "author": "Rafael Magalhães Guedes",
   "license": "ISC",
   "dependencies": {
