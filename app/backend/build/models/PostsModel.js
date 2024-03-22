@@ -5,11 +5,13 @@ const PostsCategoriesModel_1 = require("./PostsCategoriesModel");
 const SequelizeUser_1 = require("../database/models/SequelizeUser");
 const SequelizePosts_1 = require("../database/models/SequelizePosts");
 const SequelizeCategories_1 = require("../database/models/SequelizeCategories");
+const SequelizePostsCategories_1 = require("../database/models/SequelizePostsCategories");
 const sequelize_1 = require("sequelize");
 class PostsModel {
     //
-    constructor(postsModel = SequelizePosts_1.default, postsCategoriesModel = new PostsCategoriesModel_1.default()) {
+    constructor(postsModel = SequelizePosts_1.default, modelCategories = SequelizePostsCategories_1.default, postsCategoriesModel = new PostsCategoriesModel_1.default()) {
         this.postsModel = postsModel;
+        this.modelCategories = modelCategories;
         this.postsCategoriesModel = postsCategoriesModel;
     }
     async create(post, userId) {
@@ -92,11 +94,9 @@ class PostsModel {
     }
     async delete(id) {
         //
-        const destroyCategory = await this.postsCategoriesModel.delete(id);
-        if (!destroyCategory)
-            return false;
-        const destroyPost = await this.postsModel.destroy({ where: { id: id } });
-        return !!destroyPost;
+        await this.modelCategories.destroy({ where: { postId: id } });
+        await this.postsModel.destroy({ where: { id: id } });
+        return true;
     }
     async deleteUserPosts(userId) {
         //

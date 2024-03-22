@@ -69,10 +69,7 @@ class LoginService {
             return { status: 'NOT_FOUND', data: { message: 'Post not found!' } };
         }
         const deleted = await this.postsModel.delete(id);
-        if (!deleted) {
-            return { status: 'INTERNAL_ERROR', data: { message: 'Post not deleted!' } };
-        }
-        return { status: 'SUCCESSFUL', data: true };
+        return { status: 'SUCCESSFUL', data: deleted };
     }
     async searchPosts(search) {
         //
@@ -82,7 +79,7 @@ class LoginService {
         if (search === '')
             return this.getPosts();
         const posts = await this.postsModel.search(search);
-        if (!posts) {
+        if (posts === null) {
             return { status: 'NOT_FOUND', data: { message: 'Posts not found!' } };
         }
         return { status: 'SUCCESSFUL', data: posts };
