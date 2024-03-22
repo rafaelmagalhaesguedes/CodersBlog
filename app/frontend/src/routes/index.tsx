@@ -10,15 +10,14 @@ import { UserPosts } from '../components/User/UserPost/UserPost';
 import { Profile } from '../pages/Profile/Profile';
 import { LoginPage } from '../pages/Login/LoginPage';
 import { Register } from '../pages/Register/Register';
+import { Loading } from '../components/Loading/Loading';
 
 export function AppRoutes() {
   const { signed, loading } = useAuth();
 
   if (loading) {
     return (
-      <div>
-        <div>Loading...</div>
-      </div>
+      <Loading />
     );
   }
 
