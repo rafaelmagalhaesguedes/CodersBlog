@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { Options } from 'sequelize';
 
 const config: Options = {
@@ -6,7 +7,11 @@ const config: Options = {
   database: process.env.DB_NAME || 'auth_db',
   host: process.env.DB_HOST || 'localhost',
   port: Number(process.env.DB_PORT) || 3306,
-  dialect: 'mysql',
+  dialect: 'postgres',
+  define: {
+    timestamps: true,
+    underscored: true,
+  },
 };
 
 export = config;
