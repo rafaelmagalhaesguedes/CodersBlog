@@ -75,19 +75,19 @@ export function EditPost() {
         <input
           id="title"
           type="text"
-          value={ title }
+          value={ post.title }
           onChange={ (e) => setTitle(e.target.value) }
         />
         <label htmlFor="image">Image</label>
         <input
           id="image"
           type="text"
-          value={ image }
+          value={ post.image }
           onChange={ (e) => setImage(e.target.value) }
         />
         <label htmlFor="content">Content</label>
         <textarea
-          value={ content }
+          value={ post.content }
           onChange={ (e) => setContent(e.target.value) }
         />
         <Button onClick={ handleEdit }>Edit</Button>
