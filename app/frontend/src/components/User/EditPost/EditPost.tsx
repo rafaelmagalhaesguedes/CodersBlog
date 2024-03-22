@@ -7,7 +7,6 @@ import { Container, Form, Button, MenuBody } from './Style';
 
 export function EditPost() {
   const { id } = useParams() as { id: any };
-  const [setPost] = useState<any>({});
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState('');
@@ -16,14 +15,13 @@ export function EditPost() {
   useEffect(() => {
     const fetchPost = async () => {
       const posts = await findPostById(id);
-      setPost(posts);
       setTitle(posts.title);
       setContent(posts.content);
       setImage(posts.image);
       setIsLoading(false);
     };
     fetchPost();
-  }, [id, setPost]);
+  }, [id]);
 
   if (isLoading) {
     return (

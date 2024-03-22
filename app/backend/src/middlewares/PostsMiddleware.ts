@@ -18,14 +18,12 @@ class PostValidator {
       'any.required': '"content" is required',
       'string.max': '"content" length must be less than or equal to 2500 characters long',
     }),
-    image: Joi.string().uri().required().messages({
+    image: Joi.string().uri().messages({
       'string.base': '"image" must be a string',
       'string.uri': '"image" must be a valid uri',
     }),
-    categoryIds: Joi.array().items(Joi.number()).required().messages({
+    categoryIds: Joi.array().items(Joi.number()).messages({
       'array.base': '"categoryIds" must be an array',
-      'array.empty': '"categoryIds" is required',
-      'any.required': '"categoryIds" is required',
     }),
   });
 
