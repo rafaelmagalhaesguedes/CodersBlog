@@ -64,19 +64,23 @@ export const Content = styled.div`
 
   img {
     width: 300px;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     margin: 1rem 0;
     border-radius: 5px;
-  }
-
-  p {
-    margin-bottom: 2rem;
   }
 `;
 
 export const Card = styled.div`
   margin: 1rem 0 0 2rem;
+
+  p {
+    margin-bottom: 2rem;
+    line-height: 2;
+    letter-spacing: 0.5px;
+    color: #333;
+    font-size: 0.9rem;
+  }
 `;
 
 export const Category = styled.div`

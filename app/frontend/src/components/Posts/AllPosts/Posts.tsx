@@ -10,6 +10,7 @@ import {
   BannerHome,
   BannerImage,
   ContainerPosts, ContentBody, Menu, Post, PostCard, SearchBar, Title } from './Style';
+import { Loading } from '../../Loading/Loading';
 
 export function Posts() {
   const [posts, setPosts] = useState([]);
@@ -28,6 +29,10 @@ export function Posts() {
     };
     fetchPosts();
   }, [user]);
+
+  if (!posts) {
+    return <Loading />;
+  }
 
   return (
     <ContainerPosts>
