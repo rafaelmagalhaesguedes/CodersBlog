@@ -7,7 +7,7 @@ import { Container, Form, Button, MenuBody } from './Style';
 
 export function EditPost() {
   const { id } = useParams() as { id: any };
-  const [post, setPost] = useState<any>({});
+  const [setPost] = useState<any>({});
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState('');
@@ -23,7 +23,7 @@ export function EditPost() {
       setIsLoading(false);
     };
     fetchPost();
-  }, [id]);
+  }, [id, setPost]);
 
   if (isLoading) {
     return (
@@ -75,19 +75,19 @@ export function EditPost() {
         <input
           id="title"
           type="text"
-          value={ post.title }
+          value={ title }
           onChange={ (e) => setTitle(e.target.value) }
         />
         <label htmlFor="image">Image</label>
         <input
           id="image"
           type="text"
-          value={ post.image }
+          value={ image }
           onChange={ (e) => setImage(e.target.value) }
         />
         <label htmlFor="content">Content</label>
         <textarea
-          value={ post.content }
+          value={ content }
           onChange={ (e) => setContent(e.target.value) }
         />
         <Button onClick={ handleEdit }>Edit</Button>
