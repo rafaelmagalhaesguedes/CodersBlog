@@ -54,7 +54,7 @@ export function AdminHeader() {
         </Logo>
         <Nav>
           <Link to="/">All Posts</Link>
-          <Link to="/create_post">New Post</Link>
+          <Link to="/create-post">New Post</Link>
           <Link to="/user-posts">My Posts</Link>
         </Nav>
         <UserInfo>
