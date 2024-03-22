@@ -53,9 +53,9 @@ export function AdminHeader() {
           <span>Coffee and Code</span>
         </Logo>
         <Nav>
-          <a href="/">All Posts</a>
-          <a href="/create-post">New Post</a>
-          <a href="/user-posts">My Posts</a>
+          <Link to="/">All Posts</Link>
+          <Link to="/create_post">New Post</Link>
+          <Link to="/user-posts">My Posts</Link>
         </Nav>
         <UserInfo>
           <p>
@@ -76,10 +76,10 @@ export function AdminHeader() {
           {isOpen && (
             <DropdownMenu>
               <DropdownItem>
-                <Link to="/profile" onClick={ closeMenu }>All Posts</Link>
+                <Link to="/" onClick={ closeMenu }>All Posts</Link>
               </DropdownItem>
               <DropdownItem>
-                <Link to="/profile" onClick={ closeMenu }>New Post</Link>
+                <Link to="/create-post" onClick={ closeMenu }>New Post</Link>
               </DropdownItem>
               <DropdownItem>
                 <Link to="/user-posts" onClick={ closeMenu }>My Posts</Link>
