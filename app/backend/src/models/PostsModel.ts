@@ -3,14 +3,16 @@ import PostsCategoriesModel from './PostsCategoriesModel';
 import SequelizeUser from '../database/models/SequelizeUser';
 import { IPostsModel } from '../interfaces/Posts/IPostsModel';
 import SequelizePosts from '../database/models/SequelizePosts';
-import { IPosts, IPostsCreate, IPostsUpdate } from '../interfaces/Posts/IPosts';
 import SequelizeCategories from '../database/models/SequelizeCategories';
+import { IPosts, IPostsCreate, IPostsUpdate } from '../interfaces/Posts/IPosts';
+import SequelizePostsCategories from '../database/models/SequelizePostsCategories';
 import { Op } from 'sequelize';
 
 class PostsModel implements IPostsModel {
   //
   constructor(
     private postsModel = SequelizePosts,
+    private modelCategories = SequelizePostsCategories,
     private postsCategoriesModel = new PostsCategoriesModel(),
   ) { }
 
@@ -110,13 +112,11 @@ class PostsModel implements IPostsModel {
 
   public async delete(id: number): Promise<boolean> {
     //
-    const destroyCategory = await this.postsCategoriesModel.delete(id);
-    
-    if (!destroyCategory) return false;
+    await this.modelCategories.destroy({ where: { postId: id } });
 
-    const destroyPost = await this.postsModel.destroy({ where: { id: id } });
+    await this.postsModel.destroy({ where: { id: id } });
 
-    return !!destroyPost;
+    return true;
   }
 
   public async deleteUserPosts(userId: number): Promise<boolean> {

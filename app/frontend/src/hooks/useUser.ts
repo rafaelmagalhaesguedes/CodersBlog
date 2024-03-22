@@ -49,24 +49,13 @@ export function useUser() {
     });
 
     if (result.isConfirmed) {
-      try {
-        await deleteUserPost(postId);
-        setUserPosts(userPosts.filter((post) => post.id !== postId));
-        Swal.fire({
-          title: 'Deleted!',
-          text: 'Your post has been deleted.',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      } catch (error) {
-        console.error(error);
-        Swal.fire({
-          title: 'Failed to delete post',
-          icon: 'error',
-          timer: 2000,
-        });
-      }
+      await deleteUserPost(postId);
+      setUserPosts(userPosts.filter((post) => post.id !== postId));
+      Swal.fire({
+        title: 'Post deleted successfully',
+        icon: 'success',
+        timer: 2000,
+      });
     }
   };
 

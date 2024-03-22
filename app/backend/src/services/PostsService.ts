@@ -96,11 +96,7 @@ export default class LoginService {
 
     const deleted = await this.postsModel.delete(id);
 
-    if (!deleted) {
-      return { status: 'INTERNAL_ERROR', data: { message: 'Post not deleted!' } };
-    }
-
-    return { status: 'SUCCESSFUL', data: true };
+    return { status: 'SUCCESSFUL', data: deleted };
   }
 
   public async searchPosts(search: string): Promise<ServiceResponse<IPosts[]>> {
@@ -113,7 +109,7 @@ export default class LoginService {
 
     const posts = await this.postsModel.search(search);
 
-    if (!posts) {
+    if (posts === null) {
       return { status: 'NOT_FOUND', data: { message: 'Posts not found!' } };
     }
 

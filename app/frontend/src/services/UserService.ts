@@ -59,10 +59,5 @@ export const editUserPost = async (postId: number, data: any) => {
 
 export const deleteUserPost = async (postId: number) => {
   const response = await fetchWithAuth(`${HOST}/post/${postId}`, { method: 'DELETE' });
-
-  if (!response.ok) {
-    throw new Error(`Failed to delete post: ${response.status} ${response.statusText}`);
-  }
-
-  return true;
+  return response;
 };
