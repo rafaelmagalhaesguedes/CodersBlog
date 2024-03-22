@@ -76,10 +76,16 @@ export function AdminHeader() {
           {isOpen && (
             <DropdownMenu>
               <DropdownItem>
-                <Link to="/profile" onClick={ closeMenu }>Profile</Link>
+                <Link to="/profile" onClick={ closeMenu }>All Posts</Link>
+              </DropdownItem>
+              <DropdownItem>
+                <Link to="/profile" onClick={ closeMenu }>New Post</Link>
               </DropdownItem>
               <DropdownItem>
                 <Link to="/user-posts" onClick={ closeMenu }>My Posts</Link>
+              </DropdownItem>
+              <DropdownItem>
+                <Link to="/profile" onClick={ closeMenu }>Profile</Link>
               </DropdownItem>
               <DropdownItem>
                 <Link to="/" onClick={ handleLogout }>
