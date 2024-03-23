@@ -8,12 +8,18 @@ import { findAllPosts, searchPost } from '../../../services/PostService';
 import {
   BannerHome,
   BannerImage,
+  ButtonLoadMore,
   ContainerPosts,
-  ContentBody, Menu, Post, PostCard, PostsNotFound, SearchBar, Title } from './Style';
+  ContentBody,
+  LoadMore, Menu, Post, PostCard, PostsNotFound, SearchBar, Title } from './Style';
 
 export function Posts() {
   const [posts, setPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [itemsToShow, setItemsToShow] = useState(10);
+
+  // Load data when click on button load more
+  const loadMore = () => setItemsToShow((prev) => prev + 10);
 
   const handleSearch = async () => {
     const post = await searchPost(searchQuery);
@@ -60,7 +66,7 @@ export function Posts() {
         </SearchBar>
       </Menu>
       <Post>
-        {posts.map((post: any) => (
+        {posts.slice(0, itemsToShow).map((post: any) => (
           <PostCard key={ post.id }>
             <h3>{post.title}</h3>
             <div>
@@ -99,6 +105,11 @@ export function Posts() {
             </span>
           </PostCard>
         ))}
+        <LoadMore>
+          {posts && itemsToShow < posts.length && (
+            <ButtonLoadMore onClick={ loadMore }>More posts</ButtonLoadMore>
+          )}
+        </LoadMore>
         <PostsNotFound>
           {posts.length === 0 && <h2>No posts found!</h2>}
         </PostsNotFound>
