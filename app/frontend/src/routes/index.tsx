@@ -5,7 +5,6 @@ import { Home } from '../pages/Home/Home';
 import { SinglePost } from '../components/Posts/SinglePost/SinglePost';
 import { EditPost } from '../components/User/EditPost/EditPost';
 import { CreatePost } from '../components/User/CreatePost/CreatePost';
-import { Categories } from '../components/Categories/Categories';
 import { UserPosts } from '../components/User/UserPost/UserPost';
 import { Profile } from '../pages/Profile/Profile';
 import { LoginPage } from '../pages/Login/LoginPage';
