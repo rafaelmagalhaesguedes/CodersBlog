@@ -1,5 +1,6 @@
 /* eslint-disable max-params */
 import { PostType } from '../types/PostType';
+import { getCache, setCache } from './CasheService';
 import { HOST } from './ApiService';
 
 const headers = {
@@ -64,18 +65,38 @@ export const updatePost = async (
 };
 
 export const findAllPosts = async () => {
+  //
+  let data = getCache();
+
+  if (data) {
+    return data;
+  }
+
   const res = await fetch(`${HOST}/post`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
   });
-  let data = await res.json();
+  //
+  data = await res.json();
   data = data.sort((a: PostType, b: PostType) => b.id - a.id);
+
+  // Update cache
+  setCache(data);
+
   return data;
 };
 
 export const searchPost = async (searchQuery: string) => {
+  //
+  const dataCashed = getCache();
+
+  if (dataCashed) {
+    return dataCashed.filter((post: PostType) => post.title
+      .toLowerCase().includes(searchQuery.toLowerCase()));
+  }
+
   const res = await fetch(`${HOST}/post/search?q=${searchQuery}`, {
     method: 'GET',
     headers: {
@@ -86,6 +107,8 @@ export const searchPost = async (searchQuery: string) => {
   let data = await res.json();
   data = data.sort((a: PostType, b: PostType) => b.id - a.id);
   console.log(data);
+
+  setCache(data);
 
   return data;
 };
