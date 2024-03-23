@@ -4,6 +4,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../interfaces/AuthContext';
 import { LoginType } from '../types/LoginType';
 import { api } from '../services/ApiService';
+import { isTokenDenied } from '../services/CasheService';
 
 const Auth = createContext<AuthContext>({} as AuthContext);
 
@@ -26,6 +27,29 @@ function AuthProvider({ children }: any) {
     loadStorageData();
   }, []);
 
+  const fetchUser = async (token: string, email: string) => {
+    const userData = await api.get('/user', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const loggedInUser = userData.data.find((el: LoginType) => el.email === email);
+
+    if (!loggedInUser) {
+      console.log('User not found in users array');
+      throw new Error('User not found in users array');
+    }
+
+    return loggedInUser;
+  };
+
+  const storeUser = (users: LoginType, token: string) => {
+    setUser(users);
+    localStorage.setItem('@Auth:access_token', token);
+    localStorage.setItem('@Auth:user', JSON.stringify(users));
+  };
+
   const Login = async ({ email, password }: LoginType) => {
     setLoading(true);
     try {
@@ -34,23 +58,18 @@ function AuthProvider({ children }: any) {
         password,
       });
 
-      const userData = await api.get('/user', {
-        headers: {
-          Authorization: `Bearer ${res.data.token}`,
-        },
-      });
-
-      const loggedInUser = userData.data.find((el: LoginType) => el.email === email);
-
-      if (!loggedInUser) {
-        console.log('User not found in users array');
-        throw new Error('User not found in users array');
+      if (isTokenDenied(res.data.token)) {
+        console.log('Token denied');
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Invalid token!',
+        });
       }
 
-      setUser(loggedInUser);
+      const loggedInUser = await fetchUser(res.data.token, email);
 
-      localStorage.setItem('@Auth:access_token', res.data.token);
-      localStorage.setItem('@Auth:user', JSON.stringify(loggedInUser));
+      storeUser(loggedInUser, res.data.token);
 
       navigate('/');
     } catch (err) {
