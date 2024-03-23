@@ -20,7 +20,6 @@ class LoginRoutes {
     //
     this.router.get(
       '/',
-      Authenticate,
       (req: Request, res: Response) => this.categoriesController.findAllCategories(req, res),
     );
 
