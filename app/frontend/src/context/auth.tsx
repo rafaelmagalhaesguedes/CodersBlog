@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../interfaces/AuthContext';
 import { LoginType } from '../types/LoginType';
 import { api } from '../services/ApiService';
-import { isTokenDenied } from '../services/CasheService';
+import { isTokenDenied } from '../services/CacheService';
 
 const Auth = createContext<AuthContext>({} as AuthContext);
 

@@ -1,3 +1,4 @@
+//
 let cache: any = null;
 let cacheTimestamp: number = 0;
 const CACHE_VALIDITY = 5 * 60 * 1000; // Cache is valid for 5 minutes

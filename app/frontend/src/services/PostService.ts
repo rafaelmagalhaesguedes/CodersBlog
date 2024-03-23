@@ -1,6 +1,6 @@
 /* eslint-disable max-params */
 import { PostType } from '../types/PostType';
-import { getCache, setCache } from './CasheService';
+import { getCache, setCache } from './CacheService';
 import { HOST } from './ApiService';
 
 const headers = {
