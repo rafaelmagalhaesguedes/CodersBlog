@@ -33,6 +33,7 @@ export function Profile() {
         <p>
           <strong>
             User:
+            {' '}
           </strong>
           {editing
             ? <input
@@ -43,6 +44,7 @@ export function Profile() {
         <p>
           <strong>
             Email:
+            {' '}
           </strong>
           {editing
             ? <input
