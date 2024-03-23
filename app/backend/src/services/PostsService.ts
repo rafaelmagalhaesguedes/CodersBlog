@@ -6,6 +6,8 @@ import { ServiceResponse } from '../utils/ServiceResponse';
 
 export default class PostsService {
   //
+  private postsCache: IPosts[] | null = null;
+
   constructor(
     private categoriesModel = new CategoriesModel(),
     private postsModel = new PostsModel(),
@@ -29,12 +31,17 @@ export default class PostsService {
   }
 
   public async getPosts(): Promise<ServiceResponse<IPosts[]>> {
-    //
+    if (this.postsCache) {
+      return { status: 'SUCCESSFUL', data: this.postsCache };
+    }
+
     const posts = await this.postsModel.findAll();
 
     if (!posts) {
       return { status: 'NOT_FOUND', data: { message: 'Posts not found!' } };
     }
+
+    this.postsCache = posts;
 
     return { status: 'SUCCESSFUL', data: posts };
   }
