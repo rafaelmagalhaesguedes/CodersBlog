@@ -4,7 +4,7 @@ const express_1 = require("express");
 const UserController_1 = require("../controllers/UserController");
 const UserMiddleware_1 = require("../middlewares/UserMiddleware");
 const AuthMiddleware_1 = require("../middlewares/AuthMiddleware");
-class LoginRoutes {
+class UserRoutes {
     constructor() {
         //
         this.router = (0, express_1.Router)();
@@ -22,5 +22,5 @@ class LoginRoutes {
         this.router.delete('/me', AuthMiddleware_1.default, (req, res) => this.userController.deleteUser(req, res));
     }
 }
-exports.default = new LoginRoutes().router;
+exports.default = new UserRoutes().router;
 //# sourceMappingURL=UserRoutes.js.map

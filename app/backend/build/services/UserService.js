@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 //
 const bcript = require("bcrypt");
 const UserModel_1 = require("../models/UserModel");
-class LoginService {
+class UserService {
     //
     constructor(userModel = new UserModel_1.default()) {
         this.userModel = userModel;
@@ -50,5 +50,5 @@ class LoginService {
         return { status: 'SUCCESSFUL', data: { message: 'User deleted!' } };
     }
 }
-exports.default = LoginService;
+exports.default = UserService;
 //# sourceMappingURL=UserService.js.map
