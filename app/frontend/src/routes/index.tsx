@@ -30,9 +30,8 @@ export function AppRoutes() {
         <Route path="/single-post/:id" element={ <SinglePost /> } />
         {signed && (
           <>
-            <Route path="/edit-post/:id" element={ <EditPost /> } />
             <Route path="/create-post" element={ <CreatePost /> } />
-            <Route path="/categories" element={ <Categories /> } />
+            <Route path="/edit-post/:id" element={ <EditPost /> } />
             <Route path="/user-posts" element={ <UserPosts /> } />
             <Route path="/profile" element={ <Profile /> } />
           </>
