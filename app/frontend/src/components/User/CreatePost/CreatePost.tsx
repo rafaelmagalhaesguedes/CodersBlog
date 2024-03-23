@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaArrowLeft, FaBookOpen } from 'react-icons/fa';
 import { usePost } from '../../../hooks/usePost';
 import { CreatePostButton, CreatePostContainer, MenuBody } from './Style';
+import { Loading } from '../../Loading/Loading';
 
 export function CreatePost() {
   const {
@@ -22,6 +23,10 @@ export function CreatePost() {
   useEffect(() => {
     fetchCategories();
   }, [fetchCategories]);
+
+  if (!categories) {
+    return <Loading />;
+  }
 
   return (
     <CreatePostContainer>
@@ -66,20 +71,22 @@ export function CreatePost() {
         <h3>Categories</h3>
       </div>
       <ul>
-        {categories && categories?.map((category: any) => (
+        {categories.map((category: any) => (
           <li className="tags" key={ category.id }>
-            <input
-              type="checkbox"
-              id={ `category-${category.id}` }
-              value={ category.id }
-              checked={ selectedCategories.includes(category.id) }
-              onChange={ handleCheckboxChange }
-            />
-            <label htmlFor={ `category-${category.id}` }>{category.name}</label>
+            <label htmlFor={ `category-${category.id}` }>
+              {category.name}
+              <input
+                type="checkbox"
+                id={ `category-${category.id}` }
+                value={ category.id }
+                checked={ selectedCategories.includes(category.id) }
+                onChange={ handleCheckboxChange }
+              />
+            </label>
           </li>
         ))}
       </ul>
-      <CreatePostButton onClick={ handleCreatePost }>Create Post</CreatePostButton>
+      <CreatePostButton onClick={ handleCreatePost }>Create</CreatePostButton>
     </CreatePostContainer>
   );
 }
