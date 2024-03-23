@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Loading } from '../../Loading/Loading';
 import { formatDate } from '../../../utils/formatDate';
 import { trimContent } from '../../../utils/trimContent';
-import { findAllPosts, searchPost } from '../../../services/PostService';
 import Banner from '../../../assets/img/coffeeandcode.jpg';
+import { findAllPosts, searchPost } from '../../../services/PostService';
 import {
   BannerHome,
   BannerImage,
-  ContainerPosts, ContentBody, Menu, Post, PostCard, SearchBar, Title } from './Style';
-import { Loading } from '../../Loading/Loading';
+  ContainerPosts,
+  ContentBody, Menu, Post, PostCard, PostsNotFound, SearchBar, Title } from './Style';
 
 export function Posts() {
   const [posts, setPosts] = useState([]);
@@ -98,6 +99,9 @@ export function Posts() {
             </span>
           </PostCard>
         ))}
+        <PostsNotFound>
+          {posts.length === 0 && <h2>No posts found!</h2>}
+        </PostsNotFound>
       </Post>
     </ContainerPosts>
   );

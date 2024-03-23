@@ -187,3 +187,17 @@ export const ContentBody = styled.div`
     }
   }
 `;
+
+export const PostsNotFound = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+
+  h2 {
+    font-size: 1.5rem;
+    color: #000;
+  }
+`;
