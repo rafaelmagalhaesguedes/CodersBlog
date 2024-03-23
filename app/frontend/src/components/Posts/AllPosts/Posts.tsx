@@ -16,10 +16,9 @@ import {
 export function Posts() {
   const [posts, setPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [itemsToShow, setItemsToShow] = useState(10);
+  const [itemsToShow, setItemsToShow] = useState(5);
 
-  // Load data when click on button load more
-  const loadMore = () => setItemsToShow((prev) => prev + 10);
+  const loadMore = () => setItemsToShow((prev) => prev + 5);
 
   const handleSearch = async () => {
     const post = await searchPost(searchQuery);
