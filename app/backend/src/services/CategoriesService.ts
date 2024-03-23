@@ -3,7 +3,7 @@ import CategoriesModel from '../models/CategoriesModel';
 import { ServiceResponse } from '../utils/ServiceResponse';
 import { ICategories } from '../interfaces/Categories/ICategories';
 
-class CategoriesService {
+export default class CategoriesService {
   //
   constructor(private categoriesModel = new CategoriesModel()) { }
 
@@ -32,5 +32,3 @@ class CategoriesService {
     return { status: 'CREATED', data: newCategory };
   }
 }
-
-export default CategoriesService;

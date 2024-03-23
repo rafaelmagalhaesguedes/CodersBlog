@@ -5,7 +5,7 @@ import { IUserModel } from '../interfaces/User/IUserModel';
 import { ServiceMessage, ServiceResponse } from '../utils/ServiceResponse';
 import IUser from '../interfaces/User/IUser';
 
-export default class LoginService {
+export default class UserService {
   //
   constructor(private userModel: IUserModel = new UserModel()) { }
 

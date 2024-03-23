@@ -3,7 +3,7 @@ import UserController from '../controllers/UserController';
 import UserMiddleware from '../middlewares/UserMiddleware';
 import AuthMiddleware from '../middlewares/AuthMiddleware';
 
-class LoginRoutes {
+class UserRoutes {
   //
   public router: Router;
   
@@ -47,4 +47,4 @@ class LoginRoutes {
   }
 }
 
-export default new LoginRoutes().router;
+export default new UserRoutes().router;

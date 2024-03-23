@@ -4,7 +4,7 @@ import PostsModel from '../models/PostsModel';
 import CategoriesModel from '../models/CategoriesModel';
 import { ServiceResponse } from '../utils/ServiceResponse';
 
-export default class LoginService {
+export default class PostsService {
   //
   constructor(
     private categoriesModel = new CategoriesModel(),

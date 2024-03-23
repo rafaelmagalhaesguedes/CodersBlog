@@ -3,7 +3,7 @@ import CategoriesController from '../controllers/CategoriesController';
 import Authenticate from '../middlewares/AuthMiddleware';
 import CategoriesMiddleware from '../middlewares/CategoriesMiddleware';
 
-class LoginRoutes {
+class CategoriesRoutes {
   //
   public router: Router;
   
@@ -31,4 +31,4 @@ class LoginRoutes {
   }
 }
 
-export default new LoginRoutes().router;
+export default new CategoriesRoutes().router;

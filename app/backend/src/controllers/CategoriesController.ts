@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import CategoriesService from '../services/CategoriesService';
 import statusCode from '../utils/StatusCode';
 
-class CategoriesController {
+export default class CategoriesController {
   //
   constructor(private categorieService = new CategoriesService()) { }
 
@@ -19,5 +19,3 @@ class CategoriesController {
     return res.status(statusCode(status)).json(data);
   }
 }
-
-export default CategoriesController;
