@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { formatDate } from '../../../utils/formatDate';
 import { trimContent } from '../../../utils/trimContent';
-import { useAuth } from '../../../context/auth';
-import { UserType } from '../../../types/UserType';
 import { findAllPosts, searchPost } from '../../../services/PostService';
 import Banner from '../../../assets/img/coffeeandcode.jpg';
 import {
@@ -14,7 +12,6 @@ import { Loading } from '../../Loading/Loading';
 
 export function Posts() {
   const [posts, setPosts] = useState([]);
-  const { user } = useAuth() as { user: UserType };
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = async () => {
@@ -28,7 +25,7 @@ export function Posts() {
       setPosts(post);
     };
     fetchPosts();
-  }, [user]);
+  }, []);
 
   if (!posts) {
     return <Loading />;

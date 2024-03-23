@@ -34,16 +34,6 @@ export const createPost = async (
   return res.json();
 };
 
-export const findAllPosts = async () => {
-  const res = await fetch(`${HOST}/post`, {
-    method: 'GET',
-    headers,
-  });
-  let data = await res.json();
-  data = data.sort((a: PostType, b: PostType) => b.id - a.id);
-  return data;
-};
-
 export const findPostById = async (id: number) => {
   const res = await fetch(`${HOST}/post/${id}`, {
     method: 'GET',
@@ -73,12 +63,29 @@ export const updatePost = async (
   throw new Error('Failed to update post');
 };
 
-export const searchPost = async (searchQuery: string) => {
-  const res = await fetch(`${HOST}/post/search?q=${searchQuery}`, {
+export const findAllPosts = async () => {
+  const res = await fetch(`${HOST}/post`, {
     method: 'GET',
-    headers,
+    headers: {
+      'Content-Type': 'application/json',
+    },
   });
   let data = await res.json();
   data = data.sort((a: PostType, b: PostType) => b.id - a.id);
+  return data;
+};
+
+export const searchPost = async (searchQuery: string) => {
+  const res = await fetch(`${HOST}/post/search?q=${searchQuery}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  //
+  let data = await res.json();
+  data = data.sort((a: PostType, b: PostType) => b.id - a.id);
+  console.log(data);
+
   return data;
 };

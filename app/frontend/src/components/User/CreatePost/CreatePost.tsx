@@ -21,7 +21,7 @@ export function CreatePost() {
 
   useEffect(() => {
     fetchCategories();
-  }, []);
+  }, [fetchCategories]);
 
   return (
     <CreatePostContainer>
@@ -66,7 +66,7 @@ export function CreatePost() {
         <h3>Categories</h3>
       </div>
       <ul>
-        {categories.map((category: any) => (
+        {categories && categories?.map((category: any) => (
           <li className="tags" key={ category.id }>
             <input
               type="checkbox"
