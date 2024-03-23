@@ -10,6 +10,7 @@ import {
   Category,
   ContainerPost, Content, MenuBody, PostCard, Published, Title } from './Style';
 import { useAuth } from '../../../context/auth';
+import { Loading } from '../../Loading/Loading';
 
 export function SinglePost() {
   const [post, setPost] = useState<any>({});
@@ -24,6 +25,10 @@ export function SinglePost() {
     };
     fetchPost();
   }, [id]);
+
+  if (!post) {
+    return <Loading />;
+  }
 
   return (
     <ContainerPost>

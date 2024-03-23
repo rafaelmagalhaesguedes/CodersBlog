@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import { FaArrowLeft, FaBookOpen } from 'react-icons/fa';
 import { findPostById, updatePost } from '../../../services/PostService';
 import { Container, Form, Button, MenuBody } from './Style';
+import { Loading } from '../../Loading/Loading';
 
 export function EditPost() {
   const { id } = useParams() as { id: any };
@@ -24,11 +25,7 @@ export function EditPost() {
   }, [id]);
 
   if (isLoading) {
-    return (
-      <Container>
-        <h1>Loading...</h1>
-      </Container>
-    );
+    return <Loading />;
   }
 
   const handleEdit = async (e: React.FormEvent) => {

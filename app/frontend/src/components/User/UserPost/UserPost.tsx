@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft, FaPlusCircle } from 'react-icons/fa';
+import { Loading } from '../../Loading/Loading';
 import { useUser } from '../../../hooks/useUser';
 import { formatDate } from '../../../utils/formatDate';
 import { trimContent } from '../../../utils/trimContent';
@@ -24,7 +25,11 @@ export function UserPosts() {
 
   useEffect(() => {
     fetchUserPosts();
-  }, []);
+  }, [fetchUserPosts]);
+
+  if (!userPosts) {
+    return <Loading />;
+  }
 
   return (
     <UserPostsContainer>
