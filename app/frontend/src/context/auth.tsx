@@ -4,7 +4,6 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../interfaces/AuthContext';
 import { LoginType } from '../types/LoginType';
 import { api } from '../services/ApiService';
-import { isTokenDenied } from '../services/CacheService';
 
 const Auth = createContext<AuthContext>({} as AuthContext);
 
@@ -27,15 +26,11 @@ function AuthProvider({ children }: any) {
     loadStorageData();
   }, []);
 
-  const fetchUser = async (token: string, email: string) => {
-    const userData = await api.get('/user', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+  const fetchUser = async (email: string) => {
+    //
+    const userData = await api.get('/user');
 
     const loggedInUser = userData.data.find((el: LoginType) => el.email === email);
-
     if (!loggedInUser) {
       console.log('User not found in users array');
       throw new Error('User not found in users array');
@@ -51,36 +46,17 @@ function AuthProvider({ children }: any) {
   };
 
   const Login = async ({ email, password }: LoginType) => {
-    setLoading(true);
     try {
+      setLoading(true);
       const res = await api.post<{ token: string }>('/login', {
         email,
         password,
       });
-
-      if (isTokenDenied(res.data.token)) {
-        console.log('Token denied');
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Invalid token!',
-        });
-      }
-
-      const loggedInUser = await fetchUser(res.data.token, email);
-
+      const loggedInUser = await fetchUser(email);
       storeUser(loggedInUser, res.data.token);
-
       navigate('/');
     } catch (err) {
-      const newError = err as Error;
-      console.log('Error login: ', newError.message);
-      console.error('Error login: ', err);
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Invalid email or password!',
-      });
+      Swal.fire({ icon: 'error', title: 'Oops...', text: 'Invalid email or password!' });
     } finally {
       setLoading(false);
     }
