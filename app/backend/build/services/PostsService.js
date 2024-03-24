@@ -3,11 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const PostsModel_1 = require("../models/PostsModel");
 const CategoriesModel_1 = require("../models/CategoriesModel");
 class PostsService {
+    //
     constructor(categoriesModel = new CategoriesModel_1.default(), postsModel = new PostsModel_1.default()) {
         this.categoriesModel = categoriesModel;
         this.postsModel = postsModel;
-        //
-        this.postsCache = null;
     }
     async createPost(data, userId) {
         //
@@ -22,14 +21,11 @@ class PostsService {
         return { status: 'CREATED', data: post };
     }
     async getPosts() {
-        if (this.postsCache) {
-            return { status: 'SUCCESSFUL', data: this.postsCache };
-        }
+        //
         const posts = await this.postsModel.findAll();
         if (!posts) {
             return { status: 'NOT_FOUND', data: { message: 'Posts not found!' } };
         }
-        this.postsCache = posts;
         return { status: 'SUCCESSFUL', data: posts };
     }
     async getPostById(id) {
