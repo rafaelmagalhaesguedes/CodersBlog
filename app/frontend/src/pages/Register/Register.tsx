@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { BiArrowBack } from 'react-icons/bi';
 import { useRegister } from '../../hooks/useRegister';
 import { RegisterContainer, RegisterForm } from './Style';
 
@@ -62,6 +63,11 @@ export function Register() {
           Created your account?
           {' '}
           <Link to="/login">Sign in now!</Link>
+          <br />
+          <div className="back-icon">
+            <BiArrowBack size={ 20 } />
+            <Link to="/"> Back to home</Link>
+          </div>
         </span>
       </RegisterForm>
     </RegisterContainer>

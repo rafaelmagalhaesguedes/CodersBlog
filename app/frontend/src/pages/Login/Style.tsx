@@ -124,5 +124,13 @@ export const LoginBox = styled.div`
             color: #fff;
             font-weight: 700;
         }
+
+        .back-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            gap: 5px;
+        }
     }
 `;

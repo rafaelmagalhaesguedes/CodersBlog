@@ -1,5 +1,7 @@
+/* eslint-disable react/jsx-max-depth */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { BiArrowBack } from 'react-icons/bi';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useAuth } from '../../context/auth';
 import { Info, LoginBox, LoginContainer } from './Style';
@@ -57,6 +59,11 @@ function LoginPage() {
             Don&apos;t have an account?
             {' '}
             <Link to="/register">Register now!</Link>
+            <br />
+            <div className="back-icon">
+              <BiArrowBack size={ 20 } />
+              <Link to="/"> Back to home</Link>
+            </div>
           </span>
         </form>
       </LoginBox>

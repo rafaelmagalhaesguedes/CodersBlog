@@ -93,5 +93,13 @@ export const RegisterForm = styled.div`
     font-size: 14px;
     margin-top: 10px;
     align-self: center;
+
+    .back-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+      gap: 5px;
+    }
   }
 `;
