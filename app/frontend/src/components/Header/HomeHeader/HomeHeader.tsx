@@ -30,9 +30,8 @@ export function HomeHeader() {
         </Logo>
         <SignUp>
           <Link to="/">Posts</Link>
-          <Link to="https://www.linkedin.com/in/rafael-magalh%C3%A3es-guedes/" target="_blank">LinkedIn</Link>
-          <Link to="https://github.com/rafaelmagalhaesguedes" target="_blank">GitHub</Link>
           <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
         </SignUp>
       </HeaderContainer>
     </>
