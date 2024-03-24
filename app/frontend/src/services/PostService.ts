@@ -16,32 +16,25 @@ export const createPost = async (
 ) => {
   const token = localStorage.getItem('@Auth:access_token');
 
-  if (!token) {
-    throw new Error('No authorization token found');
-  }
+  if (!token) throw new Error('No authorization token found');
 
   const res = await fetch(`${HOST}/post`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({
-      title,
-      content,
-      image,
-      categoryIds,
-    }),
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ title, content, image, categoryIds }),
   });
 
-  if (res.status !== 201) {
-    console.log(res.status);
-    const data = await res.json();
-    console.log(data);
-    throw new Error(data.message);
-  }
+  if (res.status !== 201) throw new Error('Error creating post');
 
-  return res.json();
+  const newPost = await res.json();
+
+  const cache = getCache();
+
+  const updatedCache = [newPost, ...cache];
+
+  setCache(updatedCache);
+
+  return newPost;
 };
 
 export const findPostById = async (id: number) => {
