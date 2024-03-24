@@ -27,7 +27,6 @@ class UserRoutes {
     //
     this.router.get(
       '/',
-      AuthMiddleware,
       (req: Request, res: Response) => this.userController.findAllUsers(req, res),
     );
 
