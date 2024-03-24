@@ -1,7 +1,5 @@
 import { HOST } from './ApiService';
-import { PostType } from '../types/PostType';
 import { UserType } from '../types/UserType';
-import { getCache, setCache } from './CacheService';
 
 const fetchWithAuth = async (url: string, options: RequestInit) => {
   //
@@ -57,23 +55,11 @@ export const editUserPost = async (postId: number, data: any) => {
     throw new Error(`Failed to update post: ${response.status} ${response.statusText}`);
   }
 
-  const cache = getCache();
-  const updatedCache = cache
-    .map((post: PostType) => (post.id === postId ? { ...post, ...data } : post));
-  setCache(updatedCache);
-
   return response.json();
 };
 
 export const deleteUserPost = async (postId: number) => {
   //
   const response = await fetchWithAuth(`${HOST}/post/${postId}`, { method: 'DELETE' });
-
-  if (response.ok) {
-    const cache = getCache();
-    const updatedCache = cache.filter((post: PostType) => post.id !== postId);
-    setCache(updatedCache);
-  }
-
   return response;
 };

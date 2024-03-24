@@ -1,6 +1,5 @@
 /* eslint-disable max-params */
 import { PostType } from '../types/PostType';
-import { getCache, setCache } from './CacheService';
 import { HOST } from './ApiService';
 
 const headers = {
@@ -14,6 +13,7 @@ export const createPost = async (
   image: string,
   categoryIds: number[],
 ) => {
+  //
   const token = localStorage.getItem('@Auth:access_token');
 
   if (!token) throw new Error('No authorization token found');
@@ -26,15 +26,7 @@ export const createPost = async (
 
   if (res.status !== 201) throw new Error('Error creating post');
 
-  const newPost = await res.json();
-
-  const cache = getCache();
-
-  const updatedCache = [newPost, ...cache];
-
-  setCache(updatedCache);
-
-  return newPost;
+  return res.json();
 };
 
 export const findPostById = async (id: number) => {
@@ -52,6 +44,7 @@ export const updatePost = async (
   content: string,
   image: string,
 ) => {
+  //
   const data = { title, content, image };
 
   const response = await fetch(`${HOST}/post/${postId}`, {
@@ -60,20 +53,12 @@ export const updatePost = async (
     body: JSON.stringify(data),
   });
 
-  if (response.ok) {
-    return true;
-  }
-  throw new Error('Failed to update post');
+  if (!response.ok) throw new Error('Failed to update post');
+  return true;
 };
 
 export const findAllPosts = async () => {
   //
-  let data = getCache();
-
-  if (data) {
-    return data;
-  }
-
   const res = await fetch(`${HOST}/post`, {
     method: 'GET',
     headers: {
@@ -81,24 +66,14 @@ export const findAllPosts = async () => {
     },
   });
   //
-  data = await res.json();
+  let data = await res.json();
   data = data.sort((a: PostType, b: PostType) => b.id - a.id);
-
-  // Update cache
-  setCache(data);
 
   return data;
 };
 
 export const searchPost = async (searchQuery: string) => {
   //
-  const dataCashed = getCache();
-
-  if (dataCashed) {
-    return dataCashed.filter((post: PostType) => post.title
-      .toLowerCase().includes(searchQuery.toLowerCase()));
-  }
-
   const res = await fetch(`${HOST}/post/search?q=${searchQuery}`, {
     method: 'GET',
     headers: {
@@ -108,9 +83,6 @@ export const searchPost = async (searchQuery: string) => {
   //
   let data = await res.json();
   data = data.sort((a: PostType, b: PostType) => b.id - a.id);
-  console.log(data);
-
-  setCache(data);
 
   return data;
 };
