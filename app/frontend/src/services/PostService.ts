@@ -14,11 +14,17 @@ export const createPost = async (
   image: string,
   categoryIds: number[],
 ) => {
+  const token = localStorage.getItem('@Auth:access_token');
+
+  if (!token) {
+    throw new Error('No authorization token found');
+  }
+
   const res = await fetch(`${HOST}/post`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('@Auth:access_token')}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       title,
