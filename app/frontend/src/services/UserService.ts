@@ -47,6 +47,7 @@ export const getUserPosts = async () => {
 };
 
 export const editUserPost = async (postId: number, data: any) => {
+  //
   const response = await fetchWithAuth(`${HOST}/post/${postId}`, {
     method: 'PUT',
     body: JSON.stringify(data),
@@ -55,6 +56,11 @@ export const editUserPost = async (postId: number, data: any) => {
   if (!response.ok) {
     throw new Error(`Failed to update post: ${response.status} ${response.statusText}`);
   }
+
+  const cache = getCache();
+  const updatedCache = cache
+    .map((post: PostType) => (post.id === postId ? { ...post, ...data } : post));
+  setCache(updatedCache);
 
   return response.json();
 };
