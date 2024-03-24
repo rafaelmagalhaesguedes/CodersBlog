@@ -7,11 +7,7 @@ export const RegisterContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
-
-  background-image: url('src/assets/images/bg1.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  background-color: #1a1b1c;
 `;
 
 export const RegisterForm = styled.div`
@@ -20,6 +16,7 @@ export const RegisterForm = styled.div`
   align-items: center;
   gap: 10px;
   width: 30%;
+  color: #fff;
 
   input {
     width: 100%;
