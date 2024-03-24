@@ -13,7 +13,7 @@ export function HomeHeader() {
   return (
     <>
       <MenuTop>
-        <span>Blogs API</span>
+        <span>Coffee and Code</span>
         <div>
           <Link to="https://github.com/rafaelmagalhaesguedes" target="_blank">
             <FaGithub size={ 20 } color="#fff" />
