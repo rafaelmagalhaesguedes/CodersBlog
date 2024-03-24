@@ -14,7 +14,7 @@ class PostsRoutes {
     }
     initializeRoutes() {
         //
-        this.router.post('/', PostsMiddleware_1.default, (req, res) => this.postsController.createPost(req, res));
+        this.router.post('/', AuthMiddleware_1.default, PostsMiddleware_1.default, (req, res) => this.postsController.createPost(req, res));
         this.router.get('/search', (req, res) => this.postsController.searchPost(req, res));
         this.router.get('/user', AuthMiddleware_1.default, (req, res) => this.postsController.getPostsByUser(req, res));
         this.router.get('/', (req, res) => this.postsController.getPosts(req, res));
