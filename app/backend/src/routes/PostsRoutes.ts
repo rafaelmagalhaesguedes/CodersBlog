@@ -21,7 +21,7 @@ class PostsRoutes {
     //
     this.router.post(
       '/',
-      PostValidator,
+      Authenticate, PostValidator,
       (req: Request, res: Response) => this.postsController.createPost(req, res),
     );
 
