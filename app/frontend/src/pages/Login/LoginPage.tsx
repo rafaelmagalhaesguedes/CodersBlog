@@ -18,7 +18,7 @@ function LoginPage() {
       <Info>
         <h1>Coffee and Code!</h1>
         <p>
-          Admin panel for the Coffee and Code blog.
+          User panel for the Coffee and Code blog.
         </p>
       </Info>
       <LoginBox>
