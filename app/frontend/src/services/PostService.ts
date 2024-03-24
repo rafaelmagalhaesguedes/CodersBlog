@@ -16,7 +16,10 @@ export const createPost = async (
 ) => {
   const res = await fetch(`${HOST}/post`, {
     method: 'POST',
-    headers,
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('@Auth:access_token')}`,
+    },
     body: JSON.stringify({
       title,
       content,
