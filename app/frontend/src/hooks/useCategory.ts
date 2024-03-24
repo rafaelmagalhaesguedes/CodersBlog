@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   createCategory,
   getCategories,
@@ -10,6 +10,10 @@ import {
 export function useCategory() {
   const [name, setName] = useState('');
   const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   const fetchCategories = async () => {
     const data = await getCategories();

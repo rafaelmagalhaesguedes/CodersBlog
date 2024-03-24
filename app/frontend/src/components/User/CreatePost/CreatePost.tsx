@@ -22,7 +22,7 @@ export function CreatePost() {
 
   useEffect(() => {
     fetchCategories();
-  }, [fetchCategories]);
+  }, []);
 
   if (!categories) {
     return <Loading />;
