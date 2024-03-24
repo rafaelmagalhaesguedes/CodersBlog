@@ -1,7 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//
-const bcript = require("bcrypt");
 const UserModel_1 = require("../models/UserModel");
 class UserService {
     //
@@ -14,8 +12,6 @@ class UserService {
         if (user) {
             return { status: 'CONFLICT', data: { message: 'User already exists!' } };
         }
-        const salt = bcript.genSaltSync(10);
-        data.password = bcript.hashSync(data.password, salt);
         const newUser = await this.userModel.create(data);
         if (!newUser) {
             return { status: 'INTERNAL_ERROR', data: { message: 'User not created!' } };

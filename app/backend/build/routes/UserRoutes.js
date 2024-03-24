@@ -15,7 +15,7 @@ class UserRoutes {
         //
         this.router.post('/', UserMiddleware_1.default, (req, res) => this.userController.createUser(req, res));
         //
-        this.router.get('/', AuthMiddleware_1.default, (req, res) => this.userController.findAllUsers(req, res));
+        this.router.get('/', (req, res) => this.userController.findAllUsers(req, res));
         //
         this.router.get('/:id', AuthMiddleware_1.default, (req, res) => this.userController.getUserById(req, res));
         //
