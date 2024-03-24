@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useAuth } from '../../context/auth';
 import { Info, LoginBox, LoginContainer } from './Style';
@@ -51,6 +52,11 @@ function LoginPage() {
             )}
           </div>
           <button type="submit">Access</button>
+          <span className="register">
+            Don&apos;t have an account?
+            {' '}
+            <Link to="/register">Register now!</Link>
+          </span>
         </form>
       </LoginBox>
     </LoginContainer>

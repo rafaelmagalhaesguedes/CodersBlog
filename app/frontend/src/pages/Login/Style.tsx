@@ -41,8 +41,12 @@ export const Info = styled.div`
 export const LoginBox = styled.div`
     display: flex;
     flex-direction: column;
-
     width: 40%;
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
 
     h2 {
         margin-bottom: 20px;
@@ -100,11 +104,18 @@ export const LoginBox = styled.div`
         cursor: pointer;
     }
 
-    span {
-        font-size: 1rem;
+    .register {
+        width: 300px;
+        text-align: center;
+        font-size: 0.8rem;
         font-weight: 300;
         line-height: 2rem;
         letter-spacing: 1px;
-        margin-top: 30px;
+        color: #fff;
+
+        a {
+            color: #fff;
+            font-weight: 700;
+        }
     }
 `;
