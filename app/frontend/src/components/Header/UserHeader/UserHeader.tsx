@@ -52,9 +52,9 @@ export function UserHeader() {
           <img src={ LogoImage } alt="Coffee and Code" />
         </Logo>
         <Nav>
-          <a href="/">All Posts</a>
-          <a href="/create-post">New Post</a>
-          <a href="/user-posts">My Posts</a>
+          <Link to="/">All Posts</Link>
+          <Link to="/create-post">New Post</Link>
+          <Link to="/user-posts">My Posts</Link>
         </Nav>
         <UserInfo>
           <p>
@@ -75,10 +75,16 @@ export function UserHeader() {
           {isOpen && (
             <DropdownMenu>
               <DropdownItem>
-                <Link to="/profile" onClick={ closeMenu }>Profile</Link>
+                <Link to="/" onClick={ closeMenu }>All Posts</Link>
+              </DropdownItem>
+              <DropdownItem>
+                <Link to="/create-post" onClick={ closeMenu }>New Post</Link>
               </DropdownItem>
               <DropdownItem>
                 <Link to="/user-posts" onClick={ closeMenu }>My Posts</Link>
+              </DropdownItem>
+              <DropdownItem>
+                <Link to="/profile" onClick={ closeMenu }>Profile</Link>
               </DropdownItem>
               <DropdownItem>
                 <Link to="/" onClick={ handleLogout }>
