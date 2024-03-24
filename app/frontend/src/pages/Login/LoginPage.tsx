@@ -24,6 +24,7 @@ function LoginPage() {
       </Info>
       <LoginBox>
         <h2>Login</h2>
+        <span className="border-title" />
         <form onSubmit={ handleLogin }>
           <input
             onChange={ (e) => {

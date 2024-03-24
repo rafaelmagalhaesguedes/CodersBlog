@@ -48,6 +48,13 @@ export const LoginBox = styled.div`
         flex-direction: column;
     }
 
+    .border-title {
+      width: 5%;
+      border: 3px solid #fff;
+      margin-top: -20px;
+      margin-bottom: 20px;
+    }
+
     h2 {
         margin-bottom: 20px;
         font-size: 2rem;
