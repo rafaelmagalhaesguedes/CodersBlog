@@ -22,7 +22,7 @@ export function HomeHeader() {
   return (
     <>
       <MenuTop>
-        <span>Blogs API</span>
+        <span>Web Technology Blog</span>
         <div>
           <Link to="https://github.com/rafaelmagalhaesguedes" target="_blank">
             <FaGithub size={ 20 } color="#fff" />
