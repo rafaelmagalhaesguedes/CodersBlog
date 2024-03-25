@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Poppins', sans-serif;
-    background: #fff;
+    background: #202020;
   }
 
   table {
