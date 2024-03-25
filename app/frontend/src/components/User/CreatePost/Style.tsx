@@ -65,6 +65,11 @@ export const CreatePostContainer = styled.div`
   label {
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 10px;
+  }
 `;
 
 export const MenuBody = styled.div`
@@ -90,6 +95,14 @@ export const MenuBody = styled.div`
     color: #000;
     font-weight: 400;
   }
+
+  @media (max-width: 768px) {
+    margin-top: 20px;
+
+    h3 {
+      display: none;
+    }
+  }
 `;
 
 export const CreatePostButton = styled.button`
@@ -104,4 +117,8 @@ export const CreatePostButton = styled.button`
   font-size: 1.2rem;
   font-weight: 500;
   align-self: flex-end;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
