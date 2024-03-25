@@ -17,6 +17,10 @@ export const UserPostsContainer = styled.div`
       margin-bottom: 10px;
     }
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const MenuBody = styled.div`
@@ -65,6 +69,11 @@ export const PostHeader = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  div {
+    display: flex;
+    gap: 10px;
+  }
+
   button {
     padding: 5px 10px;
     border-radius: 5px;
@@ -78,6 +87,15 @@ export const PostHeader = styled.div`
     color: #fff;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    gap: 10px;
+
+    button {
+      width: 100%;
+    }
   }
 `;
 
@@ -120,6 +138,12 @@ export const PostFooter = styled.div`
       letter-spacing: 1px;
       color: #222;
     }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 5px;
+    align-items: start;
   }
 `;
 
