@@ -9,6 +9,10 @@ export const ContainerPost = styled.div`
   padding: 1rem 2rem;
 
   background-color: #fff;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const MenuBody = styled.div`
@@ -33,6 +37,11 @@ export const MenuBody = styled.div`
     cursor: pointer;
     font-size: 16px;
   }
+  
+  @media (max-width: 768px) {
+    h3 {
+      display: none;
+    }
 }`;
 
 export const PostCard = styled.div`
@@ -44,6 +53,10 @@ export const PostCard = styled.div`
 export const Title = styled.h2`
   font-size: 2.3rem;
   margin: 1rem 0 0 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const Published = styled.div`
@@ -52,6 +65,12 @@ export const Published = styled.div`
   margin: 0.7rem 0 1rem 0;
   font-size: 0.9rem;
   gap: 3rem;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
 `;
 
 export const Content = styled.div`
@@ -69,6 +88,14 @@ export const Content = styled.div`
     margin: 1rem 0;
     border-radius: 5px;
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    img {
+      width: 100%;
+    }
+  }
 `;
 
 export const Card = styled.div`
@@ -80,6 +107,10 @@ export const Card = styled.div`
     letter-spacing: 0.5px;
     color: #333;
     font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    margin: 1rem 0 0 0;
   }
 `;
 
