@@ -8,6 +8,10 @@ export const LoginContainer = styled.div`
     height: 100vh;
     width: 100%;
     background-color: #1a1b1c;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
 `;
 
 export const Info = styled.div`
@@ -36,12 +40,25 @@ export const Info = styled.div`
         letter-spacing: 1px;
         color: #fff;
     }
+
+    @media (max-width: 768px) {
+        display: none;
+    }
 `;
 
 export const LoginBox = styled.div`
     display: flex;
     flex-direction: column;
     width: 40%;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 30px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
     form {
         display: flex;
@@ -54,7 +71,7 @@ export const LoginBox = styled.div`
       margin-top: -20px;
       margin-bottom: 20px;
     }
-
+    
     h2 {
         margin-bottom: 20px;
         font-size: 2rem;
@@ -119,7 +136,7 @@ export const LoginBox = styled.div`
         line-height: 2rem;
         letter-spacing: 1px;
         color: #fff;
-
+    
         a {
             color: #fff;
             font-weight: 700;

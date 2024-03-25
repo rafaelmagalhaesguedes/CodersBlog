@@ -25,9 +25,9 @@ function LoginPage() {
         </p>
       </Info>
       <LoginBox>
-        <h2>Login</h2>
-        <span className="border-title" />
         <form onSubmit={ handleLogin }>
+          <h2>Login</h2>
+          <span className="border-title" />
           <input
             onChange={ (e) => {
               setEmail(e.target.value);
