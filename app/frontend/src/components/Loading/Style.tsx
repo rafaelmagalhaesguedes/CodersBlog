@@ -9,7 +9,7 @@ export const ContainerSpinner = styled.div`
   align-items: center;
 
   h1 {
-    color: #f80;
+    color: #202020;
     font-size: 2rem;
     font-weight: 600;
     margin-top: 1rem;
@@ -23,7 +23,7 @@ const spin = keyframes`
 `;
 
 export const Spinner = styled.section`
-  border: 16px solid #f80;
+  border: 16px solid #202020;
   border-top: 16px solid #FFFFFF;
   border-radius: 50%;
   width: 150px;
