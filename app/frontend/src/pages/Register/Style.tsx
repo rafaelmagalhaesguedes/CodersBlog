@@ -18,6 +18,10 @@ export const RegisterForm = styled.div`
   width: 35%;
   color: #fff;
 
+  @media (max-width: 768px) {
+    width: 90%;
+  }
+
   .border-title {
     width: 5.5%;
     border: 3px solid #fff;
@@ -45,6 +49,12 @@ export const RegisterForm = styled.div`
     height: 40px;
   }
 
+  @media (max-width: 768px) {
+    .image input {
+      width: 70%;
+    }
+  }
+
   .image img {
     width: 100px;
     height: 100px;
@@ -64,6 +74,12 @@ export const RegisterForm = styled.div`
     line-height: 1.5;
     letter-spacing: 1.5px;
     font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    .image button {
+      width: 50%;
+    }
   }
 
   h1 {
@@ -102,7 +118,7 @@ export const RegisterForm = styled.div`
     color: #fff;
     cursor: pointer;
     margin: 10px 0;
-    font-size: 16px;
+    font-size: 18px;
     font-family: 'Roboto', sans-serif;
     line-height: 1.5;
     letter-spacing: 1.5px;
@@ -112,6 +128,7 @@ export const RegisterForm = styled.div`
   button:hover {
     background-color: #555;
     transition: 0.3s;
+    letter-spacing: 2px;
   }
 
   a {

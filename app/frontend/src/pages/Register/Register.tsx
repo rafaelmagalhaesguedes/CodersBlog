@@ -18,7 +18,6 @@ export function Register() {
     setPasswordConfirmation,
     handleRegister,
   } = useRegister();
-
   // Function to generate a random image and set it in the image input field
   const handleGenerateImage = async () => {
     const imageUrl = await avatarGenerate();
