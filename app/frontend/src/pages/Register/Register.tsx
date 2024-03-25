@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { BiArrowBack } from 'react-icons/bi';
 import { useRegister } from '../../hooks/useRegister';
 import { RegisterContainer, RegisterForm } from './Style';
+import { avatarGenerate } from '../../utils/avatarGenerator';
 
 export function Register() {
   const {
@@ -38,12 +39,16 @@ export function Register() {
             onChange={ (e) => setEmail(e.target.value) }
           />
         </div>
-        <input
-          type="text"
-          placeholder="Url image"
-          value={ image }
-          onChange={ (e) => setImage(e.target.value) }
-        />
+        <div className="image">
+          <input
+            type="text"
+            placeholder="Url image"
+            value={ image }
+            onChange={ (e) => setImage(e.target.value) }
+          />
+          <button onClick={ avatarGenerate }>Generate</button>
+          {image && <img src={ image } alt="Generated avatar" />}
+        </div>
         <div className="password">
           <input
             type="password"

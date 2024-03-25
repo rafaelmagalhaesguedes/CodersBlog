@@ -32,6 +32,40 @@ export const RegisterForm = styled.div`
     width: 100%;
   }
 
+  .image {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .image input {
+    width: 80%;
+    height: 40px;
+  }
+
+  .image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+
+  .image button {
+    width: 20%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16 px;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+  }
+
   h1 {
     font-size: 34px;
     align-self: flex-start;
