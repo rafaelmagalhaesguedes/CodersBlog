@@ -11,6 +11,10 @@ export const MenuTop = styled.div`
   align-items: center;
   padding-right: 15px;
 
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+
   a {
     color: #fff;
     text-decoration: none;
@@ -30,6 +34,24 @@ export const MenuTop = styled.div`
     letter-spacing: 1px;
     font-weight: 500;
   }
+
+  .title-desktop {
+    display: block;
+  }
+
+  .title-mobile {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .title-mobile {
+      display: block;
+    }
+
+    .title-desktop {
+      display: none;
+    }
+  }
 `;
 
 export const HeaderContainer = styled.header`
@@ -41,8 +63,9 @@ export const HeaderContainer = styled.header`
   height: 80px;
   margin: 0 auto;
 
-  @media (max-width: 1000px) {
-    justify-content: space-between;
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: space-evenly;
   }
 `;
 
@@ -109,6 +132,12 @@ export const Logo = styled.div`
     font-family: 'Rubik Dirt';
     letter-spacing: 1px;
   }
+
+  @media (max-width: 768px) {
+    span {
+      display: none;
+    }
+  }
 `;
 
 export const UserInfo = styled.div`
@@ -126,11 +155,16 @@ export const UserInfo = styled.div`
     width: 50px;
     border-radius: 50%;
   }
+
+  @media (max-width: 768px) {
+    padding-right: 20px;
+  }
 `;
 
 export const Nav = styled.nav`
   display: flex;
   gap: 20px;
+  
   a {
     text-decoration: none;
     color: #000;

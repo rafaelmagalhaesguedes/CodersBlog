@@ -37,7 +37,8 @@ export function AdminHeader() {
   return (
     <>
       <MenuTop>
-        <span>Web Technology Blog</span>
+        <span className="title-mobile">Coffee and Code</span>
+        <span className="title-desktop">Web Technology Blog</span>
         <div>
           <Link to="https://github.com/rafaelmagalhaesguedes" target="_blank">
             <FaGithub size={ 20 } color="#fff" />
@@ -53,9 +54,9 @@ export function AdminHeader() {
           <span>Coffee and Code</span>
         </Logo>
         <Nav>
-          <Link to="/">All Posts</Link>
-          <Link to="/create-post">New Post</Link>
-          <Link to="/user-posts">My Posts</Link>
+          <a href="/">All Posts</a>
+          <a href="/create-post">New Post</a>
+          <a href="/user-posts">My Posts</a>
         </Nav>
         <UserInfo>
           <p>
@@ -76,10 +77,10 @@ export function AdminHeader() {
           {isOpen && (
             <DropdownMenu>
               <DropdownItem>
-                <Link to="/" onClick={ closeMenu }>All Posts</Link>
+                <Link to="/profile" onClick={ closeMenu }>All Posts</Link>
               </DropdownItem>
               <DropdownItem>
-                <Link to="/create-post" onClick={ closeMenu }>New Post</Link>
+                <Link to="/profile" onClick={ closeMenu }>New Post</Link>
               </DropdownItem>
               <DropdownItem>
                 <Link to="/user-posts" onClick={ closeMenu }>My Posts</Link>
