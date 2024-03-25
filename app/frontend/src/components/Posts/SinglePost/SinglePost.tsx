@@ -26,10 +26,6 @@ export function SinglePost() {
     fetchPost();
   }, [id]);
 
-  if (!post) {
-    return <Loading />;
-  }
-
   return (
     <ContainerPost>
       <MenuBody>
@@ -81,6 +77,7 @@ export function SinglePost() {
           </Card>
         </Content>
       </PostCard>
+      {post.id === undefined && <Loading />}
     </ContainerPost>
   );
 }
