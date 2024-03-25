@@ -19,6 +19,12 @@ export function Register() {
     handleRegister,
   } = useRegister();
 
+  // Function to generate a random image and set it in the image input field
+  const handleGenerateImage = async () => {
+    const imageUrl = await avatarGenerate();
+    setImage(imageUrl);
+  };
+
   return (
     <RegisterContainer>
       <RegisterForm>
@@ -46,7 +52,7 @@ export function Register() {
             value={ image }
             onChange={ (e) => setImage(e.target.value) }
           />
-          <button onClick={ avatarGenerate }>Generate</button>
+          <button onClick={ handleGenerateImage }>Generate</button>
           {image && <img src={ image } alt="Generated avatar" />}
         </div>
         <div className="password">
