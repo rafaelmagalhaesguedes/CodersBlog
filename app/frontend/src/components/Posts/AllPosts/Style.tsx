@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import styled from 'styled-components';
 
 export const ContainerPosts = styled.div`
@@ -5,6 +6,10 @@ export const ContainerPosts = styled.div`
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const Menu = styled.div`
@@ -13,6 +18,24 @@ export const Menu = styled.div`
   width: 100%;
   align-items: center;
   padding: 0 10px;
+
+  span {
+    font-size: 1.5rem;
+    color: #000;
+    padding: 5px 0;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    h2 {
+      display: none;
+    }
+
+    span {
+      width: 100%;
+    }
+  }
 `;
 
 export const BannerHome = styled.div`
@@ -26,6 +49,10 @@ export const BannerHome = styled.div`
   border-radius: 10px;
   border-bottom: 5px solid #000;
   border-top: 5px solid #000;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const Title = styled.div`
@@ -49,6 +76,18 @@ export const Title = styled.div`
     padding: 5px 0;
     text-align: center;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+
+    h1 {
+      font-size: 1.3rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
 `;
 
 export const BannerImage = styled.div`
@@ -56,6 +95,10 @@ export const BannerImage = styled.div`
   img {
     width: 100%;
     border-radius: 10px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;
 
@@ -88,6 +131,10 @@ export const SearchBar = styled.div`
     border: 1px solid #000;
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const Post = styled.div`
@@ -101,45 +148,81 @@ export const Post = styled.div`
 `;
 
 export const PostCard = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-    padding: 20px 0;
-    border-bottom: 1px solid #999;
-    
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #999;
+  
+  @media (max-width: 768px) {
+    margin: 10px;
+  }
+  
+  h3 {
+    font-size: 1.8rem;
+    color: #000;
+    padding: 5px 0;
+  }
+
+  @media (max-width: 768px) {
     h3 {
-        font-size: 1.8rem;
-        color: #000;
-        padding: 5px 0;
+      font-size: 1.5rem;
     }
+  }
 
+  div {
+    display: flex;
+    justify-content: start;
+    gap: 1rem;
+  }
+
+  @media (max-width: 768px) {
     div {
-        display: flex;
-        justify-content: start;
-        gap: 1rem;
+      flex-direction: column;
+      gap: 1px;
     }
+  }
 
+  span {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
     span {
-        font-size: 0.8rem;
+      font-size: 0.7rem;
     }
+  }
     
-    p {
-        font-size: 0.9rem;
-        padding: 20px 0;
-        color: #222;
-        line-height: 1.9;
-        letter-spacing: 0.9px;
-        text-align: justify;
-    }
+  p {
+    font-size: 0.9rem;
+    padding: 20px 0;
+    color: #222;
+    line-height: 1.9;
+    letter-spacing: 0.9px;
+    text-align: justify;
+  }
 
-    .category-item {
-      display: inline-block;
-      padding: 5px 10px;
-      margin: 5px 10px 0 0;
-      border-radius: 50px;
-      border: 1px solid #ccc;
-      background-color: #f5f5f5;
+  @media (max-width: 768px) {
+    p {
+      font-size: 0.8rem;
     }
+  }
+
+  .category-item {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px 10px 0 0;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+  }
+
+  @media (max-width: 768px) {
+    .category-item {
+      padding: 5px 5px;
+      margin: 5px 5px 0 0;
+    }
+  }
 `;
 
 export const ContentBody = styled.div`
@@ -161,6 +244,18 @@ export const ContentBody = styled.div`
     border-radius: 10px;
   }
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    img {
+      width: 100%;
+    }
+
+    .content {
+      margin-left: 0;
+    }
+  }
+
   a {
     text-decoration: none;
   }
@@ -171,6 +266,12 @@ export const ContentBody = styled.div`
     line-height: 1.9;
     letter-spacing: 0.9px;
     text-align: justify;
+  }
+
+  @media (max-width: 768px) {
+    p {
+      font-size: 0.9rem;
+    }
   }
 
   .read-more {
@@ -184,6 +285,20 @@ export const ContentBody = styled.div`
       color: #fff;
       padding: 5px 10px;
       border-radius: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .read-more {
+      align-self: center;
+
+      a {
+        padding: 10px 50px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        letter-spacing: 0.8px;
+      }
     }
   }
 `;

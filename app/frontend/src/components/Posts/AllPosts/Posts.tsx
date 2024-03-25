@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
 import { Loading } from '../../Loading/Loading';
 import { formatDate } from '../../../utils/formatDate';
 import { trimContent } from '../../../utils/trimContent';
@@ -61,7 +62,7 @@ export function Posts() {
             placeholder="Search for a post..."
             onKeyDown={ (e) => e.key === 'Enter' && handleSearch() }
           />
-          <button onClick={ handleSearch }>Search</button>
+          <FaSearch size={ 20 } color="#000" onClick={ handleSearch } />
         </SearchBar>
       </Menu>
       <Post>
