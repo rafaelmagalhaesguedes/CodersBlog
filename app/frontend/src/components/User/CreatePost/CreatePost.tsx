@@ -20,8 +20,12 @@ export function CreatePost() {
     handleCheckboxChange,
   } = usePost();
 
+  const fetchCategoriesData = async () => {
+    await fetchCategories();
+  };
+
   useEffect(() => {
-    fetchCategories();
+    fetchCategoriesData();
   }, []);
 
   if (!categories) {
@@ -71,7 +75,7 @@ export function CreatePost() {
         <h3>Categories</h3>
       </div>
       <ul>
-        {categories.map((category: any) => (
+        {categories && categories.map((category: any) => (
           <li className="tags" key={ category.id }>
             <label htmlFor={ `category-${category.id}` }>
               {category.name}
@@ -85,6 +89,7 @@ export function CreatePost() {
             </label>
           </li>
         ))}
+        {categories.length === 0 && <li>No categories found</li>}
       </ul>
       <CreatePostButton onClick={ handleCreatePost }>Create</CreatePostButton>
     </CreatePostContainer>
