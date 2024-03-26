@@ -22,6 +22,7 @@ export function Posts() {
 
   const handleSearch = async () => {
     const post = await searchPost(searchQuery);
+    console.log(post);
     setPosts(post);
   };
 
