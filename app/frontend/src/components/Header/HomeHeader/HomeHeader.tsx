@@ -21,7 +21,7 @@ export function HomeHeader() {
   return (
     <>
       <MenuTop>
-        <span>Web Technologys Blog</span>
+        <span>Web Technology Blog</span>
         <div>
           <Link to="https://github.com/rafaelmagalhaesguedes" target="_blank">
             <FaGithub size={ 20 } color="#fff" />
@@ -34,13 +34,13 @@ export function HomeHeader() {
       <HeaderContainer>
         <Logo>
           <h1>
-            Coders Blog
+            <Link to="/">Coders Blog</Link>
           </h1>
         </Logo>
         <SignUp>
-          <Link to="/">Posts</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
+          <Link to="/">POSTS</Link>
+          <Link to="/login">LOGIN</Link>
+          <Link to="/register">REGISTER</Link>
         </SignUp>
         <MobileIcon onClick={ handleToggle }>
           <FaBars />

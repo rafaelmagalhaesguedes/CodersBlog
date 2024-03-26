@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
@@ -44,10 +45,12 @@ export function Posts() {
             type="text"
             value={ searchQuery }
             onChange={ (e) => setSearchQuery(e.target.value) }
-            placeholder="Search for a post..."
+            placeholder="Search"
             onKeyDown={ (e) => e.key === 'Enter' && handleSearch() }
           />
-          <FaSearch size={ 20 } color="#000" onClick={ handleSearch } />
+          <button type="button" onClick={ handleSearch }>
+            <FaSearch size={ 17 } />
+          </button>
         </SearchBar>
       </Menu>
       <Post>

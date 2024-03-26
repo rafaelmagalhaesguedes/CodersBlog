@@ -24,9 +24,9 @@ export const MenuTop = styled.div`
 
   span {
     color: #fff;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     padding: 0 10px;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     font-weight: 500;
   }
 
@@ -44,6 +44,8 @@ export const HeaderContainer = styled.header`
   height: 80px;
   margin: 0 auto;
   padding: 0 20px;
+  border-bottom: 1px solid #d3d3d3;
+
 
   @media (max-width: 768px) {
     justify-content: space-between;
@@ -52,21 +54,20 @@ export const HeaderContainer = styled.header`
 `;
 
 export const Logo = styled.div`
-  margin-top: 20px;
   width: 100%;
   display: flex;
   align-items: center;
   gap: 20px;
 
-  img {
-    width: 80px;
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
   }
 
-  span {
-    font-size: 1.9rem;
-    font-weight: 300;
-    font-family: 'Rubik Dirt';
-    letter-spacing: 1px;
+  a {
+    text-decoration: none;
+    color: #000;
   }
 
   @media (max-width: 768px) {
@@ -85,18 +86,17 @@ export const Logo = styled.div`
 `;
 
 export const SignUp = styled.div`
-  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 4rem;
+  gap: 2rem;
 
   a {
     text-decoration: none;
     color: #000;
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 1px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
   }
 
   @media (max-width: 768px) {

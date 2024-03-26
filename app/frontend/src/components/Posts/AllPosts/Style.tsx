@@ -17,7 +17,6 @@ export const Menu = styled.div`
   justify-content: center;
   width: 100%;
   align-items: center;
-  padding: 0 10px;
 
   span {
     font-size: 1.5rem;
@@ -105,40 +104,43 @@ export const BannerImage = styled.div`
 export const SearchBar = styled.div`
   display: flex;
   align-items: center;
-  margin-top: -98px;
-  gap: 10px;
-  width: 40%;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    margin-top: 0;
-  }
+  margin-top: -118px;
+  width: 30%;
 
   input {
     width: 100%;
-    height: 30px;
-    padding: 5px 10px;
-    border-radius: 10px;
-    border: 1px solid #000;
+    height: 35px;
+    padding: 5px 15px;
+    border: 1px solid #888;
+    border-bottom-left-radius: 8px;
   }
 
   input::placeholder {
     font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+  }
+
+  input:focus {
+    outline: none;
   }
 
   button {
-    padding: 5px 20px;
-    background-color: #333;
-    color: #fff;
+    color: #000;
     font-size: 0.9rem;
     font-weight: bold;
-    border-radius: 10px;
-    border: 1px solid #000;
+    border: none;
+    background-color: transparent;
     cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    padding: 0 10px;
+    height: 35px;
   }
 
   @media (max-width: 768px) {
     width: 100%;
+    margin-top: 0;
   }
 `;
 
