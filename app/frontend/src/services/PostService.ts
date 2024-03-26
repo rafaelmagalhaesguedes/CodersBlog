@@ -81,6 +81,7 @@ export const searchPost = async (searchQuery: string) => {
     },
   });
   //
-  const data = await res.json();
+  let data = await res.json();
+  data = data.sort((a: PostType, b: PostType) => b.id - a.id);
   return data;
 };
