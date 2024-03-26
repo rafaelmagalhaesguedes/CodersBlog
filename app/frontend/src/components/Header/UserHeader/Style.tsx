@@ -6,6 +6,10 @@ export const MenuTop = styled.div`
   height: 30px;
   margin: 0 auto;
 
+  @media (max-width: 768px  ) {
+    width: 100%;
+  }
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -99,6 +103,12 @@ export const Logo = styled.div`
   img {
     width: 80px;
   }
+
+  @media (max-width: 768px) {
+    img {
+      width: 60px;
+    }
+  }
 `;
 
 export const UserInfo = styled.div`
@@ -114,6 +124,11 @@ export const UserInfo = styled.div`
   img {
     width: 50px;
     border-radius: 50%;
+  }
+
+  @media (max-width: 1000px) {
+    width: 60%;
+    padding-right: 20px;
   }
 `;
 

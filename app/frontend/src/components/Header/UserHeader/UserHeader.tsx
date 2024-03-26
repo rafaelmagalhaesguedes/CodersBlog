@@ -37,7 +37,7 @@ export function UserHeader() {
   return (
     <>
       <MenuTop>
-        <span>Web Technology Blog</span>
+        <span>Coffee and Code</span>
         <div>
           <Link to="https://github.com/rafaelmagalhaesguedes" target="_blank">
             <FaGithub size={ 20 } color="#fff" />
@@ -52,13 +52,13 @@ export function UserHeader() {
           <img src={ LogoImage } alt="Coffee and Code" />
         </Logo>
         <Nav>
-          <Link to="/">All Posts</Link>
-          <Link to="/create-post">New Post</Link>
-          <Link to="/user-posts">My Posts</Link>
+          <a href="/">All Posts</a>
+          <a href="/create-post">New Post</a>
+          <a href="/user-posts">My Posts</a>
         </Nav>
         <UserInfo>
           <p>
-            {username}
+            {username.split(' ')[0]}
           </p>
           {image
             ? <img src={ image } alt="User" />
@@ -75,7 +75,7 @@ export function UserHeader() {
           {isOpen && (
             <DropdownMenu>
               <DropdownItem>
-                <Link to="/" onClick={ closeMenu }>All Posts</Link>
+                <Link to="/" onClick={ closeMenu }>Posts</Link>
               </DropdownItem>
               <DropdownItem>
                 <Link to="/create-post" onClick={ closeMenu }>New Post</Link>
