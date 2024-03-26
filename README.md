@@ -1,10 +1,10 @@
-# Blogs API - Coffee and Code
+# Blogs API - Coders Blog
 
 ## Project Description
 
 This project involves developing a Node.js API using the Sequelize package to perform CRUD operations on blog posts. The application also includes implementing user authentication and associating users, posts, and categories.
 
-Deploy: [Coffee and Code!](https://deploy-bloggs.vercel.app/)
+Deploy: [Coders Blog!](https://deploy-bloggs.vercel.app/)
 
 ## Features
 
