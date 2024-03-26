@@ -69,7 +69,7 @@ export const RegisterForm = styled.div`
     background-color: #444;
     color: #fff;
     cursor: pointer;
-    font-size: 16 px;
+    font-size: 15px;
     font-family: 'Roboto', sans-serif;
     line-height: 1.5;
     letter-spacing: 1.5px;
