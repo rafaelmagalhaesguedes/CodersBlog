@@ -128,7 +128,6 @@ export const RegisterForm = styled.div`
   button:hover {
     background-color: #555;
     transition: 0.3s;
-    letter-spacing: 2px;
   }
 
   a {
