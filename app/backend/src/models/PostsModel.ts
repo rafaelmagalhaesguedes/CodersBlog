@@ -130,8 +130,10 @@ class PostsModel implements IPostsModel {
     //
     const posts = await this.postsModel.findAll({
       where: {
-        title: { [Op.like]: `%${search}%` },
-        content: { [Op.like]: `%${search}%` },
+        [Op.or]: [
+          { title: { [Op.iLike]: `%${search}%` } },
+          { content: { [Op.iLike]: `%${search}%` } },
+        ],
       },
       include: [
         { 
