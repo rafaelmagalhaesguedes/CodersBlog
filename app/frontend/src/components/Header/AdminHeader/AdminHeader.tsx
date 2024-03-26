@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaUserCircle } from 'react-icons/fa';
 import { UserType } from '../../../types/UserType';
 import { useAuth } from '../../../context/auth';
-import LogoImage from '../../../assets/img/logo.png';
 import {
   HeaderContainer,
   Navbar,
