@@ -20,7 +20,8 @@ export function Posts() {
   const loadMore = () => setItemsToShow((prev) => prev + 5);
 
   const handleSearch = useCallback(async () => {
-    const post = await searchPost(searchQuery);
+    const searchString = searchQuery.toLowerCase();
+    const post = await searchPost(searchString);
     setPosts(post);
   }, [searchQuery]);
 
