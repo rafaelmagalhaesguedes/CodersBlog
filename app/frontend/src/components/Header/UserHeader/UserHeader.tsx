@@ -37,7 +37,7 @@ export function UserHeader() {
   return (
     <>
       <MenuTop>
-        <span>Coffee and Code</span>
+        <span>Web Technologys Blog</span>
         <div>
           <Link to="https://github.com/rafaelmagalhaesguedes" target="_blank">
             <FaGithub size={ 20 } color="#fff" />
@@ -49,7 +49,9 @@ export function UserHeader() {
       </MenuTop>
       <HeaderContainer>
         <Logo>
-          <img src={ LogoImage } alt="Coffee and Code" />
+          <h1>
+            Coders Blog
+          </h1>
         </Logo>
         <Nav>
           <a href="/">All Posts</a>

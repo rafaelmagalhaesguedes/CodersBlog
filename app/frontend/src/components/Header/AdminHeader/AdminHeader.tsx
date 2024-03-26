@@ -37,8 +37,7 @@ export function AdminHeader() {
   return (
     <>
       <MenuTop>
-        <span className="title-mobile">Coffee and Code</span>
-        <span className="title-desktop">Web Technology Blog</span>
+        <span>Web Technologys Blog</span>
         <div>
           <Link to="https://github.com/rafaelmagalhaesguedes" target="_blank">
             <FaGithub size={ 20 } color="#fff" />
@@ -50,8 +49,9 @@ export function AdminHeader() {
       </MenuTop>
       <HeaderContainer>
         <Logo>
-          <img src={ LogoImage } alt="Coffee and Code" />
-          <span>Coffee and Code</span>
+          <h1>
+            Coders Blog
+          </h1>
         </Logo>
         <Nav>
           <a href="/">All Posts</a>
