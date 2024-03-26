@@ -1,7 +1,7 @@
 {
-  "name": "Blogs Coffee And Code",
+  "name": "Coders Blog",
   "version": "1.0.0",
-  "description": "Project Under construction...",
+  "description": "Coders Blog is a blog of technologys web.",
   "main": "index.js",
   "scripts": {
     "install:front": "cd ./app/frontend && npm install",
