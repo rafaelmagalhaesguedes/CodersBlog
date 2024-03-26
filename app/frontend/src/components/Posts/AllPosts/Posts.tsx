@@ -21,21 +21,8 @@ export function Posts() {
 
   const handleSearch = useCallback(async () => {
     const post = await searchPost(searchQuery);
-    console.log(post);
     setPosts(post);
   }, [searchQuery]);
-
-  useEffect(() => {
-    handleSearch();
-  }, [handleSearch]);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const post = await findAllPosts();
-      setPosts(post);
-    };
-    fetchPosts();
-  }, []);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -56,7 +43,7 @@ export function Posts() {
             placeholder="Search"
             onKeyDown={ (e) => e.key === 'Enter' && handleSearch() }
           />
-          <button type="button" onClick={ () => handleSearch() }>
+          <button type="button" onClick={ handleSearch }>
             <FaSearch size={ 17 } />
           </button>
         </SearchBar>
