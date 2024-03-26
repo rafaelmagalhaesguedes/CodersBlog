@@ -341,6 +341,7 @@ export const ButtonLoadMore = styled.button`
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  margin-bottom: 20px;
   
   &:hover {
     background-color: #000;
