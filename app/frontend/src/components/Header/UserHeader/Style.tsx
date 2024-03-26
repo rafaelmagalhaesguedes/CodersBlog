@@ -45,7 +45,7 @@ export const HeaderContainer = styled.header`
   height: 80px;
   margin: 0 auto;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 768px) {
     justify-content: space-between;
   }
 `;
@@ -97,25 +97,32 @@ export const DropdownItem = styled.div`
 `;
 
 export const Logo = styled.div`
-  width: 40%;
-  margin-top: 20px;
+  width: 70%;
 
-  img {
-    width: 80px;
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000;
   }
 
   @media (max-width: 768px) {
-    img {
-      width: 60px;
+    h1 {
+      font-size: 1.5rem;
     }
   }
 `;
 
 export const UserInfo = styled.div`
-  width: 20%;
+  width: 10%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  gap: 10px;
   
   p {
     margin: 0;
@@ -133,8 +140,10 @@ export const UserInfo = styled.div`
 `;
 
 export const Nav = styled.nav`
+  width: 10%;
   display: flex;
   gap: 20px;
+
   a {
     text-decoration: none;
     color: #000;

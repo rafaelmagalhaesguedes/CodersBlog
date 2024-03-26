@@ -12,7 +12,6 @@ import {
   Logo, UserInfo,
   MenuTop,
   NavMobile,
-  Nav,
 } from './Style';
 
 export function UserHeader() {
@@ -49,14 +48,9 @@ export function UserHeader() {
       <HeaderContainer>
         <Logo>
           <h1>
-            Coders Blog
+            <Link to="/">Coders Blog</Link>
           </h1>
         </Logo>
-        <Nav>
-          <a href="/">All Posts</a>
-          <a href="/create-post">New Post</a>
-          <a href="/user-posts">My Posts</a>
-        </Nav>
         <UserInfo>
           <p>
             {username.split(' ')[0]}
