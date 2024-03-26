@@ -67,33 +67,6 @@ Use of categories to classify posts, establishing a relationship between posts a
 - POST /login: Performs user login.
 - GET /login/role: Get the user role
 
-#### Home
-
-![1](screenshots/1.png)
-
-#### Posts
-
-![2](screenshots/2.png)
-
-#### Login
-
-![3](screenshots/3.png)
-
-#### Admin Dashboard
-
-![4](screenshots/4.png)
-
-#### Create Post
-
-![5](screenshots/5.png)
-
-#### User Posts
-
-![6](screenshots/6.png)
-
-#### Profile
-
-![7](screenshots/7.png)
 
 
 
