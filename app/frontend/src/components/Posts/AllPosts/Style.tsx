@@ -147,7 +147,7 @@ export const SearchBar = styled.div`
 export const Post = styled.div`
   background-color: #fff;
   padding: 0 20px;
-  margin-top: 10px;
+  margin-top: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   border-bottom: 5px solid #000;
