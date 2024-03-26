@@ -1,4 +1,4 @@
-# Blogs API - Coders Blog
+# Coders Blog
 
 ## Project Description
 
