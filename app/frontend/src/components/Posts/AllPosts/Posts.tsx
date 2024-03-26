@@ -1,24 +1,22 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
 import { Loading } from '../../Loading/Loading';
 import { formatDate } from '../../../utils/formatDate';
 import { trimContent } from '../../../utils/trimContent';
-import Banner from '../../../assets/img/coffeeandcode.jpg';
 import { findAllPosts, searchPost } from '../../../services/PostService';
 import {
-  BannerHome,
-  BannerImage,
   ButtonLoadMore,
   ContainerPosts,
   ContentBody,
-  LoadMore, Menu, Post, PostCard, PostsNotFound, SearchBar, Title } from './Style';
+  LoadMore, Menu, Post, PostCard, PostsNotFound, SearchBar } from './Style';
 
 export function Posts() {
   const [posts, setPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [itemsToShow, setItemsToShow] = useState(5);
 
+  // Load data when click on button load more
   const loadMore = () => setItemsToShow((prev) => prev + 5);
 
   const handleSearch = async () => {
@@ -40,20 +38,7 @@ export function Posts() {
 
   return (
     <ContainerPosts>
-      <BannerHome>
-        <Title>
-          <h1>WELCOME TO THE BLOG!</h1>
-          <p>
-            Coffee and Code is a blog about programming,
-            technology, and coffee. Enjoy reading!
-          </p>
-        </Title>
-        <BannerImage>
-          <img src={ Banner } alt="Banner" />
-        </BannerImage>
-      </BannerHome>
       <Menu>
-        <h2>All Posts</h2>
         <SearchBar>
           <input
             type="text"
@@ -71,12 +56,12 @@ export function Posts() {
             <h3>{post.title}</h3>
             <div>
               <span>
-                Author:
+                <strong>Author:</strong>
                 {' '}
                 {post.user.username}
               </span>
               <span>
-                Published in:
+                <strong>Published in:</strong>
                 {' '}
                 {formatDate(post.published)}
               </span>

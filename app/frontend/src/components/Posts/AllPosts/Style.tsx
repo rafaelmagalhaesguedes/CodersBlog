@@ -14,7 +14,7 @@ export const ContainerPosts = styled.div`
 
 export const Menu = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   align-items: center;
   padding: 0 10px;
@@ -105,9 +105,14 @@ export const BannerImage = styled.div`
 export const SearchBar = styled.div`
   display: flex;
   align-items: center;
-  padding: 0 10px;
+  margin-top: -98px;
   gap: 10px;
   width: 40%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 0;
+  }
 
   input {
     width: 100%;
