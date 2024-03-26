@@ -146,8 +146,8 @@ export const SearchBar = styled.div`
 
 export const Post = styled.div`
   background-color: #fff;
-  padding: 20px;
-  margin: 20px 0;
+  padding: 0 20px;
+  margin-top: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   border-bottom: 5px solid #000;
@@ -157,8 +157,8 @@ export const Post = styled.div`
 export const PostCard = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 20px;
-  padding: 20px 0;
+  margin: 0 20px 20px 20px;
+  padding: 50px 0;
   border-bottom: 1px solid #999;
   
   @media (max-width: 768px) {
