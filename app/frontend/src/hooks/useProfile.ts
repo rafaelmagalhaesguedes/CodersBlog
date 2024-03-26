@@ -1,7 +1,6 @@
 import Swal from 'sweetalert2';
 import { useState } from 'react';
 import { useAuth } from '../context/auth';
-import { clearCache } from '../services/CacheService';
 import { updateUserProfile } from '../services/ProfileService';
 
 type ProfileType = { user: any; Logout: () => void };
@@ -16,7 +15,6 @@ export function useProfile() {
 
   const handleLogout = () => {
     Logout();
-    clearCache();
   };
 
   const handleEdit = async () => {

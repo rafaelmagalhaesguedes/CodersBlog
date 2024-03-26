@@ -83,6 +83,7 @@ export const searchPost = async (searchQuery: string) => {
   //
   let data = await res.json();
   data = data.sort((a: PostType, b: PostType) => b.id - a.id);
+  console.log(data);
 
   return data;
 };

@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
-import { Loading } from '../../Loading/Loading';
+import { useCallback, useEffect, useState } from 'react';
 import { formatDate } from '../../../utils/formatDate';
 import { trimContent } from '../../../utils/trimContent';
 import { findAllPosts, searchPost } from '../../../services/PostService';
@@ -20,11 +19,15 @@ export function Posts() {
   // Load data when click on button load more
   const loadMore = () => setItemsToShow((prev) => prev + 5);
 
-  const handleSearch = async () => {
+  const handleSearch = useCallback(async () => {
     const post = await searchPost(searchQuery);
     console.log(post);
     setPosts(post);
-  };
+  }, [searchQuery]);
+
+  useEffect(() => {
+    handleSearch();
+  }, [handleSearch]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -34,9 +37,13 @@ export function Posts() {
     fetchPosts();
   }, []);
 
-  if (!posts) {
-    return <Loading />;
-  }
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const post = await findAllPosts();
+      setPosts(post);
+    };
+    fetchPosts();
+  }, []);
 
   return (
     <ContainerPosts>
@@ -49,7 +56,7 @@ export function Posts() {
             placeholder="Search"
             onKeyDown={ (e) => e.key === 'Enter' && handleSearch() }
           />
-          <button type="button" onClick={ handleSearch }>
+          <button type="button" onClick={ () => handleSearch() }>
             <FaSearch size={ 17 } />
           </button>
         </SearchBar>
