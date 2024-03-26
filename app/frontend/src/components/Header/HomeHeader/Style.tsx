@@ -114,6 +114,7 @@ export const MobileIcon = styled.div`
     display: block;
     font-size: 2rem;
     cursor: pointer;
+    margin-top: 15px;
   }
 `;
 

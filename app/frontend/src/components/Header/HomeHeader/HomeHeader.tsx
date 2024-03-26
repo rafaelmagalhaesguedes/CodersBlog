@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-max-depth */
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { FaArrowRight, FaBars, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaArrowRight, FaGithub, FaLinkedin } from 'react-icons/fa';
 import LogoImage from '../../../assets/icons/favicon.svg';
+import Bars from '../../../assets/icons/bars.svg';
 import {
   HeaderContainer,
   MenuTop,
@@ -45,7 +46,7 @@ export function HomeHeader() {
           <Link to="/register">REGISTER</Link>
         </SignUp>
         <MobileIcon onClick={ handleToggle }>
-          <FaBars />
+          <img src={ Bars } alt="Logo" width={ 40 } />
         </MobileIcon>
         {isOpen && (
           <MobileMenu>
