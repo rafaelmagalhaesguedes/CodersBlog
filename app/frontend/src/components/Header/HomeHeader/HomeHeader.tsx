@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { FaArrowRight, FaBars, FaGithub, FaLinkedin } from 'react-icons/fa';
+import LogoImage from '../../../assets/icons/favicon.svg';
 import {
   HeaderContainer,
   MenuTop,
@@ -33,8 +34,9 @@ export function HomeHeader() {
       </MenuTop>
       <HeaderContainer>
         <Logo>
+          <img src={ LogoImage } alt="Logo" />
           <h1>
-            <Link to="/">Coders Blog</Link>
+            <Link to="/">Coders</Link>
           </h1>
         </Logo>
         <SignUp>

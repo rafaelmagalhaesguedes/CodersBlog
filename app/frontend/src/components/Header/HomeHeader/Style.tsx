@@ -57,7 +57,10 @@ export const Logo = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 20px;
+
+  img {
+    width: 80px;
+  }
 
   h1 {
     font-size: 2rem;
