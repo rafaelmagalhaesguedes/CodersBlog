@@ -107,10 +107,7 @@ class PostsModel {
         //
         const posts = await this.postsModel.findAll({
             where: {
-                [sequelize_1.Op.or]: [
-                    { title: { [sequelize_1.Op.iLike]: `%${search}%` } },
-                    { content: { [sequelize_1.Op.iLike]: `%${search}%` } },
-                ],
+                title: { [sequelize_1.Op.iLike]: `%${search}%` }
             },
             include: [
                 {
