@@ -101,8 +101,6 @@ export default class PostsService {
 
   public async searchPosts(search: string): Promise<ServiceResponse<IPosts[]>> {
     //
-    if (search === '') return this.getPosts();
-
     const posts = await this.postsModel.search(search);
 
     if (!posts) {

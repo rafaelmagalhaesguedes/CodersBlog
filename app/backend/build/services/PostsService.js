@@ -73,8 +73,6 @@ class PostsService {
     }
     async searchPosts(search) {
         //
-        if (search === '')
-            return this.getPosts();
         const posts = await this.postsModel.search(search);
         if (!posts) {
             return { status: 'NOT_FOUND', data: { message: 'Posts not found!' } };

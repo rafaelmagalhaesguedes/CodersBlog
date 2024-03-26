@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { formatDate } from '../../../utils/formatDate';
 import { trimContent } from '../../../utils/trimContent';
 import { findAllPosts, searchPost } from '../../../services/PostService';
@@ -19,10 +19,10 @@ export function Posts() {
   // Load data when click on button load more
   const loadMore = () => setItemsToShow((prev) => prev + 5);
 
-  const handleSearch = useCallback(async () => {
-    const post = await searchPost(searchQuery.toLowerCase());
+  const handleSearch = async () => {
+    const post = await searchPost(searchQuery);
     setPosts(post);
-  }, [searchQuery]);
+  };
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -41,7 +41,6 @@ export function Posts() {
             value={ searchQuery }
             onChange={ (e) => setSearchQuery(e.target.value) }
             placeholder="Search"
-            onKeyDown={ (e) => e.key === 'Enter' && handleSearch() }
           />
           <button type="button" onClick={ handleSearch }>
             <FaSearch size={ 17 } />
