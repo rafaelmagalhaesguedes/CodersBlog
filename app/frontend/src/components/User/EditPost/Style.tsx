@@ -7,6 +7,10 @@ export const Container = styled.div`
   width: 80%;
   margin: 0 auto;
   background-color: #fff;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const MenuBody = styled.div`
@@ -30,6 +34,10 @@ export const MenuBody = styled.div`
     text-decoration: none;
     color: #000;
     font-weight: 400;
+  }
+
+  @media (max-width: 768px) {
+    margin: 1rem 0;
   }
 `;
 

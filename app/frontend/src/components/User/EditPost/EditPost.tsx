@@ -25,7 +25,9 @@ export function EditPost() {
   }, [id]);
 
   if (isLoading) {
-    return <Loading />;
+    return (
+      <Loading />
+    );
   }
 
   const handleEdit = async (e: React.FormEvent) => {
@@ -33,19 +35,11 @@ export function EditPost() {
 
     const response = await updatePost(id, title, content, image);
     if (!response) {
-      Swal.fire({
-        title: 'Error updating post',
-        icon: 'error',
-        timer: 2000,
-      });
+      Swal.fire({ title: 'Error updating post', icon: 'error', timer: 2000 });
       return;
     }
 
-    Swal.fire({
-      title: 'Post updated successfully',
-      icon: 'success',
-      timer: 2000,
-    });
+    Swal.fire({ title: 'Post updated successfully', icon: 'success', timer: 2000 });
   };
 
   return (
