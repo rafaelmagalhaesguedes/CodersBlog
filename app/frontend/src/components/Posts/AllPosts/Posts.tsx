@@ -41,6 +41,7 @@ export function Posts() {
             value={ searchQuery }
             onChange={ (e) => setSearchQuery(e.target.value) }
             placeholder="Search"
+            onKeyDown={ (e) => e.key === 'Enter' && handleSearch() }
           />
           <button type="button" onClick={ handleSearch }>
             <FaSearch size={ 17 } />
