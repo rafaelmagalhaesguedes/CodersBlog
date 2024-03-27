@@ -10,11 +10,13 @@ import {
   ContainerPosts,
   ContentBody,
   LoadMore, Menu, Post, PostCard, PostsNotFound, SearchBar } from './Style';
+import { Loading } from '../../Loading/Loading';
 
 export function Posts() {
   const [posts, setPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [itemsToShow, setItemsToShow] = useState(5);
+  const [loading, setLoading] = useState(true);
 
   // Load data when click on button load more
   const loadMore = () => setItemsToShow((prev) => prev + 5);
@@ -28,9 +30,14 @@ export function Posts() {
     const fetchPosts = async () => {
       const post = await findAllPosts();
       setPosts(post);
+      setLoading(false);
     };
     fetchPosts();
   }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <ContainerPosts>
