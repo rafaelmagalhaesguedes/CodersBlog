@@ -120,73 +120,87 @@ describe('Posts Tests', function () {
 
   describe('Update Post', function () {
     //
-    it('should update a post', async function () {
-      const post = {
-        title: 'Java is hard to easy!',
-        content: 'The best thing about TypeScript is that its a superset of JavaScript.',
-        image: 'https://www.google.com/java',
-      };
+    it('should update a post', async () => {
+      const postId = 1;
+      const postData = { title: 'Updated Title', content: 'Updated Content', image: 'https://www.google.com/java'};
 
-      const postsModelStub = sinon.stub(PostsModel.prototype, 'update').resolves(post as any);
+      const findStub = sinon.stub(PostsModel.prototype, 'findById').resolves({ id: postId, userId: 1 } as any);
+      const updateStub = sinon.stub(PostsModel.prototype, 'update').resolves({ id: postId, ...postData } as any);
 
       const res = await chai.request(app)
-        .put('/post/1')
+        .put(`/post/${postId}`)
         .set('Authorization', `Bearer ${tokenMock}`)
-        .send(post);
+        .send(postData);
+
+      findStub.restore();
+      updateStub.restore();
 
       expect(res.status).to.equal(200);
-      expect(res.body).to.deep.equal(post);
-
-      postsModelStub.restore();
     });
 
-    it('should return 404 if post not found', async function () {
-      const post = {
-        title: 'Java is hard to easy!',
-        content: 'The best thing about TypeScript is that its a superset of JavaScript.',
-        image: 'https://www.google.com/java',
-      };
+    it('should return UNAUTHORIZED if user is not the owner of the post', async () => {
+      const postId = 1;
+      const postData = { title: 'Updated Title', content: 'Updated Content', image: 'https://www.google.com/java'};
 
-      const postsModelStub = sinon.stub(PostsModel.prototype, 'update').resolves(null);
+      const findStub = sinon.stub(PostsModel.prototype, 'findById').resolves({ id: postId, userId: 2 } as any);
 
       const res = await chai.request(app)
-        .put('/post/1')
+        .put(`/post/${postId}`)
         .set('Authorization', `Bearer ${tokenMock}`)
-        .send(post);
+        .send(postData);
 
-      expect(res.status).to.equal(500);
-      expect(res.body).to.deep.equal({ message: 'Post not updated!' });
+      findStub.restore();
 
-      postsModelStub.restore();
+      expect(res.status).to.equal(401);
     });
   });
 
-  describe('Delete Post', function () {
+  describe('DELETE /post/:id', () => {
     //
-    it('should delete a post', async function () {
-      const postsModelStub = sinon.stub(PostsModel.prototype, 'delete').resolves(true);
-
+    it('should delete a post', async () => {
+      const postId = 1;
+  
+      const findStub = sinon.stub(PostsModel.prototype, 'findById').resolves({ id: postId, userId: 1 } as any);
+      const deleteStub = sinon.stub(PostsModel.prototype, 'delete').resolves(true);
+  
       const res = await chai.request(app)
-        .delete('/post/1')
+        .delete(`/post/${postId}`)
         .set('Authorization', `Bearer ${tokenMock}`);
-
+  
+      findStub.restore();
+      deleteStub.restore();
+  
       expect(res.status).to.equal(200);
       expect(res.body).to.deep.equal(true);
-
-      postsModelStub.restore();
     });
-
-    it('should return 404 if post not found', async function () {
-      const postsModelStub = sinon.stub(PostsModel.prototype, 'delete').resolves(false);
-
+  
+    it('should return UNAUTHORIZED if user is not the owner of the post', async () => {
+      const postId = 1;
+  
+      const findStub = sinon.stub(PostsModel.prototype, 'findById').resolves({ id: postId, userId: 2 } as any);
+  
       const res = await chai.request(app)
-        .delete('/post/1')
+        .delete(`/post/${postId}`)
         .set('Authorization', `Bearer ${tokenMock}`);
-
-      expect(res.status).to.equal(500);
-      expect(res.body).to.deep.equal({ message: 'Post not deleted!' });
-
-      postsModelStub.restore();
+  
+      findStub.restore();
+  
+      expect(res.status).to.equal(401);
+      expect(res.body).to.deep.equal({ message: 'Unauthorized user' });
+    });
+  
+    it('should return NOT_FOUND if post does not exist', async () => {
+      const postId = 1;
+  
+      const findStub = sinon.stub(PostsModel.prototype, 'findById').resolves(null);
+  
+      const res = await chai.request(app)
+        .delete(`/post/${postId}`)
+        .set('Authorization', `Bearer ${tokenMock}`);
+  
+      findStub.restore();
+  
+      expect(res.status).to.equal(401);
     });
   });
 

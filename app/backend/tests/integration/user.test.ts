@@ -60,24 +60,14 @@ describe('User Tests', function () {
     it('should return all users', async function () {
       // arrange
       sinon.stub(UserModel.prototype, 'findAll').resolves(allUsersMock as any);
-      sinon.stub(jwt, 'verify').returns(payload as any);
 
       // act
-      const res = await chai.request(app).get('/user').set('Authorization', `Bearer ${tokenMock}`);
+      const res = await chai.request(app).get('/user');
       
       // assert
       expect(res.status).to.equal(200);
       expect(res.body).to.be.an('array');
       expect(res.body).to.deep.equal(allUsersMock);
-    });
-
-    //
-    it('should return an error when trying to get all users without a token', async function () {
-      // act
-      const res = await chai.request(app).get('/user');
-      
-      // assert
-      expect(res.status).to.equal(401);
     });
   });
 
