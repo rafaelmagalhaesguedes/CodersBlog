@@ -5,6 +5,7 @@ import { BiArrowBack } from 'react-icons/bi';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useAuth } from '../../context/auth';
 import { Info, LoginBox, LoginContainer } from './Style';
+import logoCoders from '../../assets/icons/logowhite.svg';
 
 function LoginPage() {
   const { Login } = useAuth();
@@ -19,10 +20,11 @@ function LoginPage() {
   return (
     <LoginContainer>
       <Info>
-        <h1>Coffee and Code!</h1>
+        <h1>Coders Blog</h1>
         <p>
-          User panel for the Coffee and Code blog.
+          User panel for the Coders blog.
         </p>
+        <img src={ logoCoders } alt="Coders Blog" />
       </Info>
       <LoginBox>
         <form onSubmit={ handleLogin }>

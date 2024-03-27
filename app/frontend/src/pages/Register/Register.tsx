@@ -3,6 +3,7 @@ import { BiArrowBack } from 'react-icons/bi';
 import { useRegister } from '../../hooks/useRegister';
 import { RegisterContainer, RegisterForm } from './Style';
 import { avatarGenerate } from '../../utils/avatarGenerator';
+import logoCoders from '../../assets/icons/logowhite.svg';
 
 export function Register() {
   const {
@@ -18,7 +19,7 @@ export function Register() {
     setPasswordConfirmation,
     handleRegister,
   } = useRegister();
-  // Function to generate a random image and set it in the image input field
+
   const handleGenerateImage = async () => {
     const imageUrl = await avatarGenerate();
     setImage(imageUrl);
@@ -26,6 +27,7 @@ export function Register() {
 
   return (
     <RegisterContainer>
+      <img src={ logoCoders } alt="logo" />
       <RegisterForm>
         <h1>Hello,</h1>
         <span className="border-title" />

@@ -27,9 +27,14 @@ export const Info = styled.div`
 
     h1 {
         margin-bottom: 20px;
-        font-size: 6rem;
+        font-size: 5rem;
         text-align: center;
         color: #fff;
+    }
+
+    img {
+        width: 150px;
+        height: 150px;
     }
 
     p {
@@ -43,6 +48,10 @@ export const Info = styled.div`
 
     @media (max-width: 768px) {
         display: none;
+
+        img {
+            display: none;
+        }
     }
 `;
 

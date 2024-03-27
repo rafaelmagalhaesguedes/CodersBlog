@@ -8,6 +8,22 @@ export const RegisterContainer = styled.div`
   width: 100%;
   height: 100vh;
   background-color: #1a1b1c;
+
+  img {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+  }
+
+  @media (max-width: 768px) {
+    img {
+      width: 100px;
+      height: 100px;
+      top: 10px;
+    }
+  }
 `;
 
 export const RegisterForm = styled.div`
@@ -69,7 +85,7 @@ export const RegisterForm = styled.div`
     background-color: #444;
     color: #fff;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 16 px;
     font-family: 'Roboto', sans-serif;
     line-height: 1.5;
     letter-spacing: 1.5px;
@@ -128,6 +144,7 @@ export const RegisterForm = styled.div`
   button:hover {
     background-color: #555;
     transition: 0.3s;
+    letter-spacing: 2px;
   }
 
   a {
