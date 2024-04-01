@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaUserCircle } from 'react-icons/fa';
 import { UserType } from '../../../types/UserType';
 import { useAuth } from '../../../context/auth';
+import LogoImage from '../../../assets/icons/favicon.svg';
 import {
   HeaderContainer,
   Navbar,
@@ -48,8 +49,9 @@ export function AdminHeader() {
       </MenuTop>
       <HeaderContainer>
         <Logo>
+          <img src={ LogoImage } alt="Logo" />
           <h1>
-            Coders Blog
+            <Link to="/">Coders</Link>
           </h1>
         </Logo>
         <Nav>

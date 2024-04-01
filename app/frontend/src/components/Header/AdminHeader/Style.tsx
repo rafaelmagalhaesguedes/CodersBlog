@@ -116,25 +116,36 @@ export const DropdownItem = styled.div`
 `;
 
 export const Logo = styled.div`
-  width: 45%;
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 20px;
 
   img {
     width: 80px;
   }
 
-  span {
-    font-size: 1.9rem;
-    font-weight: 300;
-    font-family: 'Rubik Dirt';
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
     letter-spacing: 1px;
   }
 
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+
   @media (max-width: 768px) {
+    margin-top: 0;
+    
+    img {
+      width: 60px;
+    }
+
     span {
-      display: none;
+      padding-top: 10px;
+      width: 130px;
+      font-size: 1.5rem;
     }
   }
 `;
