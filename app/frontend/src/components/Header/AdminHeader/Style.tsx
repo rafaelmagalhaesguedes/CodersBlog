@@ -116,7 +116,6 @@ export const DropdownItem = styled.div`
 `;
 
 export const Logo = styled.div`
-  margin-top: 20px;
   width: 45%;
   display: flex;
   align-items: center;
