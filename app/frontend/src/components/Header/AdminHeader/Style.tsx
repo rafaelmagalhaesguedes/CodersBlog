@@ -56,7 +56,7 @@ export const MenuTop = styled.div`
 
 export const HeaderContainer = styled.header`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   background-color: #fff;
   width: 80%;
@@ -116,7 +116,6 @@ export const DropdownItem = styled.div`
 `;
 
 export const Logo = styled.div`
-  width: 100%;
   display: flex;
   align-items: center;
 
@@ -136,10 +135,15 @@ export const Logo = styled.div`
   }
 
   @media (max-width: 768px) {
+    width: 50%;
     margin-top: 0;
     
     img {
       width: 60px;
+    }
+
+    h1 {
+      font-size: 1.3rem;
     }
 
     span {
