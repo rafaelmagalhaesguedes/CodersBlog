@@ -1,4 +1,4 @@
-<h1>Coders Blog</h1>
+<h1 style="display:flex;align-items:center;gap: 1rem;">Coders Blog <img width="50" src="app/frontend/src/assets/icons/favicon.svg" /></h1>
   
   <div style="display:flex;flex-direction:row;gap:0.5rem;">
 
