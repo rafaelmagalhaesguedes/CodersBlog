@@ -179,10 +179,6 @@ export const Nav = styled.nav`
     text-decoration: none;
     color: #000;
   }
-
-  @media (max-width: 1000px) {
-    display: none;
-  }
 `;
 
 export const NavMobile = styled.nav`
