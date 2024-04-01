@@ -109,7 +109,7 @@ Use of categories to classify posts, establishing a relationship between posts a
 - POST /post: Creates a new post (requires authentication).
 - GET /post: Retrieves the list of all posts. (requires authentication)
 - GET /post/:id: Retrieves details of a specific post. (requires authentication)
-- GET /post/search: search for a post using a string
+- GET /post/search: Search for a post using a string
 - PUT /post/:id: Updates an existing post (requires authentication).
 - DELETE /post/:id: Deletes an existing post (requires authentication).
 
