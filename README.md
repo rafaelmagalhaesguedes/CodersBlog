@@ -46,43 +46,43 @@
 
 <br /><br />
 
-## Project Description
+## ➡️ Project Description
 
 This project involves developing a Node.js API using the Sequelize package to perform CRUD operations on blog posts. The application also includes implementing user authentication and associating users, posts, and categories.
 
 Deploy: [Coders Blog!](https://deploy-bloggs.vercel.app/)
 
-## Features
+## ➡️ Features
 
-### RESTful Endpoints:
+### ▶️ RESTful Endpoints:
 
 Implementation of endpoints to perform CRUD operations on posts.
 
-### User Authentication:
+### ▶️ User Authentication:
 
 Creation of posts requires user authentication.
 
-### User-Post Relationship:
+### ▶️ User-Post Relationship:
 
 Establishment of a relationship between users and posts, ensuring each post is associated with a specific user.
 
-### Post-Category Relationship:
+### ▶️ Post-Category Relationship:
 
 Use of categories to classify posts, establishing a relationship between posts and categories. Each post can belong to one or more categories.
 
-## Project Setup
+## ➡️ Project Setup
 
-### Dependency Installation:
+### ▶️ Dependency Installation:
 
 1. npm run install:apps to install necessary dependencies.
 2. npm run compose:up to start the backend container and database.
 3. npm run dev to start the frontend
 
-### Database Configuration:
+### ▶️ Database Configuration:
 
 - Configure the database connection information in the config/database.js file.
 
-### Endpoints
+### ▶️ Endpoints
 
 #### User
 
