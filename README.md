@@ -46,6 +46,10 @@
 
 <br /><br />
 
+<img width="800" src="screenshots/home.png">
+
+<br /><br />
+
 ## ➡️ Project Description
 
 This project involves developing a Node.js API using the Sequelize package to perform CRUD operations on blog posts. The application also includes implementing user authentication and associating users, posts, and categories.
