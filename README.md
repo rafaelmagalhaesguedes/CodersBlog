@@ -1,6 +1,8 @@
-<h1 style="display:flex;align-items:center;gap: 1rem;">Coders Blog <img width="50" src="app/frontend/src/assets/icons/favicon.svg" /></h1>
-  
-  <div style="display:flex;flex-direction:row;gap:0.5rem;">
+# Coders Blog
+
+<br />
+
+<div style="display:flex;flex-direction:row;gap:0.5rem;">
 
   <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node">
 
