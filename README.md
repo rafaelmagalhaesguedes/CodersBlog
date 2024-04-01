@@ -48,13 +48,15 @@
 
 <img width="800" src="screenshots/home.png">
 
-<br /><br />
+<br />
 
 ## ➡️ Project Description
 
 This project involves developing a Node.js API using the Sequelize package to perform CRUD operations on blog posts. The application also includes implementing user authentication and associating users, posts, and categories.
 
 Deploy: [Coders Blog!](https://deploy-bloggs.vercel.app/)
+
+<br />
 
 ## ➡️ Features
 
@@ -74,6 +76,8 @@ Establishment of a relationship between users and posts, ensuring each post is a
 
 Use of categories to classify posts, establishing a relationship between posts and categories. Each post can belong to one or more categories.
 
+<br />
+
 ## ➡️ Project Setup
 
 ### ▶️ Dependency Installation:
@@ -86,9 +90,11 @@ Use of categories to classify posts, establishing a relationship between posts a
 
 - Configure the database connection information in the config/database.js file.
 
-### ▶️ Endpoints
+<br />
 
-#### User
+## ➡️ Endpoints
+
+### ▶️ User
 
 - POST /user - Create a new user
 - GET /user - Get all users
@@ -96,7 +102,7 @@ Use of categories to classify posts, establishing a relationship between posts a
 - PUT /user/:id - Update user
 - DELETE /user:id - Delete user
 
-#### Post
+### ▶️ Post
 
 - POST /post: Creates a new post (requires authentication).
 - GET /post: Retrieves the list of all posts. (requires authentication)
@@ -105,14 +111,14 @@ Use of categories to classify posts, establishing a relationship between posts a
 - PUT /post/:id: Updates an existing post (requires authentication).
 - DELETE /post/:id: Deletes an existing post (requires authentication).
 
-#### Categories
+### ▶️ Categories
 
 - POST /categories - Create a new category
 - GET /categories - Get all categories
 - PUT /categories/:id - Update category
 - DELETE /categories/:id - Delete category 
 
-#### Authentication
+### ▶️ Authentication
 
 - POST /login: Performs user login.
 - GET /login/role: Get the user role
