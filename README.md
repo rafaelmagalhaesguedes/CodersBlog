@@ -1,54 +1,33 @@
-# Coders Blog 👩‍💻
+<h1 align="center">Coders Blog 👩‍💻</h1>
 
-<br />
-
-<div style="display:flex;flex-direction:row;gap:0.5rem;">
-
+<p align="center">
   <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node">
-
   <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge" alt="Express">
-
   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-
   <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="Postgre">
-
   <img src="https://img.shields.io/badge/sequelize-323330?style=for-the-badge&logo=sequelize&logoColor=blue" alt="Sequelize">
-
   <img src="https://img.shields.io/badge/json%20web%20tokens-323330?style=for-the-badge&logo=json-web-tokens&logoColor=pink" alt="JWT">
+</p>
 
-</div>
-
-<br />
-
-<div style="display:flex;flex-direction:row;gap:0.5rem;">
-
+<p align="center">
   <img src="https://img.shields.io/badge/mocha.js-323330?style=for-the-badge&logo=mocha&logoColor=Brown" alt="Mocha">
-
   <img src="https://img.shields.io/badge/chai.js-323330?style=for-the-badge&logo=chai&logoColor=red" alt="Chai">
-
   <img src="https://img.shields.io/badge/sinon.js-323330?style=for-the-badge&logo=sinon" alt="Sinon">
-
   <img src="https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white" alt="ESLint">
+</p>
 
-</div>
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAF" alt="React">
+  <img src="https://img.shields.io/badge/testing%20library-323330?style=for-the-badge&logo=testing-library&logoColor=red" alt="Testing Library">
+  <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" alt="React Router">
+  <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" alt="Styled Components">
+</p>
 
 <br />
 
-<div style="display:flex;flex-direction:row;gap:0.5rem;">
-
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAF" alt="React">
-
-  <img src="https://img.shields.io/badge/testing%20library-323330?style=for-the-badge&logo=testing-library&logoColor=red" alt="Testing Library">
-
-  <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" alt="React Router">
-
-  <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" alt="Styled Components">
-
-</div>
-
-<br /><br />
-
-<img width="800" src="screenshots/home.png">
+<p align="center">
+  <img width="700" src="screenshots/home.png">
+</p>
 
 <br />
 
@@ -83,48 +62,51 @@ Use of categories to classify posts, establishing a relationship between posts a
 ## ➡️ Project Setup
 
 ### ▶️ Dependency Installation:
-
-1. npm run install:apps to install necessary dependencies.
-2. npm run compose:up to start the backend container and database.
-3. npm run dev to start the frontend
+```
+1. npm run install:apps - to install necessary dependencies.
+2. npm run compose:up - to start the backend container and database.
+3. npm run dev - to start the frontend
+```
 
 ### ▶️ Database Configuration:
-
+```
 - Configure the database connection information in the config/database.js file.
-
+```
 <br />
 
 ## ➡️ Endpoints
 
 ### ▶️ User
-
+```
 - POST /user - Create a new user
-- GET /user - Get all users
-- GET /user/:id - Get user by ID
-- PUT /user/:id - Update user
-- DELETE /user:id - Delete user
+- GET /user - Get all users. (requires authentication)
+- GET /user/:id - Get user by ID. (requires authentication)
+- PUT /user/:id - Update user. (requires authentication)
+- DELETE /user:id - Delete user. (requires authentication)
+```
 
 ### ▶️ Post
-
-- POST /post: Creates a new post (requires authentication).
-- GET /post: Retrieves the list of all posts. (requires authentication)
-- GET /post/:id: Retrieves details of a specific post. (requires authentication)
+```
+- GET /post: Retrieves the list of all posts.
 - GET /post/search: Search for a post using a string
-- PUT /post/:id: Updates an existing post (requires authentication).
-- DELETE /post/:id: Deletes an existing post (requires authentication).
+- POST /post: Creates a new post. (requires authentication)
+- GET /post/:id: Retrieves details of a specific post. (requires authentication)
+- PUT /post/:id: Updates an existing post. (requires authentication)
+- DELETE /post/:id: Deletes an existing post. (requires authentication)
+```
 
 ### ▶️ Categories
-
-- POST /categories - Create a new category
-- GET /categories - Get all categories
-- PUT /categories/:id - Update category
-- DELETE /categories/:id - Delete category 
-
+```
+- POST /categories - Create a new category. (requires authentication)
+- GET /categories - Get all categories. (requires authentication)
+- PUT /categories/:id - Update category. (requires authentication)
+- DELETE /categories/:id - Delete category. (requires authentication) 
+```
 ### ▶️ Authentication
-
+```
 - POST /login: Performs user login.
-- GET /login/role: Get the user role
-
+- GET /login/role: Get the user role. (requires authentication)
+```
 <br />
 
 ## ➡️ ScreenShots
