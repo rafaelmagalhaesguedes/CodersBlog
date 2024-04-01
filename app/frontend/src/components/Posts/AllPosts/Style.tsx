@@ -105,7 +105,8 @@ export const SearchBar = styled.div`
   display: flex;
   align-items: center;
   margin-top: -118px;
-  width: 30%;
+  margin-right: 300px;
+  width: 20%;
 
   input {
     width: 100%;

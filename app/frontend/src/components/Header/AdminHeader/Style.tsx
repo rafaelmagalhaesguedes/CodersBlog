@@ -141,7 +141,7 @@ export const Logo = styled.div`
 `;
 
 export const UserInfo = styled.div`
-  width: 20%;
+  width: 10%;
   display: flex;
   justify-content: center;
   gap: 10px;
