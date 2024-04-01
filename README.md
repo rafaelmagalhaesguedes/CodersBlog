@@ -145,6 +145,13 @@ Use of categories to classify posts, establishing a relationship between posts a
 
 <img width="800" src="screenshots/register.png">
 
+<br />
+
+### ▶️ Dashboard Page
+
+<img width="800" src="screenshots/dashboard.png">
+
+<br />
 
 ### ▶️ Single Post Page
 
@@ -176,8 +183,33 @@ Use of categories to classify posts, establishing a relationship between posts a
 
 <img width="800" src="screenshots/profile.png">
 
+<br />
 
+## ➡️ ScreenShots - Version Mobile
 
+<br />
+
+### ▶️ Home Page
+
+<img width="400" src="screenshots/homeMobile.png">
+
+<br />
+
+### ▶️ Login Page
+
+<img width="400" src="screenshots/loginMobile.png">
+
+<br />
+
+### ▶️ Register Page
+
+<img width="400" src="screenshots/registerMobile.png">
+
+<br />
+
+### ▶️ Dashboard Page
+
+<img width="400" src="screenshots/dashboardMobile.png">
 
 
 
