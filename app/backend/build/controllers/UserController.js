@@ -22,6 +22,11 @@ class LoginController {
         const { status, data } = await this.userService.getUserById(+req.params.id);
         return res.status((0, StatusCode_1.default)(status)).json(data);
     }
+    async updateUser(req, res) {
+        //
+        const { status, data } = await this.userService.updateUser(+req.params.id, req.body);
+        return res.status((0, StatusCode_1.default)(status)).json(data);
+    }
     async deleteUser(_req, res) {
         //
         const { id, email } = res.locals.user;

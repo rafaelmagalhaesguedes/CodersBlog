@@ -4,18 +4,18 @@ const express_1 = require("express");
 const CategoriesController_1 = require("../controllers/CategoriesController");
 const AuthMiddleware_1 = require("../middlewares/AuthMiddleware");
 const CategoriesMiddleware_1 = require("../middlewares/CategoriesMiddleware");
-class CategoriesRoutes {
+class LoginRoutes {
     constructor() {
-        //
         this.router = (0, express_1.Router)();
         this.categoriesController = new CategoriesController_1.default();
         this.initializeRoutes();
     }
     initializeRoutes() {
-        //
-        this.router.get('/', (req, res) => this.categoriesController.findAllCategories(req, res));
+        this.router.get('/', AuthMiddleware_1.default, (req, res) => this.categoriesController.findAllCategories(req, res));
         this.router.post('/', AuthMiddleware_1.default, CategoriesMiddleware_1.default, (req, res) => this.categoriesController.createCategory(req, res));
+        this.router.put('/:id', (req, res) => this.categoriesController.updateCategory(req, res));
+        this.router.delete('/:id', (req, res) => this.categoriesController.deleteCategory(req, res));
     }
 }
-exports.default = new CategoriesRoutes().router;
+exports.default = new LoginRoutes().router;
 //# sourceMappingURL=CategoriesRoutes.js.map

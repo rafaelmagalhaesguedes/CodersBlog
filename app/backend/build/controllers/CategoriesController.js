@@ -17,6 +17,16 @@ class CategoriesController {
         const { status, data } = await this.categorieService.createCategory(req.body);
         return res.status((0, StatusCode_1.default)(status)).json(data);
     }
+    async updateCategory(req, res) {
+        //
+        const { status, data } = await this.categorieService.updateCategory(+req.params.id, req.body);
+        return res.status((0, StatusCode_1.default)(status)).json(data);
+    }
+    async deleteCategory(req, res) {
+        //
+        const { status, data } = await this.categorieService.deleteCategory(+req.params.id);
+        return res.status((0, StatusCode_1.default)(status)).json(data);
+    }
 }
 exports.default = CategoriesController;
 //# sourceMappingURL=CategoriesController.js.map

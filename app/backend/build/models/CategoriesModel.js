@@ -16,7 +16,6 @@ class CategoriesModel {
         return categories;
     }
     async findById(id) {
-        //
         const category = await this.categoriesModel.findOne({ where: { id } });
         if (!category) {
             return null;
@@ -24,7 +23,6 @@ class CategoriesModel {
         return category;
     }
     async findByName(name) {
-        //
         const category = await this.categoriesModel.findOne({ where: { name } });
         if (!category) {
             return null;
@@ -32,7 +30,6 @@ class CategoriesModel {
         return category;
     }
     async findCategory(categoryIds) {
-        //
         const { count } = await this.categoriesModel.findAndCountAll({
             where: {
                 id: {
@@ -44,12 +41,27 @@ class CategoriesModel {
     }
     ;
     async create(category) {
-        //
         const newCategory = await this.categoriesModel.create(category);
         if (!newCategory) {
             return null;
         }
         return newCategory;
+    }
+    async update(id, category) {
+        const categoryUpdate = await this.categoriesModel.update({ ...category }, { where: { id } });
+        if (!categoryUpdate)
+            return null;
+        const updatedCategory = await this.findById(id);
+        if (!updatedCategory)
+            return null;
+        return updatedCategory;
+    }
+    async delete(id) {
+        const category = await this.categoriesModel.findOne({ where: { id } });
+        if (!category)
+            return false;
+        await this.categoriesModel.destroy({ where: { id } });
+        return true;
     }
 }
 exports.default = CategoriesModel;

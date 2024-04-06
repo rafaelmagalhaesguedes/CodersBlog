@@ -43,6 +43,16 @@ class UserModel {
         }
         return user;
     }
+    async update(id, user) {
+        //
+        const userUpdate = await this.userModel.update({ ...user }, { where: { id } });
+        if (!userUpdate)
+            return null;
+        const updatedUser = await this.getById(id);
+        if (!updatedUser)
+            return null;
+        return updatedUser;
+    }
     async delete(id, email) {
         //
         const postsExists = await this.postModel.findPosts(id);
