@@ -7,4 +7,6 @@ export interface ICategoriesModel {
   findByName: (name: ICategories['name']) => Promise<ICategories | null>;
   findCategory: (categoryIds: ICategories['id'][]) => Promise<boolean>;
   create: (category: ICategories) => Promise<ICategories | null>;
+  update: (id: ICategories['id'], category: ICategories) => Promise<ICategories | null>;
+  delete: (id: ICategories['id']) => Promise<boolean>;
 }

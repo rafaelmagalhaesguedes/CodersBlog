@@ -20,7 +20,7 @@ class CategoriesModel implements ICategoriesModel {
   }
 
   public async findById(id: number): Promise<ICategories | null> {
-    //
+    
     const category = await this.categoriesModel.findOne({ where: { id } });
 
     if (!category) {
@@ -31,7 +31,7 @@ class CategoriesModel implements ICategoriesModel {
   }
 
   public async findByName(name: string): Promise<ICategories | null> {
-    //
+    
     const category = await this.categoriesModel.findOne({ where: { name } });
 
     if (!category) {
@@ -42,7 +42,7 @@ class CategoriesModel implements ICategoriesModel {
   }
 
   public async findCategory(categoryIds: number[]): Promise<boolean> {
-    //
+    
     const { count } = await this.categoriesModel.findAndCountAll({
       where: {
         id: {
@@ -55,7 +55,7 @@ class CategoriesModel implements ICategoriesModel {
   };
 
   public async create(category: ICategories): Promise<ICategories | null> {
-    //
+    
     const newCategory = await this.categoriesModel.create(category);
 
     if (!newCategory) {
@@ -64,6 +64,33 @@ class CategoriesModel implements ICategoriesModel {
 
     return newCategory;
   }
+
+
+  public async update(id: number, category: ICategories): Promise<ICategories | null> {
+    
+    const categoryUpdate = await this.categoriesModel.update({ ...category }, { where: { id } });
+
+    if (!categoryUpdate) return null;
+
+    const updatedCategory = await this.findById(id);
+
+    if (!updatedCategory) return null;
+
+    return updatedCategory;
+  }
+
+
+  public async delete(id: number): Promise<boolean> {
+    
+    const category = await this.categoriesModel.findOne({ where: { id } });
+
+    if (!category) return false;
+
+    await this.categoriesModel.destroy({ where: { id } });
+
+    return true;
+  }
+  
 }
 
 export default CategoriesModel;
