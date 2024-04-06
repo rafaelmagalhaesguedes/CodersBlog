@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { FaArrowRight, FaGithub, FaLinkedin } from 'react-icons/fa';
-import LogoImage from '../../../assets/icons/favicon.svg';
+import LogoImage from '../../../assets/icons/logowhite.svg';
 import Bars from '../../../assets/icons/bars.svg';
 import {
   HeaderContainer,
@@ -23,7 +23,7 @@ export function HomeHeader() {
   return (
     <>
       <MenuTop>
-        <span>Web Technologys Blog</span>
+        <span>Web Technology Blog</span>
         <div>
           <Link to="https://github.com/rafaelmagalhaesguedes" target="_blank">
             <FaGithub size={ 20 } color="#fff" />
@@ -35,18 +35,16 @@ export function HomeHeader() {
       </MenuTop>
       <HeaderContainer>
         <Logo>
-          <img src={ LogoImage } alt="Logo" />
+          <img src={ LogoImage } alt="Logo" width={ 80 } />
           <h1>
             <Link to="/">Coders</Link>
           </h1>
         </Logo>
         <SignUp>
-          <Link to="/">POSTS</Link>
           <Link to="/login">LOGIN</Link>
-          <Link to="/register">REGISTER</Link>
         </SignUp>
         <MobileIcon onClick={ handleToggle }>
-          <img src={ Bars } alt="Logo" width={ 40 } />
+          <img src={ Bars } alt="Logo" />
         </MobileIcon>
         {isOpen && (
           <MobileMenu>

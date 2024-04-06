@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { Loading } from '../../Loading/Loading';
 import { formatDate } from '../../../utils/formatDate';
 import { trimContent } from '../../../utils/trimContent';
 import { findAllPosts, searchPost } from '../../../services/PostService';
@@ -10,7 +11,6 @@ import {
   ContainerPosts,
   ContentBody,
   LoadMore, Menu, Post, PostCard, PostsNotFound, SearchBar } from './Style';
-import { Loading } from '../../Loading/Loading';
 
 export function Posts() {
   const [posts, setPosts] = useState([]);
@@ -19,12 +19,12 @@ export function Posts() {
   const [loading, setLoading] = useState(true);
 
   // Load data when click on button load more
-  const loadMore = () => setItemsToShow((prev) => prev + 5);
+  const loadMore = () => setItemsToShow(itemsToShow + 5);
 
-  const handleSearch = async () => {
+  const handleSearch = useCallback(async () => {
     const post = await searchPost(searchQuery);
     setPosts(post);
-  };
+  }, [searchQuery]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -51,7 +51,7 @@ export function Posts() {
             onKeyDown={ (e) => e.key === 'Enter' && handleSearch() }
           />
           <button type="button" onClick={ handleSearch }>
-            <FaSearch size={ 17 } />
+            <FaSearch size={ 20 } />
           </button>
         </SearchBar>
       </Menu>
@@ -76,7 +76,7 @@ export function Posts() {
               <div className="content">
                 <Link to={ `/single-post/${post.id}` }>
                   <p>
-                    {trimContent(post.content, 30)}
+                    {trimContent(post.content, 50)}
                   </p>
                 </Link>
                 <span className="read-more">

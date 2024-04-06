@@ -69,7 +69,7 @@ function AuthProvider({ children }: any) {
 
   return (
     <Auth.Provider
-      value={ { signed: !!user, user, loading, Login, Logout } }
+      value={ { signed: !!user, user, setUser, loading, Login, Logout } }
     >
       {children}
     </Auth.Provider>

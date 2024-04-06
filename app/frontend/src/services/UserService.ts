@@ -1,5 +1,5 @@
-import { HOST } from './ApiService';
 import { UserType } from '../types/UserType';
+import { HOST } from './ApiService';
 
 const fetchWithAuth = async (url: string, options: RequestInit) => {
   //
@@ -45,7 +45,6 @@ export const getUserPosts = async () => {
 };
 
 export const editUserPost = async (postId: number, data: any) => {
-  //
   const response = await fetchWithAuth(`${HOST}/post/${postId}`, {
     method: 'PUT',
     body: JSON.stringify(data),
@@ -59,7 +58,6 @@ export const editUserPost = async (postId: number, data: any) => {
 };
 
 export const deleteUserPost = async (postId: number) => {
-  //
   const response = await fetchWithAuth(`${HOST}/post/${postId}`, { method: 'DELETE' });
   return response;
 };

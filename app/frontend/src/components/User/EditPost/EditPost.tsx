@@ -48,7 +48,7 @@ export function EditPost() {
         <Link to="/user-posts">
           <FaArrowLeft size={ 15 } />
           {' '}
-          Back
+          Go Back
         </Link>
         <h3>Edit post</h3>
         <Link to="/user-posts">

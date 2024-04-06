@@ -38,7 +38,7 @@ export function CreatePost() {
         <Link to="/">
           <FaArrowLeft size={ 15 } />
           {' '}
-          Back
+          Go back
         </Link>
         <h3>Create new post</h3>
         <Link to="/user-posts">
@@ -60,7 +60,7 @@ export function CreatePost() {
         onChange={ (e) => setContent(e.target.value) }
       />
       <div>
-        <h3 className="title">Image</h3>
+        <h3 className="title">Image URL</h3>
         {' '}
         <div className="input">
           <input
@@ -71,8 +71,8 @@ export function CreatePost() {
           />
         </div>
       </div>
-      <div className="title">
-        <h3>Categories</h3>
+      <div>
+        <h3 className="title">Categories</h3>
       </div>
       <ul>
         {categories && categories.map((category: any) => (

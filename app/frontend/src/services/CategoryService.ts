@@ -25,9 +25,7 @@ export const createCategory = async (name: string) => {
 export const getCategories = async () => {
   const res = await fetch(`${HOST}/categories`, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers,
   });
   const data = await res.json();
   return data;

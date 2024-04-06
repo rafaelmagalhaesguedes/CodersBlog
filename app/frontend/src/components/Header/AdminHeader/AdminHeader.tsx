@@ -1,24 +1,28 @@
 /* eslint-disable react/jsx-max-depth */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaUserCircle } from 'react-icons/fa';
+import { HiOutlineLightBulb } from 'react-icons/hi';
+import { CgProfile } from 'react-icons/cg';
+import { TiPinOutline } from 'react-icons/ti';
+import { RiLogoutCircleLine } from 'react-icons/ri';
+import { TbTags } from 'react-icons/tb';
+import { FaUserCircle } from 'react-icons/fa';
 import { UserType } from '../../../types/UserType';
 import { useAuth } from '../../../context/auth';
-import LogoImage from '../../../assets/icons/favicon.svg';
 import {
   HeaderContainer,
   Navbar,
   DropdownMenu,
   DropdownItem,
-  Logo, UserInfo,
-  MenuTop,
+  UserInfo,
   NavMobile,
   Nav,
+  ButtonLogout,
 } from './Style';
 
 export function AdminHeader() {
   const { user, Logout } = useAuth();
-  const { username, image } = user as UserType;
+  const { username, email, image } = user as UserType;
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
@@ -35,69 +39,72 @@ export function AdminHeader() {
   };
 
   return (
-    <>
-      <MenuTop>
-        <span>Web Technologys Blog</span>
-        <div>
-          <Link to="https://github.com/rafaelmagalhaesguedes" target="_blank">
-            <FaGithub size={ 20 } color="#fff" />
-          </Link>
-          <Link to="https://www.linkedin.com/in/rafael-magalh%C3%A3es-guedes/" target="_blank">
-            <FaLinkedin size={ 20 } color="#fff" />
-          </Link>
-        </div>
-      </MenuTop>
-      <HeaderContainer>
-        <Logo>
-          <img src={ LogoImage } alt="Logo" />
-          <h1>
-            <Link to="/">Coders</Link>
-          </h1>
-        </Logo>
-        <Nav>
-          <a href="/">All Posts</a>
-          <a href="/create-post">New Post</a>
-          <a href="/user-posts">My Posts</a>
-        </Nav>
-        <UserInfo>
-          <p>
-            {username}
-          </p>
-          {image
-            ? <img src={ image } alt="User" />
-            : <FaUserCircle size={ 30 } color="#000" />}
-        </UserInfo>
-        <NavMobile>
-          <Navbar onClick={ toggleMenu }>
-            <div className="hamburger">
-              <div className="hamburger-line" />
-              <div className="hamburger-line" />
-              <div className="hamburger-line" />
-            </div>
-          </Navbar>
-          {isOpen && (
-            <DropdownMenu>
-              <DropdownItem>
-                <Link to="/" onClick={ closeMenu }>All Posts</Link>
-              </DropdownItem>
-              <DropdownItem>
-                <Link to="/create-post" onClick={ closeMenu }>New Post</Link>
-              </DropdownItem>
-              <DropdownItem>
-                <Link to="/user-posts" onClick={ closeMenu }>My Posts</Link>
-              </DropdownItem>
-              <DropdownItem>
-                <Link to="/profile" onClick={ closeMenu }>Profile</Link>
-              </DropdownItem>
-              <DropdownItem>
-                <Link to="/" onClick={ handleLogout }>
-                  Logout
-                </Link>
-              </DropdownItem>
-            </DropdownMenu>
-          )}
-        </NavMobile>
-      </HeaderContainer>
-    </>
+    <HeaderContainer>
+      <UserInfo>
+        <p className="email">
+          {email}
+        </p>
+        <p className="username">
+          {username}
+        </p>
+        {image
+          ? <img src={ image } alt="User" />
+          : <FaUserCircle size={ 30 } color="#FFF" />}
+      </UserInfo>
+      <Nav>
+        <Link to="/">
+          <TiPinOutline size={ 20 } color="#FFF" />
+          Dashboard
+        </Link>
+        <Link to="/create-post">
+          <HiOutlineLightBulb size={ 20 } color="#FFF" />
+          New Post
+        </Link>
+        <Link to="/categories">
+          <TbTags size={ 20 } color="#FFF" />
+          Tags
+        </Link>
+        <Link to="/profile">
+          <CgProfile size={ 20 } color="#FFF" />
+          Profile
+        </Link>
+      </Nav>
+      <ButtonLogout>
+        <Link to="/" onClick={ handleLogout }>
+          <RiLogoutCircleLine size={ 20 } color="#FFF" />
+          Logout
+        </Link>
+      </ButtonLogout>
+      <NavMobile>
+        <Navbar onClick={ toggleMenu }>
+          <div className="hamburger">
+            <div className="hamburger-line" />
+            <div className="hamburger-line" />
+            <div className="hamburger-line" />
+          </div>
+        </Navbar>
+        {isOpen && (
+          <DropdownMenu>
+            <DropdownItem>
+              <Link to="/" onClick={ closeMenu }>All Posts</Link>
+            </DropdownItem>
+            <DropdownItem>
+              <Link to="/create-post" onClick={ closeMenu }>New Post</Link>
+            </DropdownItem>
+            <DropdownItem>
+              <Link to="/user-posts" onClick={ closeMenu }>My Posts</Link>
+            </DropdownItem>
+            <DropdownItem>
+              <Link to="/profile" onClick={ closeMenu }>Profile</Link>
+            </DropdownItem>
+            <DropdownItem>
+              <Link to="/" onClick={ handleLogout }>
+                Logout
+              </Link>
+            </DropdownItem>
+          </DropdownMenu>
+        )}
+      </NavMobile>
+    </HeaderContainer>
   );
 }

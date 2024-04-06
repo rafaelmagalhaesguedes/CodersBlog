@@ -3,10 +3,11 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 20px;
-  width: 80%;
-  margin: 0 auto;
-  background-color: #fff;
+  background-color: #ddd;
+
+  width: 100%;
+
+  padding: 20px;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -17,23 +18,35 @@ export const MenuBody = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f2f2f2;
-  padding: 10px;
+  background-color: #333;
+  padding: 10px 20px;
   width: 100%;
-  margin: 2rem 0;
+  margin: 0 0 1rem 0;
   border-radius: 5px;
 
   span {
     display: flex;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
+    color: #fff;
+  }
+
+  h3 {
+    margin: 0;
+    padding: 0;
+    color: #fff;
   }
 
   a {
     border-radius: 5px;
     text-decoration: none;
-    color: #000;
+    color: #fff;
     font-weight: 400;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
   @media (max-width: 768px) {
@@ -48,8 +61,7 @@ export const Form = styled.div`
   padding: 0 20px 20px 20px;
 
   label {
-    margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 15px;
   }
 
   input {
@@ -59,7 +71,7 @@ export const Form = styled.div`
     padding: 0 10px;
     border: 1px solid #999;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 13px;
   }
 
   textarea {
@@ -75,13 +87,13 @@ export const Form = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 200px;
-  height: 40px;
-  background-color: #333;
+  width: 10%;
+  padding: 10px 15px;
+  background-color: #202020;
   color: #fff;
   font-weight: 500;
   font-family: 'Poppins', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
   border-radius: 5px;

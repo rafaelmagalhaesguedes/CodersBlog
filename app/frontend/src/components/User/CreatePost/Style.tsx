@@ -3,22 +3,18 @@ import styled from 'styled-components';
 export const CreatePostContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
-  width: 80%;
-  margin: 0 auto;
-  padding: 30px 0px;
-  gap: 5px;
-  background-color: #fff;
+  width: 100%;
+  padding: 20px;
+  background-color: #ddd;
 
   .title {
     margin-top: 20px;
-    background-color: #f2f2f2;
+    background-color: #666;
     padding: 10px;
-
-    h3 {
-      margin: 0;
-      padding: 0;
-    }
+    font-size: 1rem;
+    font-weight: 400;
+    color: #fff;
+    border-radius: 5px;
   }
 
   .tags {
@@ -39,11 +35,15 @@ export const CreatePostContainer = styled.div`
     padding: 10px;
     margin-top: 10px;
     cursor: pointer;
-    border: 1px solid #e2e2e2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
   }
   
   textarea {
-    height: 200px;
+    height: 250px;
   }
 
   ul {
@@ -53,6 +53,8 @@ export const CreatePostContainer = styled.div`
     gap: 1rem;
     align-items: center;
     justify-content: space-evenly;
+    background-color: #fff;
+    border-radius: 5px;
   }
 
   li {
@@ -77,8 +79,8 @@ export const MenuBody = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 5px;
-  background-color: #f2f2f2;
-  padding: 10px;
+  background-color: #333;
+  padding: 10px 15px;
   border-radius: 5px;
 
   span {
@@ -89,11 +91,21 @@ export const MenuBody = styled.div`
     font-size: 16px;
   }
 
+  h3 {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+  }
+
   a {
     border-radius: 5px;
     text-decoration: none;
-    color: #000;
+    color: #fff;
     font-weight: 400;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
   @media (max-width: 768px) {
@@ -106,15 +118,15 @@ export const MenuBody = styled.div`
 `;
 
 export const CreatePostButton = styled.button`
-  margin-top: 10px;
+  margin-top: 20px;
   width: 20%;
-  padding: 10px 20px;
+  padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #333;
+  background-color: #202020;
   color: #fff;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 500;
   align-self: flex-end;
 

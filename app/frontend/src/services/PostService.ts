@@ -13,20 +13,39 @@ export const createPost = async (
   image: string,
   categoryIds: number[],
 ) => {
-  //
-  const token = localStorage.getItem('@Auth:access_token');
-
-  if (!token) throw new Error('No authorization token found');
-
   const res = await fetch(`${HOST}/post`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-    body: JSON.stringify({ title, content, image, categoryIds }),
+    headers,
+    body: JSON.stringify({
+      title,
+      content,
+      image,
+      categoryIds,
+    }),
   });
 
-  if (res.status !== 201) throw new Error('Error creating post');
+  if (res.status !== 201) {
+    console.log(res.status);
+    const data = await res.json();
+    console.log(data);
+    throw new Error(data.message);
+  }
 
   return res.json();
+};
+
+export const findAllPosts = async () => {
+  const res = await fetch(`${HOST}/post`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  let data = await res.json();
+  data = data.sort((a: PostType, b: PostType) => b.id - a.id);
+
+  return data;
 };
 
 export const findPostById = async (id: number) => {
@@ -38,13 +57,26 @@ export const findPostById = async (id: number) => {
   return data;
 };
 
+export const searchPost = async (searchQuery: string) => {
+  const res = await fetch(`${HOST}/post/search?q=${searchQuery}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  let data = await res.json();
+  data = data.sort((a: PostType, b: PostType) => b.id - a.id);
+
+  return data;
+};
+
 export const updatePost = async (
   postId: number,
   title: string,
   content: string,
   image: string,
 ) => {
-  //
   const data = { title, content, image };
 
   const response = await fetch(`${HOST}/post/${postId}`, {
@@ -53,35 +85,9 @@ export const updatePost = async (
     body: JSON.stringify(data),
   });
 
-  if (!response.ok) throw new Error('Failed to update post');
-  return true;
-};
+  if (response.ok) {
+    return true;
+  }
 
-export const findAllPosts = async () => {
-  //
-  const res = await fetch(`${HOST}/post`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  //
-  let data = await res.json();
-  data = data.sort((a: PostType, b: PostType) => b.id - a.id);
-
-  return data;
-};
-
-export const searchPost = async (searchQuery: string) => {
-  //
-  const res = await fetch(`${HOST}/post/search?q=${searchQuery}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  //
-  let data = await res.json();
-  data = data.sort((a: PostType, b: PostType) => b.id - a.id);
-  return data;
+  throw new Error('Failed to update post');
 };

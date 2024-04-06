@@ -3,10 +3,11 @@ import styled from 'styled-components';
 export const UserPostsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 80%;
-  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
 
-  background-color: #fff;
+  background-color: #ddd;
 
   .message-not-found {
     margin: 10px;
@@ -23,59 +24,46 @@ export const UserPostsContainer = styled.div`
   }
 `;
 
-export const MenuBody = styled.div`
+export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 5px;
-  margin: 30px 0;
-  background-color: #f2f2f2;
-  padding: 10px;
+  background-color: #333;
+  width: 100%;
+  padding: 10px 20px;
   border-radius: 5px;
 
-  span {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    cursor: pointer;
-    font-size: 16px;
+  h1 {
+    font-size: 1.5rem;
+    color: #fff;
   }
-
-  a {
-    border-radius: 5px;
-    text-decoration: none;
-    color: #000;
-    font-weight: 400;
-  }
-`;
-
-export const Post = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  padding: 20px;
-  border-bottom: 1px solid #f2f2f2;
-  margin: 0 0 1rem 0;
-
-  background-color: #f2f2f2;
-  border-radius: 5px;
-
-  margin: 0 1rem 1rem 1rem;
-`;
-
-export const PostHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
   div {
     display: flex;
     gap: 10px;
+    width: 30%;
+
+    text-align: center;
+
+    input {
+      width: 100%;
+      padding: 7px 10px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+    svg {
+      margin-top: 2px;
+      cursor: pointer;
+    }
   }
 
   button {
-    padding: 5px 10px;
+    padding: 10px 20px;
     border-radius: 5px;
     background-color: #000;
     color: #fff;
@@ -87,6 +75,74 @@ export const PostHeader = styled.div`
     color: #fff;
     text-decoration: none;
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+`;
+
+export const Post = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  padding: 20px;
+
+  background-color: #fff;
+  border-radius: 5px;
+
+  margin: 20px 0;
+`;
+
+export const PostWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  border-radius: 5px;
+`;
+
+export const PostHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 5px;
+  padding: 10px;
+
+  div {
+    display: flex;
+    gap: 10px;
+  }
+
+  button {
+    padding: 8px 20px;
+    border-radius: 5px;
+    background-color: #202020;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.8rem;
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
 
   @media (max-width: 768px) {
@@ -100,20 +156,38 @@ export const PostHeader = styled.div`
 `;
 
 export const PostTitle = styled.h3`
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #222;
 `;
 
 export const PostContent = styled.p`
   font-size: 16px;
   text-align: justify;
 
+  border-radius: 5px;
+  padding: 10px;
+
   a {
     text-decoration: none;
     color: #000;
     font-weight: 300;
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: 1.5px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+`;
+
+export const ReadMore = styled.div`
+  margin-top: 10px;
+  
+  a {
+    color: #000;
+    font-weight: 500;
+    text-decoration: none;
+    background-color: #ddd;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
   }
 `;
 
@@ -123,6 +197,9 @@ export const PostFooter = styled.div`
   align-items: center;
   gap: 25px;
   font-size: 14px;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: -20px;
 
   div {
     display: flex;
@@ -130,13 +207,16 @@ export const PostFooter = styled.div`
 
     span {
       font-weight: 500;
-      letter-spacing: 1.2px;
+      letter-spacing: 1px;
+      color: #000;
+      font-size: 0.7rem;
     }
 
     p {
       font-weight: 300;
       letter-spacing: 1px;
-      color: #222;
+      color: #000;
+      font-size: 0.7rem;
     }
   }
 

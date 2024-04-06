@@ -61,6 +61,7 @@ export function useUser() {
 
   return {
     userPosts,
+    setUserPosts,
     fetchUserPosts,
     handleEditUserPost,
     handleDeleteUserPost,

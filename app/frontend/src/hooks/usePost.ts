@@ -1,19 +1,43 @@
 import Swal from 'sweetalert2';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { getCategories } from '../services/CategoryService';
-import { createPost } from '../services/PostService';
+import { createPost, findAllPosts, searchPost } from '../services/PostService';
 
 export function usePost() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState('');
+  const [posts, setPosts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<any>([]);
+
+  const handleFetchPosts = async () => {
+    try {
+      const response = await findAllPosts();
+      setPosts(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    handleFetchPosts();
+  }, []);
 
   const fetchCategories = async () => {
     const data = await getCategories();
     setCategories(data);
   };
+
+  const handleSearch = useCallback(async () => {
+    const post = await searchPost(searchQuery);
+    setPosts(post);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    handleSearch();
+  }, [searchQuery, handleSearch]);
 
   const handleCreatePost = async () => {
     try {
@@ -57,8 +81,14 @@ export function usePost() {
     setImage,
     categories,
     selectedCategories,
+    posts,
+    setPosts,
+    handleFetchPosts,
     fetchCategories,
     handleCreatePost,
     handleCheckboxChange,
+    handleSearch,
+    searchQuery,
+    setSearchQuery,
   };
 }

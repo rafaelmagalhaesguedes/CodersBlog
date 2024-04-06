@@ -42,7 +42,7 @@ export function useCategory() {
     }
   };
 
-  const handleEditCategory = async (id: any, newName: string) => {
+  const handleEditCategory = async (id: number, newName: string) => {
     try {
       await updateCategory(id, newName);
       Swal.fire({
@@ -63,7 +63,7 @@ export function useCategory() {
     }
   };
 
-  const handleDeleteCategory = async (id: any) => {
+  const handleDeleteCategory = async (id: string) => {
     const result = await Swal.fire({
       title: 'Are you sure?',
       text: 'You won\'t be able to revert this!',

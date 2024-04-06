@@ -1,10 +1,11 @@
 /* eslint-disable react/jsx-max-depth */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowLeft, FaEdit, FaTrash, FaSave } from 'react-icons/fa';
+import { FaArrowLeft, FaEdit, FaTrash, FaSave, FaBookOpen } from 'react-icons/fa';
 import { useCategory } from '../../hooks/useCategory';
 import {
-  CategoryContainer, CategoryWrapper, CreateCategory, EditCategory } from './Style';
+  CategoryContainer,
+  CategoryWrapper, CreateCategory, EditCategory, MenuBody } from './Style';
 
 export function Categories() {
   const {
@@ -17,30 +18,56 @@ export function Categories() {
 
   return (
     <CategoryContainer>
-
+      <MenuBody>
+        <Link to="/user-posts">
+          <FaArrowLeft size={ 15 } />
+          {' '}
+          Go Back
+        </Link>
+        <h3>Tags</h3>
+        <Link to="/user-posts">
+          <span>
+            <p>My posts</p>
+            {' '}
+            <FaBookOpen />
+          </span>
+        </Link>
+      </MenuBody>
       <CategoryWrapper>
         <CreateCategory>
-          <Link to="/">
-            <FaArrowLeft size={ 15 } />
-            Back
-          </Link>
-          <h2>Create Category</h2>
-          <input
-            type="text"
-            placeholder="Name"
-            value={ name }
-            onChange={ (e) => setName(e.target.value) }
-          />
-          <button
-            className="createButton"
-            onClick={ handleCreateCategory }
-          >
-            Create Category
-          </button>
+          <div className="tags">
+            <h2>Create</h2>
+            <div className="create-tag">
+              <input
+                type="text"
+                placeholder="Name"
+                value={ name }
+                onChange={ (e) => setName(e.target.value) }
+              />
+              <button
+                className="createButton"
+                onClick={ handleCreateCategory }
+              >
+                Create
+              </button>
+
+            </div>
+          </div>
+
+          <div className="cloud-tags">
+            <h2>Cloud Tags</h2>
+            <div>
+              <ul>
+                {categories.map((category: any) => (
+                  <li key={ category.id }>{category.name}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </CreateCategory>
 
         <EditCategory>
-          <h2>Edit Categories</h2>
+          <h2>Update</h2>
           <table>
             <thead>
               <tr>

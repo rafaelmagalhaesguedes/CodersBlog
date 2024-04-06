@@ -3,11 +3,14 @@ import { useState } from 'react';
 import { useAuth } from '../context/auth';
 import { updateUserProfile } from '../services/ProfileService';
 
-type ProfileType = { user: any; Logout: () => void };
+type ProfileType = {
+  user: any; Logout: () => void,
+  setUser: (user: any) => void;
+};
 
 export function useProfile() {
   //
-  const { user, Logout } = useAuth() as ProfileType;
+  const { user, setUser, Logout } = useAuth() as ProfileType;
   const [editing, setEditing] = useState(false);
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
@@ -30,6 +33,7 @@ export function useProfile() {
           icon: 'success',
           timer: 2500,
         });
+        setUser({ ...user, username, email, image });
       } else {
         console.error('Error editing profile');
       }
