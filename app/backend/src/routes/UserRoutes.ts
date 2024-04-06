@@ -3,7 +3,7 @@ import UserController from '../controllers/UserController';
 import UserMiddleware from '../middlewares/UserMiddleware';
 import AuthMiddleware from '../middlewares/AuthMiddleware';
 
-class UserRoutes {
+class LoginRoutes {
   //
   public router: Router;
   
@@ -38,6 +38,12 @@ class UserRoutes {
     );
 
     //
+    this.router.put(
+      '/:id',
+      (req: Request, res: Response) => this.userController.updateUser(req, res),
+    );
+
+    //
     this.router.delete(
       '/me',
       AuthMiddleware,
@@ -46,4 +52,4 @@ class UserRoutes {
   }
 }
 
-export default new UserRoutes().router;
+export default new LoginRoutes().router;
