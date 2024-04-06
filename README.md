@@ -26,7 +26,7 @@
 <br />
 
 <p align="center">
-  <img width="700" src="screenshots/home.png">
+  <img width="1000" src="screenshots/home.png">
 </p>
 
 <br />
@@ -117,27 +117,21 @@ Use of categories to classify posts, establishing a relationship between posts a
 
 <br />
 
+### ▶️ Single Post Page
+
+<img width="800" src="screenshots/singlePost.png">
+
+<br />
+
 ### ▶️ Login Page
 
 <img width="800" src="screenshots/login.png">
 
 <br />
 
-### ▶️ Register Page
-
-<img width="800" src="screenshots/register.png">
-
-<br />
-
 ### ▶️ Dashboard Page
 
 <img width="800" src="screenshots/dashboard.png">
-
-<br />
-
-### ▶️ Single Post Page
-
-<img width="800" src="screenshots/singlePost.png">
 
 <br />
 
@@ -155,45 +149,8 @@ Use of categories to classify posts, establishing a relationship between posts a
 
 <br />
 
-### ▶️ User Posts Page
-
-<img width="800" src="screenshots/myPosts.png">
-
-<br />
-
 ### ▶️ Profile Page
 
 <img width="800" src="screenshots/profile.png">
-
-<br />
-
-## ➡️ ScreenShots - Version Mobile
-
-<br />
-
-### ▶️ Home Page
-
-<img width="400" src="screenshots/homeMobile.png">
-
-<br />
-
-### ▶️ Login Page
-
-<img width="400" src="screenshots/loginMobile.png">
-
-<br />
-
-### ▶️ Register Page
-
-<img width="400" src="screenshots/registerMobile.png">
-
-<br />
-
-### ▶️ Dashboard Page
-
-<img width="400" src="screenshots/dashboardMobile.png">
-
-
-
 
 
