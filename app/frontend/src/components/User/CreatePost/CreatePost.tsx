@@ -20,12 +20,8 @@ export function CreatePost() {
     handleCheckboxChange,
   } = usePost();
 
-  const fetchCategoriesData = async () => {
-    await fetchCategories();
-  };
-
   useEffect(() => {
-    fetchCategoriesData();
+    fetchCategories();
   }, []);
 
   if (!categories) {
