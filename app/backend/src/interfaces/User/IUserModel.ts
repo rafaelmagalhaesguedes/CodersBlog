@@ -6,5 +6,6 @@ export interface IUserModel {
   create(user: IUser): Promise<IUser | null>;
   getById(id: IUser['id']): Promise<IUser | null>;
   getByEmail(email: IUser['email']): Promise<IUser | null>;
+  update(id: IUser['id'], user: IUser): Promise<IUser | null>;
   delete(id: IUser['id'], email: IUser['email']): Promise<boolean>;
 }

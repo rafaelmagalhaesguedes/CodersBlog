@@ -25,6 +25,12 @@ export default class LoginController {
     return res.status(statusCode(status)).json(data);
   }
 
+  public async updateUser(req: Request, res: Response): Promise<Response> {
+    //
+    const { status, data } = await this.userService.updateUser(+req.params.id, req.body);
+    return res.status(statusCode(status)).json(data);
+  }
+
   public async deleteUser(_req: Request, res: Response): Promise<Response> {
     //
     const { id, email } = res.locals.user;

@@ -24,6 +24,7 @@ class UserModel implements IUserModel {
     return users;
   }
 
+
   public async create(user: IUser): Promise<IUser | null> {
     //
     const newUser = await this.userModel.create(user);
@@ -34,6 +35,7 @@ class UserModel implements IUserModel {
 
     return newUser;
   }
+
 
   public async getById(id: number): Promise<IUser | null> {
     //
@@ -46,6 +48,7 @@ class UserModel implements IUserModel {
     return user;
   }
 
+
   public async getByEmail(email: string): Promise<IUser | null> {
     //
     const user = await this.userModel.findOne({ where: { email } });
@@ -56,6 +59,21 @@ class UserModel implements IUserModel {
 
     return user;
   }
+
+
+  public async update(id: number, user: IUser): Promise<IUser | null> {
+    //
+    const userUpdate = await this.userModel.update({ ...user }, { where: { id } });
+
+    if (!userUpdate) return null;
+
+    const updatedUser = await this.getById(id);
+
+    if (!updatedUser) return null;
+
+    return updatedUser;
+  }
+
 
   public async delete(id: number, email: string): Promise<boolean> {
     //
@@ -79,6 +97,7 @@ class UserModel implements IUserModel {
       return false;
     }
   }
+
 }
 
 export default UserModel;
