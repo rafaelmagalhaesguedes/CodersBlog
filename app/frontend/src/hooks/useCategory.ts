@@ -11,14 +11,14 @@ export function useCategory() {
   const [name, setName] = useState('');
   const [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
   const fetchCategories = async () => {
     const data = await getCategories();
     setCategories(data);
   };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   const handleCreateCategory = async () => {
     try {
