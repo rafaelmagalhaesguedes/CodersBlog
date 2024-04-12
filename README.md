@@ -7,6 +7,7 @@
   <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="Postgre">
   <img src="https://img.shields.io/badge/sequelize-323330?style=for-the-badge&logo=sequelize&logoColor=blue" alt="Sequelize">
   <img src="https://img.shields.io/badge/json%20web%20tokens-323330?style=for-the-badge&logo=json-web-tokens&logoColor=pink" alt="JWT">
+  <img alt="Docker" src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white">
 </p>
 
 <p align="center">
@@ -36,6 +37,23 @@
 This project involves developing a Node.js API using the Sequelize package to perform CRUD operations on blog posts. The application also includes implementing user authentication and associating users, posts, and categories.
 
 Deploy: [Coders Blog!](https://deploy-bloggs.vercel.app/)
+
+<br />
+
+## ➡️ Technologies
+
+### ▶️ Back-end:
+
+```
+NodeJS, TypeScript, JWT, Sequelize, PostgreSQL, Mocha, Sinon, Chai and Docker 
+```
+<br />
+
+### ▶️ Front-end:
+
+```
+ReactJS, TypeScript, Vite, Vitest, Testing Library and Axios
+```
 
 <br />
 
@@ -146,6 +164,11 @@ Use of categories to classify posts, establishing a relationship between posts a
 
 <img width="800" src="screenshots/editPost.png">
 
+<br />
+
+### ▶️ Tags Page
+
+<img width="800" src="screenshots/tags.png">
 
 <br />
 
