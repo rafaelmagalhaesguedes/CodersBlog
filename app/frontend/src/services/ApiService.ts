@@ -1,6 +1,6 @@
 import axios, { AxiosRequestHeaders } from 'axios';
 
-export const HOST = 'https://deploybloggs-production.up.railway.app';
+export const HOST = 'codersblog.up.railway.app';
 
 export const api = axios.create({
   baseURL: HOST,
