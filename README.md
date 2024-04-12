@@ -36,7 +36,7 @@
 
 This project involves developing a Node.js API using the Sequelize package to perform CRUD operations on blog posts. The application also includes implementing user authentication and associating users, posts, and categories.
 
-Deploy: [Coders Blog!](https://deploy-bloggs.vercel.app/)
+Deploy: [Coders Blog!](https://codersblogg.vercel.app/)
 
 <br />
 
