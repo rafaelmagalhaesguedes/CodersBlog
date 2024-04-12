@@ -47,7 +47,6 @@ Deploy: [Coders Blog!](https://deploy-bloggs.vercel.app/)
 ```
 NodeJS, TypeScript, JWT, Sequelize, PostgreSQL, Mocha, Sinon, Chai and Docker 
 ```
-<br />
 
 ### ▶️ Front-end:
 
