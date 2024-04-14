@@ -2,9 +2,9 @@
 import * as chai from 'chai';
 import * as sinon from 'sinon';
 import chaiHttp = require('chai-http');
-import { app } from '../../src/app';
-import PostsModel from '../../src/models/PostsModel';
-import CategoriesModel from '../../src/models/CategoriesModel';
+import { app } from '../../../src/app';
+import PostsModel from '../../../src/models/PostsModel';
+import CategoriesModel from '../../../src/models/CategoriesModel';
 import * as jwt from 'jsonwebtoken';
 
 const { expect } = chai;

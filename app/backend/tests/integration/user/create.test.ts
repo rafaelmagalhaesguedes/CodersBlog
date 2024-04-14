@@ -1,10 +1,10 @@
 import * as chai from 'chai';
 import * as sinon from 'sinon';
 import chaiHttp = require('chai-http');
-import { app } from '../../src/app';
-import UserModel from '../../src/models/UserModel';
-import { userMock } from '../mocks/user.mock';
-import SequelizeUser from '../../src/database/models/SequelizeUser';
+import { app } from '../../../src/app';
+import UserModel from '../../../src/models/UserModel';
+import { userMock } from '../../mocks/user.mock';
+import SequelizeUser from '../../../src/database/models/SequelizeUser';
 
 const { expect } = chai;
 

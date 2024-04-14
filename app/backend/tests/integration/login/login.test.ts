@@ -3,9 +3,9 @@ import * as chai from 'chai';
 
 import chaiHttp = require('chai-http');
 
-import { app } from '../../src/app';
+import { app } from '../../../src/app';
 import * as jwt from 'jsonwebtoken';
-import LoginService from '../../src/services/LoginService';
+import LoginService from '../../../src/services/LoginService';
 
 chai.use(chaiHttp);
 
