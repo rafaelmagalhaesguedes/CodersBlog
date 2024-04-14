@@ -4,7 +4,7 @@ import { Request, Response, NextFunction } from 'express';
 class UserValidator {
   //
   private static userSchema: Joi.Schema = Joi.object({
-    username: Joi.string().min(8).required().messages({
+    username: Joi.string().min(2).required().messages({
       'string.min': '"username" length must be at least 8 characters long',
     }),
     role: Joi.string().valid('admin', 'user').required().messages({

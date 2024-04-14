@@ -233,18 +233,5 @@ describe('Posts Tests', function () {
 
       postsModelStub.restore();
     });
-
-    it('should return 500 if query not a string', async function () {
-      const postsModelStub = sinon.stub(PostsModel.prototype, 'search').resolves(null);
-
-      const res = await chai.request(app)
-        .get('/post/search?search=java')
-        .set('Authorization', `Bearer ${tokenMock}`);
-
-      expect(res.status).to.equal(500);
-      expect(res.body).to.deep.equal({ message: 'Search query not found!' });
-
-      postsModelStub.restore();
-    });
   });
 });

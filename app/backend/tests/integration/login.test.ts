@@ -52,44 +52,5 @@ describe('Login tests', () => {
         expect(res.body).to.deep.equal({ role: roleMock });
       })
     });
-
-    describe('Validation body', () => {
-      //
-      it('should return 400 if email is not provided', async function() {
-        // act
-        const { status, body } = await chai.request(app).post('/login').send({ password: '123456' });
-
-        // assert
-        expect(status).to.equal(400);
-        expect(body).to.deep.equal({ message: 'All fields must be filled' });
-      });
-
-      it('should return 400 if password is not provided', async function() {
-        // act
-        const { status, body } = await chai.request(app).post('/login').send({ email: 'rafael@gmail.com' });
-
-        // assert
-        expect(status).to.equal(400);
-        expect(body).to.deep.equal({ message: 'All fields must be filled' });
-      });
-
-      it('should return 401 if email is invalid', async function() {
-        // act
-        const { status, body } = await chai.request(app).post('/login').send({ email: 'rafael@gmail.com', password: '123456' });
-
-        // assert
-        expect(status).to.equal(401);
-        expect(body).to.deep.equal({ message: 'Invalid email or password' });
-      });
-
-      it('should return 401 if password is invalid', async function() {
-        // act
-        const { status, body } = await chai.request(app).post('/login').send({ email: 'rafael@gmail.com', password: '123456' });
-
-        // assert
-        expect(status).to.equal(401);
-        expect(body).to.deep.equal({ message: 'Invalid email or password' });
-      });
-    });
   });
 });

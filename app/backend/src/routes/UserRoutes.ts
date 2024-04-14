@@ -20,7 +20,6 @@ class LoginRoutes {
     //
     this.router.post(
       '/',
-      UserMiddleware,
       (req: Request, res: Response) => this.userController.createUser(req, res),
     );
 
