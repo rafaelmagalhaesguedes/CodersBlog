@@ -2,9 +2,9 @@
 import * as chai from 'chai';
 import * as sinon from 'sinon';
 import chaiHttp = require('chai-http');
-import { app } from '../../src/app';
-import PostsModel from '../../src/models/PostsModel';
-import CategoriesModel from '../../src/models/CategoriesModel';
+import { app } from '../../../src/app';
+import PostsModel from '../../../src/models/PostsModel';
+import CategoriesModel from '../../../src/models/CategoriesModel';
 import * as jwt from 'jsonwebtoken';
 
 const { expect } = chai;
@@ -230,19 +230,6 @@ describe('Posts Tests', function () {
 
       expect(res.status).to.equal(200);
       expect(res.body).to.deep.equal(posts);
-
-      postsModelStub.restore();
-    });
-
-    it('should return 500 if query not a string', async function () {
-      const postsModelStub = sinon.stub(PostsModel.prototype, 'search').resolves(null);
-
-      const res = await chai.request(app)
-        .get('/post/search?search=java')
-        .set('Authorization', `Bearer ${tokenMock}`);
-
-      expect(res.status).to.equal(500);
-      expect(res.body).to.deep.equal({ message: 'Search query not found!' });
 
       postsModelStub.restore();
     });

@@ -35,7 +35,7 @@ class CategoriesService {
   public async createCategory(category: ICategories): Promise<ServiceResponse<ICategories>> {
     
     const categoryExists = await this.categoriesModel.findByName(category.name);
-    
+
     if (categoryExists) {
       return { status: CONFLICT, data: { message: CATEGORY_ALREADY_EXISTS } };
     }
