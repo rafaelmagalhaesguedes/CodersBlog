@@ -5,4 +5,8 @@ export const Container = styled.div`
   flex-direction: row;
 
   width: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;

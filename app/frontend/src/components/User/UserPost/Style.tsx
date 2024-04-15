@@ -1,11 +1,13 @@
+/* eslint-disable max-lines */
 import styled from 'styled-components';
 
 export const UserPostsContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   padding: 20px;
+  overflow-y: auto;
 
   background-color: #ddd;
 
@@ -84,6 +86,23 @@ export const Header = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 10px;
+
+    h1 {
+      font-size: 1.2rem;
+    }
+
+    div {
+      width: 100%;
+      margin: 1rem 0;
+    }
+
+    button {
+      padding: 5px;
+    }
+
+    a {
+      width: 100%;
+    }
   }
 `;
 
@@ -146,8 +165,9 @@ export const PostHeader = styled.div`
   }
 
   @media (max-width: 768px) {
-    flex-direction: row;
+    flex-direction: column;
     gap: 10px;
+    margin-bottom: 10px;
 
     button {
       width: 100%;
@@ -189,6 +209,21 @@ export const ReadMore = styled.div`
     border-radius: 5px;
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    a {
+      background-color: #000;
+      color: #fff;
+      width: 100%;
+      text-align: center;
+      padding: 8px;
+    }
+  }
 `;
 
 export const PostFooter = styled.div`
@@ -224,6 +259,18 @@ export const PostFooter = styled.div`
     flex-direction: column;
     gap: 5px;
     align-items: start;
+
+    div {
+      gap: 10px;
+    }
+
+    span {
+      display: block;
+    }
+
+    p {
+      display: block;
+    }
   }
 `;
 
@@ -237,5 +284,9 @@ export const PostCategory = styled.div`
     border-radius: 5px;
     background-color: #000;
     color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;

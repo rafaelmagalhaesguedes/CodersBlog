@@ -50,7 +50,9 @@ export const MenuBody = styled.div`
   }
 
   @media (max-width: 768px) {
-    margin: 1rem 0;
+    span {
+      display: none;
+    }
   }
 `;
 
@@ -99,4 +101,8 @@ export const Button = styled.button`
   border-radius: 5px;
   font-size: 14px;
   align-self: flex-end;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;

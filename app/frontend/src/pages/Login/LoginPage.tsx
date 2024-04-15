@@ -58,6 +58,10 @@ function LoginPage() {
           </div>
           <button type="submit">Access</button>
           <span className="register">
+            Don`t have an account?
+            {' '}
+            <Link to="/register">Register now!</Link>
+            <br />
             <div className="back-icon">
               <BiArrowBack size={ 20 } />
               <Link to="/"> Back to home</Link>

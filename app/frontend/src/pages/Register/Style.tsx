@@ -78,18 +78,15 @@ export const RegisterForm = styled.div`
   }
 
   .image button {
-    width: 20%;
+    width: 100%;
     height: 40px;
     border: none;
     border-radius: 5px;
     background-color: #444;
     color: #fff;
     cursor: pointer;
-    font-size: 16 px;
+    font-size: 0.9rem;
     font-family: 'Roboto', sans-serif;
-    line-height: 1.5;
-    letter-spacing: 1.5px;
-    font-weight: 700;
   }
 
   @media (max-width: 768px) {

@@ -70,8 +70,8 @@ export const LoginBox = styled.div`
     }
 
     form {
-        display: flex;
-        flex-direction: column;
+      display: flex;
+      flex-direction: column;
     }
 
     .border-title {
