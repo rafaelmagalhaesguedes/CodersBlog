@@ -6,7 +6,7 @@ import { CgProfile } from 'react-icons/cg';
 import { TiPinOutline } from 'react-icons/ti';
 import { RiLogoutCircleLine } from 'react-icons/ri';
 import { TbTags } from 'react-icons/tb';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaArrowRight, FaUserCircle } from 'react-icons/fa';
 import { UserType } from '../../../types/UserType';
 import { useAuth } from '../../../context/auth';
 import {
@@ -45,7 +45,7 @@ export function AdminHeader() {
           {email}
         </p>
         <p className="username">
-          {username}
+          {username.split(' ')[0]}
         </p>
         {image
           ? <img src={ image } alt="User" />
@@ -86,19 +86,37 @@ export function AdminHeader() {
         {isOpen && (
           <DropdownMenu>
             <DropdownItem>
-              <Link to="/" onClick={ closeMenu }>All Posts</Link>
+              <Link to="/" onClick={ closeMenu }>
+                <FaArrowRight />
+                {' '}
+                All Posts
+              </Link>
             </DropdownItem>
             <DropdownItem>
-              <Link to="/create-post" onClick={ closeMenu }>New Post</Link>
+              <Link to="/create-post" onClick={ closeMenu }>
+                <FaArrowRight />
+                {' '}
+                New Post
+              </Link>
             </DropdownItem>
             <DropdownItem>
-              <Link to="/user-posts" onClick={ closeMenu }>My Posts</Link>
+              <Link to="/user-posts" onClick={ closeMenu }>
+                <FaArrowRight />
+                {' '}
+                My Posts
+              </Link>
             </DropdownItem>
             <DropdownItem>
-              <Link to="/profile" onClick={ closeMenu }>Profile</Link>
+              <Link to="/profile" onClick={ closeMenu }>
+                <FaArrowRight />
+                {' '}
+                Profile
+              </Link>
             </DropdownItem>
             <DropdownItem>
               <Link to="/" onClick={ handleLogout }>
+                <FaArrowRight />
+                {' '}
                 Logout
               </Link>
             </DropdownItem>

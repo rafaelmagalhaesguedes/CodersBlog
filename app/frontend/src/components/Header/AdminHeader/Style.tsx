@@ -12,6 +12,10 @@ export const HeaderContainer = styled.header`
 
   @media (max-width: 768px) {
     justify-content: space-between;
+    padding: 0 2rem;
+    width: 100%;
+    height: 60px;
+    flex-direction: row;
   }
 `;
 
@@ -33,18 +37,24 @@ export const Navbar = styled.nav`
   .hamburger-line {
     width: 100%;
     height: 2px;
-    background-color: #000;
+    background-color: #fff;
   }
 `;
 
 export const DropdownMenu = styled.div`
   position: absolute;
-  right: 10%;
   top: 80px;
-  background-color: #f9f9f9;
-  min-width: 160px;
+  background-color: #202020;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+
+  width: 100%;
+
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 export const DropdownItem = styled.div`
@@ -52,13 +62,20 @@ export const DropdownItem = styled.div`
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  &:hover {
-    background-color: #f1f1f1;
+
+  svg {
+    width: 10px;
+    color: #fff;
   }
-    a {
-        text-decoration: none;
-        color: black;
-    }
+
+  a {
+    text-decoration: none;
+    color: #ddd;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 `;
 
 export const UserInfo = styled.div`
@@ -90,10 +107,14 @@ export const UserInfo = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 60%;
+    flex-direction: row-reverse;
 
-    .username {
+    .email {
       display: none;
+    }
+
+    img {
+      width: 50px;
     }
   }
 `;
@@ -131,8 +152,19 @@ export const ButtonLogout = styled.div`
     align-items: center;
     gap: 10px;
   }
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 export const NavMobile = styled.nav`
   display: none;
+
+  @media (max-width: 1000px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
 `;

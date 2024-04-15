@@ -41,6 +41,8 @@ export function HomeHeader() {
           </h1>
         </Logo>
         <SignUp>
+          <Link to="/">POSTS</Link>
+          <Link to="/register">REGISTER</Link>
           <Link to="/login">LOGIN</Link>
         </SignUp>
         <MobileIcon onClick={ handleToggle }>

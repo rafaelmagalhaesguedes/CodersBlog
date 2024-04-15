@@ -85,23 +85,21 @@ export const SearchBar = styled.div`
 
 export const Post = styled.div`
   background-color: #fff;
-  padding: 0 20px;
-  margin-top: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  border-bottom: 5px solid #fff;
-  border-top: 5px solid #fff;
 `;
 
 export const PostCard = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 20px 20px 20px;
-  padding: 20px 0;
-  border-bottom: 1px solid #999;
+  margin: 0 0 20px 0;
+  padding: 20px;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border-bottom: 5px solid #fff;
+  border: 5px solid #fff;
   
   @media (max-width: 768px) {
-    margin: 10px;
+    margin-top: 10px;
   }
   
   h3 {
@@ -209,7 +207,7 @@ export const ContentBody = styled.div`
   }
 
   p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #444;
     line-height: 1.9;
     letter-spacing: 0.5px;
@@ -226,11 +224,10 @@ export const ContentBody = styled.div`
     margin-top: 10px;
 
     a {
-      font-size: 0.9rem;
-      color: #000;
+      font-size: 0.8rem;
+      color: #ccc;
       text-decoration: none;
       background-color: #202020;
-      color: #fff;
       padding: 5px 10px;
       border-radius: 10px;
     }

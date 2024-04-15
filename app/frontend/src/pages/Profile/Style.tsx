@@ -7,6 +7,10 @@ export const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -65,6 +69,11 @@ export const Content = styled.div`
   flex-direction: row-reverse;
   gap: 2rem;
   width: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0;
+  }
 
   .avatar {
     display: flex;
